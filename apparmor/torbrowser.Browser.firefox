@@ -91,6 +91,8 @@
 
   deny /usr/bin/pulseaudio x,
 
+  /usr/bin/seahorse-tool Ux,
+
   # KDE 4
   owner @{HOME}/.kde/share/config/* r,
 
