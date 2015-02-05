@@ -84,7 +84,7 @@
   /sys/devices/pci[0-9]*/**/uevent r,
   owner /{dev,run}/shm/shmfd-* rw,
 
-  /usr/lib/@{multiarch}/gstreamer[0-9].[0-9]/gstreamer-[0-9].[0-9]/gst-plugin-scanner Cix -> gst_plugin_scanner,
+  /usr/lib/@{multiarch}/gstreamer[0-9]*.[0-9]*/gstreamer-[0-9]*.[0-9]*/gst-plugin-scanner Cix -> gst_plugin_scanner,
   owner @{HOME}/.gstreamer*/ rw,
   owner @{HOME}/.gstreamer*/** rw,
   owner @{PROC}/[0-9]*/fd/ r,
