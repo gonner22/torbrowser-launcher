@@ -92,6 +92,7 @@
 
   deny /usr/bin/pulseaudio x,
 
+  /usr/local/lib/tor-browser/firefox Pix,
   /usr/bin/seahorse-tool Ux,
 
   # KDE 4
