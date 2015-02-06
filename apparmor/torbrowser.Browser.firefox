@@ -47,6 +47,8 @@
 
   owner "@{HOME}/Tor Browser/" rw,
   owner "@{HOME}/Tor Browser/**" rwk,
+  owner "@{HOME}/Persistent/Tor Browser/" rw,
+  owner "@{HOME}/Persistent/Tor Browser/**" rwk,
   owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/" rw,
   owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/**" rwk,
   owner @{HOME}/.mozilla/firefox/bookmarks/places.sqlite rwk,
