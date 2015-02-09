@@ -21,7 +21,7 @@
 
   /etc/asound.conf r,
   deny /etc/host.conf r,
-  deny /etc/hosts r,
+  /etc/hosts r,
   /etc/nsswitch.conf r,
   deny /etc/resolv.conf r,
   /etc/passwd r,
