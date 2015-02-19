@@ -97,6 +97,11 @@
   /usr/local/lib/tor-browser/firefox Pix,
   /usr/bin/seahorse-tool Ux,
 
+  # Spell checking (the "enchant" abstraction includes these rules
+  # too, but it allows way more stuff than what we need)
+  /usr/share/hunspell/                             r,
+  /usr/share/hunspell/*                            r,
+
   # KDE 4
   owner @{HOME}/.kde/share/config/* r,
 
