@@ -97,6 +97,12 @@
   /usr/local/lib/tor-browser/firefox Pix,
   /usr/bin/seahorse-tool Ux,
 
+  # Grant access to assistive technologies
+  # (otherwise, Firefox crashes when Orca is enabled:
+  # https://labs.riseup.net/code/issues/9261)
+  owner @{HOME}/.cache/at-spi2-*/ rw,
+  owner @{HOME}/.cache/at-spi2-*/socket rw,
+
   # Spell checking (the "enchant" abstraction includes these rules
   # too, but it allows way more stuff than what we need)
   /usr/share/hunspell/                             r,
