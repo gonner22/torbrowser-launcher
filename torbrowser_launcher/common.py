@@ -43,7 +43,6 @@ gtk2reactor.install()
 class Common:
 
     def __init__(self, tbl_version):
-        print _('Initializing Tor Browser Launcher')
         self.tbl_version = tbl_version
 
         # initialize the app
@@ -145,7 +144,8 @@ class Common:
                 'update_check_file': tbb_cache+'/download/RecommendedTBBVersions',
                 'tbb': {
                     'dir': tbb_local+'/tbb/'+self.architecture,
-                    'start': tbb_local+'/tbb/'+self.architecture+'/tor-browser_'+self.language+'/start-tor-browser',
+                    'dir_tbb': tbb_local+'/tbb/'+self.architecture+'/tor-browser_'+self.language,
+                    'start': tbb_local+'/tbb/'+self.architecture+'/tor-browser_'+self.language+'/start-tor-browser.desktop',
                     'versions': tbb_local+'/tbb/'+self.architecture+'/tor-browser_'+self.language+'/Browser/TorBrowser/Docs/sources/versions',
                 },
             }
@@ -174,9 +174,8 @@ class Common:
 
     # import gpg keys
     def import_keys(self):
-        print _('Importing keys')
         for key in self.paths['signing_keys']:
-            subprocess.Popen(['/usr/bin/gpg', '--homedir', self.paths['gnupg_homedir'], '--import', key]).wait()
+            subprocess.Popen(['/usr/bin/gpg', '--quiet', '--homedir', self.paths['gnupg_homedir'], '--import', key]).wait()
 
     # load mirrors
     def load_mirrors(self):
@@ -198,8 +197,7 @@ class Common:
             'check_for_updates': False,
             'modem_sound': False,
             'last_update_check_timestamp': 0,
-            'mirror': self.default_mirror,
-            'accept_links': False
+            'mirror': self.default_mirror
         }
 
         if os.path.isfile(self.paths['settings_file']):
