@@ -1,0 +1,164 @@
+torbrowser-launcher (0.2.0-1) unstable; urgency=medium
+ 
+  * New upstream version. (Closes: #784041)
+
+ -- Ulrike Uhlig <u@451f.org>  Thu, 14 May 2015 22:18:10 +0200
+
+torbrowser-launcher (0.1.9-1) unstable; urgency=medium
+
+  * New upstream version, which adds an option to disable accepting links, to
+    workaround an issue affecting users running both Firefox and Tor Browser.
+
+ -- Holger Levsen <holger@debian.org>  Wed, 04 Feb 2015 22:55:39 +0100
+
+torbrowser-launcher (0.1.8-1) unstable; urgency=medium
+
+  * New upstream version:
+    * featuring new signing key. (Closes: #775871)
+    * handle new TBB alpha and beta versioning. (Closes: #775891)
+
+ -- Ulrike Uhlig <u@451f.org>  Tue, 20 Jan 2015 23:30:27 +0100
+
+torbrowser-launcher (0.1.7-1) unstable; urgency=medium
+
+  [ Ulrike Uhlig ]
+  * New upstream version.
+
+ -- Holger Levsen <holger@debian.org>  Wed, 03 Dec 2014 23:46:10 +0100
+
+torbrowser-launcher (0.1.6-1) unstable; urgency=medium
+
+  * New upstream version. (Closes: #766302)
+  * debian/copyright:
+    * upstream marked license as being MIT.
+    * upstream extended copyright to 2014.
+
+ -- Ulrike Uhlig <u@451f.org>  Sun, 26 Oct 2014 15:23:58 +0100
+
+torbrowser-launcher (0.1.5-2) unstable; urgency=medium
+
+  * Add lsb-release to build-depends.
+  * Bump standards version to 3.9.6.
+  * Switch Vcs-Browser: to cgit URL.
+
+ -- Holger Levsen <holger@debian.org>  Sat, 18 Oct 2014 21:54:31 +0200
+
+torbrowser-launcher (0.1.5-1) unstable; urgency=medium
+
+  [ Ulrike Uhlig ]
+  * New upstream version. (Closes: #763739)
+    - no longer detach application (Closes: #756901)
+  * Delete apparmor patches which were fixed upstream.
+
+  [ Holger Levsen ]
+  * Force usage of python 2.7.
+
+ -- Ulrike Uhlig <u@451f.org>  Thu, 02 Oct 2014 18:59:37 +0200
+
+torbrowser-launcher (0.1.4-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Holger Levsen ]
+  * Bump debian/compat to 9 and increase build-dependency to debhelper
+    >= 9.20120909~.
+
+  [ intrigeri ]
+  * Import AppArmor profiles updates from upstream (Closes: #761663).
+  * Fix short BSD license name in debian/copyright.
+
+ -- intrigeri <intrigeri@debian.org>  Mon, 15 Sep 2014 20:13:26 -0700
+
+torbrowser-launcher (0.1.4-1) unstable; urgency=high
+
+  [ Ulrike Uhlig ]
+  * New upstream version.
+    - take into account URL change for downloading TBB
+
+ -- Ulrike Uhlig <u@451f.org>  Tue, 02 Sep 2014 09:20:39 +0200
+
+torbrowser-launcher (0.1.3-1) unstable; urgency=medium
+
+  [ Ulrike Uhlig ]
+  * New upstream version. (Closes: #757627)
+  * debian/control:
+    - Update package description to correctly indicate the places
+      where TBB is downloaded to (Closes: #756928).
+
+  [ Holger Levsen ]
+  * debian/examples/README: explain why AppArmor is awesome, mention Tails
+    too.
+
+ -- Ulrike Uhlig <u@451f.org>  Mon, 11 Aug 2014 18:47:03 +0200
+
+torbrowser-launcher (0.1.2-1) unstable; urgency=medium
+
+  * New upstream version. (Closes: #754281, #753413, #755682)
+  * Drop patch intrigeri_gh92-rework-AppArmor-profiles.patch.
+  * Drop patch fix_typo_in_ppa_script.patch.
+  * debian/control:
+    - add tor to depends.
+    - update Vcs-URLs to new git repo location in collab-maint.
+  * Add debian/examples to show how to run torbrowser-launcher, confined with
+    AppArmor, in Xephyr as another user. Read the README!
+  * Fix DEP5 syntax error in debian/copyright, thanks Lintian.
+
+ -- Holger Levsen <holger@debian.org>  Sun, 03 Aug 2014 00:42:59 +0200
+
+torbrowser-launcher (0.1.1-2) unstable; urgency=medium
+
+  * debian/rules: call dh_apparmor for each shipped profile.
+    (Closes: #755817)
+  * Include e8350a1c4 from upstream to fix typo in ppa script.
+  * Cleanup AppArmor profiles as per not yet merged pull request
+    https://github.com/micahflee/torbrowser-launcher/pull/111
+    Thanks intrigeri for the patch! (Closes: #751453).
+
+ -- Holger Levsen <holger@debian.org>  Sat, 26 Jul 2014 17:15:04 +0200
+
+torbrowser-launcher (0.1.1-1) unstable; urgency=low
+
+    * Adopt the package under the umbrella of the Debian Anonymity Tools Team.
+    * New upstream version.
+    * debian/control:
+        * Add Jacob Appelbaum, Holger Levsen and myself to Uploaders.
+        * Adding Vcs-Browser now pointing to upstream debian/ branch.
+        * restricting Architecture to i386 and amd64 (Closes: #752240)
+        * Build dependency dh-apparmor added.
+        * python-pygame dependency is now optional
+        * added versions to dependencies python-parsley and python-txsocksx
+    * debian/rules:
+        * use dh_apparmor (Closes: #751449)
+
+ --  Ulrike Uhlig <u@451f.org>  Tue, 22 Jul 2014 11:54:57 +0200
+
+torbrowser-launcher (0.1.0-1.2) unstable; urgency=low
+
+  [ Ulrike Uhlig ]
+    * Non-maintainer upload in coordination with maintainer.
+    * debian/control:
+      - Deleted problematic Vcs-Git and Vcs-Browser information.
+
+ --  Ulrike Uhlig <u@451f.org>  Sun, 06 Jul 2014 16:00:51 +0200
+
+torbrowser-launcher (0.1.0-1.1) unstable; urgency=low
+
+  [ Ulrike Uhlig ]
+  * Non-maintainer upload in coordination with maintainer.
+  * New upstream version. (Closes: #751284)
+  * debian/control:
+    - Added homepage, Vcs-Git and Vcs-Browser information.
+    - Move to contrib (Closes: #751366)
+    - Suggests: apparmor (Closes: #751452)
+    - Deleted depencies: apparmor-utils, apparmor-profiles, debhelper
+    - debhelper Build-dependency downgraded from >9.20140228 to >7.4.3
+      (Closes: #751773)
+  * debian/watch added
+
+ --  Ulrike Uhlig <u@451f.org>  Fri, 20 Jun 2014 07:27:25 +0200
+
+torbrowser-launcher (0.0.7-1) unstable; urgency=low
+
+  * Initial release. (Closes: #705177)
+
+ -- Jacob Appelbaum <jacob@appelbaum.net>  Tue, 11 Mar 2014 18:54:47 +0000

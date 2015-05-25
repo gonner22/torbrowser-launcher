@@ -64,19 +64,18 @@ class VerifyTorProjectCert(ClientContextFactory):
 
 class Launcher:
     def __init__(self, common, url_list):
-        print _('Starting launcher dialog')
         self.common = common
         self.url_list = url_list
 
         # init launcher
         self.set_gui(None, '', [])
         self.launch_gui = True
-        print "LATEST VERSION", self.common.settings['latest_version']
         self.common.build_paths(self.common.settings['latest_version'])
 
         if self.common.settings['update_over_tor']:
             try:
                 import txsocksx
+                print _('Updating over Tor')
             except ImportError:
                 md = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_WARNING, gtk.BUTTONS_CLOSE, _("The python-txsocksx package is missing, downloads will not happen over tor"))
                 md.set_position(gtk.WIN_POS_CENTER)
@@ -306,7 +305,6 @@ class Launcher:
         # get ready for the next task
         self.gui_task_i += 1
 
-        print _('Running task: {0}'.format(task))
         if task == 'download_update_check':
             print _('Downloading'), self.common.paths['update_check_url']
             self.download('update check', self.common.paths['update_check_url'], self.common.paths['update_check_file'])
@@ -374,7 +372,6 @@ class Launcher:
                 self.progress.set_text(_('Downloaded')+(' %2.1f%% (%2.1f %s)' % ((percent * 100.0), amount, units)))
 
             def connectionLost(self, reason):
-                print _('Finished receiving body:'), reason.getErrorMessage()
                 self.all_done(reason)
 
         if hasattr(self, 'current_download_url'):
@@ -447,7 +444,6 @@ class Launcher:
         self.refresh_gtk()
 
         if self.common.settings['update_over_tor']:
-            print _('Updating over Tor')
             from twisted.internet.endpoints import TCP4ClientEndpoint
             from txsocksx.http import SOCKS5Agent
 
@@ -552,7 +548,8 @@ class Launcher:
 
         verified = False
         # check the sha256 file's sig, and also take the sha256 of the tarball and compare
-        p = subprocess.Popen(['/usr/bin/gpg', '--homedir', self.common.paths['gnupg_homedir'], '--verify', self.common.paths['sha256_sig_file']])
+        FNULL = open(os.devnull, 'w')
+        p = subprocess.Popen(['/usr/bin/gpg', '--homedir', self.common.paths['gnupg_homedir'], '--verify', self.common.paths['sha256_sig_file']], stdout=FNULL, stderr=subprocess.STDOUT)
         self.pulse_until_process_exits(p)
         if p.returncode == 0:
             # compare with sha256 of the tarball
@@ -634,10 +631,7 @@ class Launcher:
                 gtk.main_iteration_do(True)
 
         # run Tor Browser
-        if self.common.settings['accept_links']:
-            subprocess.call([self.common.paths['tbb']['start'], '-allow-remote'] + self.url_list)
-        else:
-            subprocess.call([self.common.paths['tbb']['start']])
+        subprocess.call([self.common.paths['tbb']['start']], cwd=self.common.paths['tbb']['dir_tbb'])
 
         if run_next_task:
             self.run_task()
@@ -674,4 +668,3 @@ class Launcher:
             delattr(self, 'current_download_url')
         if reactor.running:
             reactor.stop()
-
