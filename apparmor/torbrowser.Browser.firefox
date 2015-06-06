@@ -108,6 +108,10 @@
   /usr/share/hunspell/                             r,
   /usr/share/hunspell/*                            r,
 
+  # Deny access to the list of recently used files. This overrides the
+  # access to it that's granted by the freedesktop.org abstraction.
+  deny @{HOME}/.local/share/recently-used.xbel* rw,
+
   # KDE 4
   owner @{HOME}/.kde/share/config/* r,
 
