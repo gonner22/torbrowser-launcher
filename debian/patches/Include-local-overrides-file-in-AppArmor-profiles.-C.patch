@@ -1,0 +1,55 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Wed, 12 Aug 2015 08:57:08 +0000
+Forwarded: not-needed
+Subject: Include local overrides file in AppArmor profiles. (Closes: #751451)
+
+---
+ apparmor/torbrowser.Browser.firefox   | 2 ++
+ apparmor/torbrowser.Tor.tor           | 2 ++
+ apparmor/torbrowser.start-tor-browser | 1 +
+ apparmor/usr.bin.torbrowser-launcher  | 2 ++
+ 4 files changed, 7 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index c2de426..2c9e01d 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -80,4 +80,6 @@
+   # Xfce4
+   /etc/xfce4/defaults.list r,
+   /usr/share/xfce4/applications/ r,
++
++  #include <local/torbrowser.Browser.firefox>
+ }
+diff --git a/apparmor/torbrowser.Tor.tor b/apparmor/torbrowser.Tor.tor
+index d9c805d..68a2fe1 100644
+--- a/apparmor/torbrowser.Tor.tor
++++ b/apparmor/torbrowser.Tor.tor
+@@ -22,4 +22,6 @@
+   # OnionShare compatibility
+   /tmp/onionshare_*/ rw,
+   /tmp/onionshare_*/* rw,
++
++  #include <local/torbrowser.Tor.tor>
+ }
+diff --git a/apparmor/torbrowser.start-tor-browser b/apparmor/torbrowser.start-tor-browser
+index 3ca6368..49487dc 100644
+--- a/apparmor/torbrowser.start-tor-browser
++++ b/apparmor/torbrowser.start-tor-browser
+@@ -50,4 +50,5 @@
+   /usr/share/file/magic/ r,
+   /usr/share/zenity/zenity.ui r,
+ 
++  #include <local/torbrowser.start-tor-browser>
+ }
+diff --git a/apparmor/usr.bin.torbrowser-launcher b/apparmor/usr.bin.torbrowser-launcher
+index 424aa5a..b8e081e 100644
+--- a/apparmor/usr.bin.torbrowser-launcher
++++ b/apparmor/usr.bin.torbrowser-launcher
+@@ -49,4 +49,6 @@
+ 
+   # including abstractions/audio is not enough to play modem sound
+   /usr/bin/pulseaudio Pixr,
++
++  #include <local/usr.bin.torbrowser-launcher>
+ }

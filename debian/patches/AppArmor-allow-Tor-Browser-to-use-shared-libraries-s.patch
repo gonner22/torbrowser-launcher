@@ -1,0 +1,25 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Wed, 12 Aug 2015 08:33:41 +0000
+Bug: https://github.com/micahflee/torbrowser-launcher/issues/181#issuecomment-130213776
+Subject: AppArmor: allow Tor Browser to use shared libraries shipped in the
+ bundled Tor directory.
+
+This makes Tor Browser 4.5 and 5.0 start fine, at least when run with
+./start-tor-browser.desktop (since torbrowser-launcher itself is broken,
+see Debian#793791).
+---
+ apparmor/torbrowser.Browser.firefox | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 7e68a08..c2de426 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -47,6 +47,7 @@
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Browser/profile.default/ r,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Browser/profile.default/** rwk,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Tor/tor Px,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Tor/*.so{,.[0-9]*} mr,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/,}Desktop/ rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/,}Desktop/** rwk,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/,}Downloads/ rw,

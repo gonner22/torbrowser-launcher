@@ -1,0 +1,3 @@
+AppArmor-allow-Tor-Browser-to-use-shared-libraries-s.patch
+Include-local-overrides-file-in-AppArmor-profiles.-C.patch
+Set-torbrowser.start-tor-browser-and-usr.bin.torbrow.patch
