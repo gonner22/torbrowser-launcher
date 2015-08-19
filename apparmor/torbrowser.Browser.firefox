@@ -118,4 +118,11 @@
   # Xfce4
   /etc/xfce4/defaults.list r,
   /usr/share/xfce4/applications/ r,
+
+  # Deny access to global tmp directories, that's granted by the user-tmp
+  # abstraction, which is sourced by the gnome abstraction, that we include.
+  deny owner /var/tmp/**     rwklx,
+  deny /var/tmp/             rwklx,
+  deny owner /tmp/**         rwklx,
+  deny /tmp/                 rwklx,
 }
