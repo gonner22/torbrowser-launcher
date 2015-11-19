@@ -1,3 +1,23 @@
+torbrowser-launcher (0.2.1-2) unstable; urgency=high
+
+  [ intrigeri ]
+  * Re-apply changes from 0.2.0-2, that were dropped by the 0.2.1-1 upload.
+  * Add debian/gbp.conf to automated selection of the packaging branch.
+  * Drop AppArmor-allow-Tor-Browser-to-use-shared-libraries-s.patch:
+    applied upstream.
+  * Refresh patches.
+
+  [ Ximin Luo ]
+  * Hand over package to pkg-privacy team.
+
+ -- Holger Levsen <holger@debian.org>  Mon, 16 Nov 2015 23:13:29 +0100
+
+torbrowser-launcher (0.2.1-1) unstable; urgency=medium
+
+  * New upstream version. (Closes: #804184, #804274, #804394)
+
+ -- Holger Levsen <holger@debian.org>  Fri, 13 Nov 2015 18:41:38 +0100
+
 torbrowser-launcher (0.2.0-2) unstable; urgency=medium
 
   * Team upload.

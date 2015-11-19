@@ -2,29 +2,15 @@ From: intrigeri <intrigeri@boum.org>
 Date: Wed, 12 Aug 2015 09:21:28 +0000
 Forwarded: not-needed
 Bug: https://github.com/micahflee/torbrowser-launcher/issues/181
-Subject: Set torbrowser.start-tor-browser and usr.bin.torbrowser-launcher
- AppArmor profiles to complain mode.
+Subject: Set usr.bin.torbrowser-launcher AppArmor profile to complain mode.
 
 They have been broken for three months now. Patches have been discussed on
 GitHub for a while, but no clean solution has been implemented yet,
 so for the time being, let's make torbrowser-launcher *work*.
 ---
- apparmor/torbrowser.start-tor-browser | 2 +-
  apparmor/usr.bin.torbrowser-launcher  | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/apparmor/torbrowser.start-tor-browser b/apparmor/torbrowser.start-tor-browser
-index 49487dc..4148c06 100644
---- a/apparmor/torbrowser.start-tor-browser
-+++ b/apparmor/torbrowser.start-tor-browser
-@@ -1,6 +1,6 @@
- #include <tunables/global>
- 
--/home/*/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/,}start-tor-browser {
-+/home/*/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/,}start-tor-browser flags=(complain) {
-   #include <abstractions/base>
-   #include <abstractions/bash>
-   #include <abstractions/fonts>
 diff --git a/apparmor/usr.bin.torbrowser-launcher b/apparmor/usr.bin.torbrowser-launcher
 index b8e081e..80aace4 100644
 --- a/apparmor/usr.bin.torbrowser-launcher

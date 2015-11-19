@@ -30,9 +30,14 @@ import os, subprocess, time, json, tarfile, hashlib, lzma, threading, re
 from twisted.internet import reactor
 from twisted.web.client import Agent, RedirectAgent, ResponseDone, ResponseFailed
 from twisted.web.http_headers import Headers
+from twisted.web.iweb import IPolicyForHTTPS
 from twisted.internet.protocol import Protocol
-from twisted.internet.ssl import ClientContextFactory
+from twisted.internet.ssl import CertificateOptions
+from twisted.internet._sslverify import ClientTLSOptions
 from twisted.internet.error import DNSLookupError
+from zope.interface import implementer
+
+import xml.etree.ElementTree as ET
 
 import OpenSSL
 
@@ -49,18 +54,29 @@ class TryDefaultMirrorException(Exception):
 class DownloadErrorException(Exception):
     pass
 
-class VerifyTorProjectCert(ClientContextFactory):
+class TorProjectCertificateOptions(CertificateOptions):
     def __init__(self, torproject_pem):
+        CertificateOptions.__init__(self)
         self.torproject_ca = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(torproject_pem, 'r').read())
 
     def getContext(self, host, port):
-        ctx = ClientContextFactory.getContext(self)
+        ctx = CertificateOptions.getContext(self)
         ctx.set_verify_depth(0)
         ctx.set_verify(OpenSSL.SSL.VERIFY_PEER | OpenSSL.SSL.VERIFY_FAIL_IF_NO_PEER_CERT, self.verifyHostname)
         return ctx
 
     def verifyHostname(self, connection, cert, errno, depth, preverifyOK):
         return cert.digest('sha256') == self.torproject_ca.digest('sha256')
+
+@implementer(IPolicyForHTTPS)
+class TorProjectPolicyForHTTPS:
+    def __init__(self, torproject_pem):
+        self.torproject_pem = torproject_pem
+
+    def creatorForNetloc(self, hostname, port):
+        certificateOptions = TorProjectCertificateOptions(self.torproject_pem)
+        return ClientTLSOptions(hostname.decode('utf-8'),
+                                certificateOptions.getContext(hostname, port))
 
 class Launcher:
     def __init__(self, common, url_list):
@@ -145,6 +161,12 @@ class Launcher:
 
         start = self.common.paths['tbb']['start']
         if os.path.isfile(start) and os.access(start, os.X_OK):
+            self.set_gui('task', _("testing verify"),
+                         ['verify',
+                          'extract',
+                          'run'])
+            return
+
             if installed_version == latest_version:
                 print _('Latest version of TBB is installed, launching')
                 # current version of tbb is installed, launch it
@@ -154,8 +176,7 @@ class Launcher:
                 print _('TBB is out of date, attempting to upgrade to {0}'.format(latest_version))
                 # there is a tbb upgrade available
                 self.set_gui('task', _("Your Tor Browser is out of date. Upgrading from {0} to {1}.".format(installed_version, latest_version)),
-                             ['download_sha256',
-                              'download_sha256_sig',
+                             ['download_sig',
                               'download_tarball',
                               'verify',
                               'extract',
@@ -168,8 +189,7 @@ class Launcher:
         else:
             print _('TBB is not installed, attempting to install {0}'.format(latest_version))
             self.set_gui('task', _("Downloading and installing Tor Browser for the first time."),
-                         ['download_sha256',
-                          'download_sha256_sig',
+                         ['download_sig',
                           'download_tarball',
                           'verify',
                           'extract',
@@ -313,13 +333,9 @@ class Launcher:
             print _('Checking to see if update is needed')
             self.attempt_update()
 
-        elif task == 'download_sha256':
-            print _('Downloading'), self.common.paths['sha256_url'].format(self.common.settings['mirror'])
-            self.download('signature', self.common.paths['sha256_url'], self.common.paths['sha256_file'])
-
-        elif task == 'download_sha256_sig':
-            print _('Downloading'), self.common.paths['sha256_sig_url'].format(self.common.settings['mirror'])
-            self.download('signature', self.common.paths['sha256_sig_url'], self.common.paths['sha256_sig_file'])
+        elif task == 'download_sig':
+            print _('Downloading'), self.common.paths['sig_url'].format(self.common.settings['mirror'])
+            self.download('signature', self.common.paths['sig_url'], self.common.paths['sig_file'])
 
         elif task == 'download_tarball':
             print _('Downloading'), self.common.paths['tarball_url'].format(self.common.settings['mirror'])
@@ -451,12 +467,12 @@ class Launcher:
 
             # default mirror gets certificate pinning, only for requests that use the mirror
             if self.common.settings['mirror'] == self.common.default_mirror and '{0}' in url:
-                agent = SOCKS5Agent(reactor, VerifyTorProjectCert(self.common.paths['torproject_pem']), proxyEndpoint=torEndpoint)
+                agent = SOCKS5Agent(reactor, TorProjectPolicyForHTTPS(self.common.paths['torproject_pem']), proxyEndpoint=torEndpoint)
             else:
                 agent = SOCKS5Agent(reactor, proxyEndpoint=torEndpoint)
         else:
             if self.common.settings['mirror'] == self.common.default_mirror and '{0}' in url:
-                agent = Agent(reactor, VerifyTorProjectCert(self.common.paths['torproject_pem']))
+                agent = Agent(reactor, TorProjectPolicyForHTTPS(self.common.paths['torproject_pem']))
             else:
                 agent = Agent(reactor)
 
@@ -488,38 +504,19 @@ class Launcher:
         subprocess.Popen([self.common.paths['tbl_bin']])
         self.destroy(False)
 
+    def get_stable_version(self):
+        tree = ET.parse(self.common.paths['update_check_file'])
+        for up in tree.getroot():
+            if up.tag == 'update' and up.attrib['appVersion']:
+                return up.attrib['appVersion']
+        return None
+
     def attempt_update(self):
         # load the update check file
         try:
-            versions = json.load(open(self.common.paths['update_check_file']))
-            latest = None
-
-            # filter linux versions
-            valid = []
-            for version in versions:
-                if '-Linux' in version:
-                    valid.append(str(version))
-            valid.sort()
-            if len(valid):
-                versions = valid
-
-            if len(versions) == 1:
-                latest = versions.pop()
-            else:
-                stable = []
-                # remove alphas/betas
-                for version in versions:
-                    if not re.search(r'a\d-Linux', version) and not re.search(r'b\d-Linux', version):
-                        stable.append(version)
-                if len(stable):
-                    latest = stable.pop()
-                else:
-                    latest = versions.pop()
-
+            latest = self.get_stable_version()
             if latest:
                 latest = str(latest)
-                if latest.endswith('-Linux'):
-                    latest = latest.rstrip('-Linux')
 
                 self.common.settings['latest_version'] = latest
                 self.common.settings['last_update_check_timestamp'] = int(time.time())
@@ -546,17 +543,13 @@ class Launcher:
         self.progressbar.set_text(_('Verifying Signature'))
         self.progressbar.show()
 
+        # verify the PGP signature
         verified = False
-        # check the sha256 file's sig, and also take the sha256 of the tarball and compare
         FNULL = open(os.devnull, 'w')
-        p = subprocess.Popen(['/usr/bin/gpg', '--homedir', self.common.paths['gnupg_homedir'], '--verify', self.common.paths['sha256_sig_file']], stdout=FNULL, stderr=subprocess.STDOUT)
+        p = subprocess.Popen(['/usr/bin/gpg', '--homedir', self.common.paths['gnupg_homedir'], '--verify', self.common.paths['sig_file']], stdout=FNULL, stderr=subprocess.STDOUT)
         self.pulse_until_process_exits(p)
         if p.returncode == 0:
-            # compare with sha256 of the tarball
-            tarball_sha256 = hashlib.sha256(open(self.common.paths['tarball_file'], 'r').read()).hexdigest()
-            for line in open(self.common.paths['sha256_file'], 'r').readlines():
-                if tarball_sha256.lower() in line.lower() and self.common.paths['tarball_filename'] in line:
-                    verified = True
+            verified = True
 
         if verified:
             self.run_task()

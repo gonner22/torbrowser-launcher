@@ -1,5 +1,5 @@
 Source: torbrowser-launcher
-Maintainer: Anonymity Tools Debian Maintainers <pkg-anonymity-tools@lists.alioth.debian.org>
+Maintainer: Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alioth.debian.org>
 Uploaders: Jacob Appelbaum <jacob@appelbaum.net>,
  Ulrike Uhlig <u@451f.org>,
  Holger Levsen <holger@debian.org>
@@ -9,8 +9,8 @@ Build-Depends: python-all (>= 2.7.3-4), debhelper (>= 9.20120909~), dh-apparmor,
 X-Python-Version: >= 2.7
 Standards-Version: 3.9.6
 Homepage: https://micahflee.com/torbrowser-launcher/
-Vcs-Git: git://anonscm.debian.org/collab-maint/torbrowser-launcher.git
-Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/torbrowser-launcher.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-privacy/packages/torbrowser-launcher.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-privacy/packages/torbrowser-launcher.git
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
