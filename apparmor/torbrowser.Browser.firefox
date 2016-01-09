@@ -95,7 +95,6 @@
   deny /usr/bin/pulseaudio x,
 
   /usr/local/lib/tor-browser/firefox Pix,
-  /usr/bin/seahorse-tool Ux,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:
