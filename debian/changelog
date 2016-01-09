@@ -1,3 +1,15 @@
+torbrowser-launcher (0.2.2-2) sid; urgency=medium
+
+  * Upload to sid.
+
+ -- Holger Levsen <holger@debian.org>  Thu, 19 Nov 2015 18:41:15 +0100
+
+torbrowser-launcher (0.2.2-1) experimental; urgency=medium
+
+  * New upstream version. (Closes: #805078)
+
+ -- Holger Levsen <holger@debian.org>  Fri, 13 Nov 2015 18:50:18 +0100
+
 torbrowser-launcher (0.2.1-2) unstable; urgency=high
 
   [ intrigeri ]

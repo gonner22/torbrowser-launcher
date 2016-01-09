@@ -140,8 +140,8 @@ class Common:
                 'gnupg_homedir': tbb_local+'/gnupg_homedir',
                 'settings_file': tbb_config+'/settings.json',
                 'settings_file_pickle': tbb_config+'/settings',
-                'update_check_url': 'https://dist.torproject.org/torbrowser/update_2/release/Linux_x86_64-gcc3/x/en-US',
-                'update_check_file': tbb_cache+'/download/release.xml',
+                'version_check_url': 'https://dist.torproject.org/torbrowser/update_2/release/Linux_x86_64-gcc3/x/en-US',
+                'version_check_file': tbb_cache+'/download/release.xml',
                 'tbb': {
                     'dir': tbb_local+'/tbb/'+self.architecture,
                     'dir_tbb': tbb_local+'/tbb/'+self.architecture+'/tor-browser_'+self.language,
@@ -191,18 +191,18 @@ class Common:
     def load_settings(self):
         default_settings = {
             'tbl_version': self.tbl_version,
-            'installed_version': False,
-            'latest_version': '0',
-            'update_over_tor': True,
-            'check_for_updates': False,
+            'installed': False,
+            'download_over_tor': False,
             'modem_sound': False,
-            'last_update_check_timestamp': 0,
             'mirror': self.default_mirror
         }
 
         if os.path.isfile(self.paths['settings_file']):
             settings = json.load(open(self.paths['settings_file']))
             resave = False
+
+            # detect installed
+            settings['installed'] = os.path.isfile(self.paths['tbb']['start'])
 
             # make sure settings file is up-to-date
             for setting in default_settings:
@@ -235,44 +235,3 @@ class Common:
         json.dump(self.settings, open(self.paths['settings_file'], 'w'))
         return True
 
-    # get the process id of a program
-    @staticmethod
-    def get_pid(bin_path, python=False):
-        pid = None
-
-        for p in psutil.process_iter():
-            try:
-                if p.pid != os.getpid():
-                    exe = None
-                    if python:
-                        if len(p.cmdline) > 1:
-                            if 'python' in p.cmdline[0]:
-                                exe = p.cmdline[1]
-                    else:
-                        if len(p.cmdline) > 0:
-                            exe = p.cmdline[0]
-
-                    if exe == bin_path:
-                        pid = p.pid
-
-            except:
-                pass
-
-        return pid
-
-    # bring program's x window to front
-    @staticmethod
-    def bring_window_to_front(pid):
-        # figure out the window id
-        win_id = None
-        p = subprocess.Popen(['wmctrl', '-l', '-p'], stdout=subprocess.PIPE)
-        for line in p.stdout.readlines():
-            line_split = line.split()
-            cur_win_id = line_split[0]
-            cur_win_pid = int(line_split[2])
-            if cur_win_pid == pid:
-                win_id = cur_win_id
-
-        # bring to front
-        if win_id:
-            subprocess.call(['wmctrl', '-i', '-a', win_id])
