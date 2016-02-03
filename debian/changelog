@@ -1,6 +1,8 @@
 torbrowser-launcher (0.2.2-4) UNRELEASED; urgency=medium
 
-  * Bump standards version to 3.9.7, no changes needed.
+  * debian/control:
+    - Bump standards version to 3.9.7, no changes needed.
+    - Use /git/ not /cgit/ in Vcs-* headers.
 
  -- Holger Levsen <holger@debian.org>  Wed, 03 Feb 2016 10:55:10 +0100
 
