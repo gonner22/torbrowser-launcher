@@ -3,9 +3,9 @@ Maintainer: Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alio
 Uploaders: Jacob Appelbaum <jacob@appelbaum.net>,
  Ulrike Uhlig <u@451f.org>,
  Holger Levsen <holger@debian.org>
-Section: contrib/python
+Section: contrib/web
 Priority: optional
-Build-Depends: python-all (>= 2.7.3-4), debhelper (>= 9.20120909~), dh-apparmor, lsb-release
+Build-Depends: python-all (>= 2.7.3-4), debhelper (>= 9.20120909~), dh-python, dh-apparmor, lsb-release
 X-Python-Version: >= 2.7
 Standards-Version: 3.9.6
 Homepage: https://micahflee.com/torbrowser-launcher/
@@ -14,9 +14,10 @@ Vcs-Browser: https://anonscm.debian.org/cgit/pkg-privacy/packages/torbrowser-lau
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
-Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-psutil, python-twisted, python-lzma, gnupg, wmctrl, python-txsocksx (>= 1.13.0.1), python-parsley (>= 1.2), tor
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-psutil, python-twisted, python-lzma, gnupg, wmctrl, python-txsocksx (>= 1.13.0.1), python-parsley (>= 1.2), ca-certificates
+Recommends: tor
 Suggests: apparmor, python-pygame
-Description: helps download, update and run the Tor Browser Bundle
+Description: helps download and run the Tor Browser Bundle
  Tor Browser Launcher is intended to make the Tor Browser Bundle (TBB) easier
  to maintain and use for GNU/Linux users. torbrowser-launcher handles
  downloading the most recent version of TBB for you, in your language and for
@@ -29,9 +30,5 @@ Description: helps download, update and run the Tor Browser Bundle
  Cache and configuration files will be stored in ~/.cache/torbrowser and
  ~/.config/torbrowser.
  Each subsequent execution after installation will simply launch the most
- recent TBB. Tor Browser will be fetched, verified and unpacked each time a new
- version of TBB is released. When you open Tor Browser Launcher after an update,
- it will download the newer version of TBB for you and extract it over your old
- TBB directory in ~/.local/share/torbrowser, so you will maintain your TBB
- bookmarks.
+ recent TBB, which is updated using Tor Browser's own update feature.
  .

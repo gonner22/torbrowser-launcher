@@ -1,3 +1,18 @@
+torbrowser-launcher (0.2.2-3) sid; urgency=medium
+
+  * Update package description, stop mentioning the removed upgrade feature.
+    (Closes: #812664)
+  * Add debian/patches/0003-fix-apparmor-profile-to-support-self-upgrade.patch
+    to do just that. Thanks to intrigeri for providing these rules.
+    (Closes: #808140)
+  * Add ca-certificates as depends. (Closes: #805173)
+  * Turn the dependency on tor into a Recommends. (Closes: #795240)
+  * Add dh-python to build-depends.
+  * Move to section contrib/web, thanks lintian!
+  * Override lintian's pedantic debian-watch-may-check-gpg-signature warning.
+
+ -- Holger Levsen <holger@debian.org>  Mon, 01 Feb 2016 13:59:50 +0100
+
 torbrowser-launcher (0.2.2-2) sid; urgency=medium
 
   * Upload to sid.

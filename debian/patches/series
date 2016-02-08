@@ -1,2 +1,3 @@
 Include-local-overrides-file-in-AppArmor-profiles.-C.patch
 Set-torbrowser.start-tor-browser-and-usr.bin.torbrow.patch
+0003-fix-apparmor-profile-to-support-self-upgrade.patch
