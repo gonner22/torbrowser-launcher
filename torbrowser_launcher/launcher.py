@@ -32,10 +32,7 @@ from twisted.web.client import Agent, RedirectAgent, ResponseDone, ResponseFaile
 from twisted.web.http_headers import Headers
 from twisted.web.iweb import IPolicyForHTTPS
 from twisted.internet.protocol import Protocol
-from twisted.internet.ssl import CertificateOptions
-from twisted.internet._sslverify import ClientTLSOptions
-from twisted.internet.error import DNSLookupError
-from zope.interface import implementer
+from twisted.internet.error import DNSLookupError, ConnectionRefusedError
 
 import xml.etree.ElementTree as ET
 
@@ -54,39 +51,18 @@ class TryDefaultMirrorException(Exception):
 class DownloadErrorException(Exception):
     pass
 
-class TorProjectCertificateOptions(CertificateOptions):
-    def __init__(self, torproject_pem):
-        CertificateOptions.__init__(self)
-        self.torproject_ca = OpenSSL.crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(torproject_pem, 'r').read())
-
-    def getContext(self, host, port):
-        ctx = CertificateOptions.getContext(self)
-        ctx.set_verify_depth(0)
-        ctx.set_verify(OpenSSL.SSL.VERIFY_PEER | OpenSSL.SSL.VERIFY_FAIL_IF_NO_PEER_CERT, self.verifyHostname)
-        return ctx
-
-    def verifyHostname(self, connection, cert, errno, depth, preverifyOK):
-        return cert.digest('sha256') == self.torproject_ca.digest('sha256')
-
-@implementer(IPolicyForHTTPS)
-class TorProjectPolicyForHTTPS:
-    def __init__(self, torproject_pem):
-        self.torproject_pem = torproject_pem
-
-    def creatorForNetloc(self, hostname, port):
-        certificateOptions = TorProjectCertificateOptions(self.torproject_pem)
-        return ClientTLSOptions(hostname.decode('utf-8'),
-                                certificateOptions.getContext(hostname, port))
-
 class Launcher:
     def __init__(self, common, url_list):
         self.common = common
         self.url_list = url_list
 
+        # this is the current version of Tor Browser, which should get updated with every release
+        self.min_version = '5.5.2'
+
         # init launcher
         self.set_gui(None, '', [])
         self.launch_gui = True
-        
+
         # if Tor Browser is not installed, detect latest version, download, and install
         if not self.common.settings['installed']:
             # if downloading over Tor, include txsocksx
@@ -112,14 +88,18 @@ class Launcher:
                           'verify',
                           'extract',
                           'run'])
-        
+
         else:
             # Tor Browser is already installed, so run
             self.run(False)
             self.launch_gui = False
 
         if self.launch_gui:
-            # set up the window
+            # build the rest of the UI
+            self.build_ui()
+
+    def configure_window(self):
+        if not hasattr(self, 'window'):
             self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
             self.window.set_title(_("Tor Browser"))
             self.window.set_icon_from_file(self.common.paths['icon_file'])
@@ -127,9 +107,6 @@ class Launcher:
             self.window.set_border_width(10)
             self.window.connect("delete_event", self.delete_event)
             self.window.connect("destroy", self.destroy)
-
-            # build the rest of the UI
-            self.build_ui()
 
     # there are different GUIs that might appear, this sets which one we want
     def set_gui(self, gui, message, tasks, autostart=True):
@@ -156,6 +133,7 @@ class Launcher:
         self.clear_ui()
 
         self.box = gtk.VBox(False, 20)
+        self.configure_window()
         self.window.add(self.box)
 
         if 'error' in self.gui:
@@ -227,7 +205,7 @@ class Launcher:
             # exit button
             exit_image = gtk.Image()
             exit_image.set_from_stock(gtk.STOCK_CANCEL, gtk.ICON_SIZE_BUTTON)
-            self.exit_button = gtk.Button(_("Exit"))
+            self.exit_button = gtk.Button(_("Cancel"))
             self.exit_button.set_image(exit_image)
             self.exit_button.connect("clicked", self.destroy, None)
             self.button_box.add(self.exit_button)
@@ -264,9 +242,9 @@ class Launcher:
         if task == 'download_version_check':
             print _('Downloading'), self.common.paths['version_check_url']
             self.download('version check', self.common.paths['version_check_url'], self.common.paths['version_check_file'])
-        
+
         if task == 'set_version':
-            version = self.get_stable_version() 
+            version = self.get_stable_version()
             if version:
                 self.common.build_paths(self.get_stable_version())
                 print _('Latest version: {}').format(version)
@@ -385,6 +363,13 @@ class Launcher:
                     else:
                         self.set_gui('error', _('The SSL certificate served by https://www.torproject.org is invalid! You may be under attack.'), [], False)
 
+        elif isinstance(f.value, ConnectionRefusedError) and self.common.settings['download_over_tor']:
+            # If we're using Tor, we'll only get this error when we fail to
+            # connect to the SOCKS server.  If the connection fails at the
+            # remote end, we'll get txsocksx.errors.ConnectionRefused.
+            addr = self.common.settings['tor_socks_address']
+            self.set_gui('error', _("Error connecting to Tor at {0}").format(addr), [], False)
+
         else:
             self.set_gui('error', _("Error starting download:\n\n{0}\n\nAre you connected to the internet?").format(f.value), [], False)
 
@@ -408,21 +393,15 @@ class Launcher:
         self.refresh_gtk()
 
         if self.common.settings['download_over_tor']:
-            from twisted.internet.endpoints import TCP4ClientEndpoint
+            from twisted.internet.endpoints import clientFromString
             from txsocksx.http import SOCKS5Agent
 
-            torEndpoint = TCP4ClientEndpoint(reactor, '127.0.0.1', 9050)
+            torEndpoint = clientFromString(reactor, self.common.settings['tor_socks_address'])
 
             # default mirror gets certificate pinning, only for requests that use the mirror
-            if self.common.settings['mirror'] == self.common.default_mirror and '{0}' in url:
-                agent = SOCKS5Agent(reactor, TorProjectPolicyForHTTPS(self.common.paths['torproject_pem']), proxyEndpoint=torEndpoint)
-            else:
-                agent = SOCKS5Agent(reactor, proxyEndpoint=torEndpoint)
+            agent = SOCKS5Agent(reactor, proxyEndpoint=torEndpoint)
         else:
-            if self.common.settings['mirror'] == self.common.default_mirror and '{0}' in url:
-                agent = Agent(reactor, TorProjectPolicyForHTTPS(self.common.paths['torproject_pem']))
-            else:
-                agent = Agent(reactor)
+            agent = Agent(reactor)
 
         # actually, agent needs to follow redirect
         agent = RedirectAgent(agent)
@@ -516,7 +495,31 @@ class Launcher:
 
         self.run_task()
 
+    def check_min_version(self):
+        installed_version = None
+        for line in open(self.common.paths['tbb']['versions']).readlines():
+            if line.startswith('TORBROWSER_VERSION='):
+                installed_version = line.split('=')[1].strip()
+                break
+
+        if self.min_version <= installed_version:
+            return True
+
+        return False
+
     def run(self, run_next_task=True):
+        # don't run if it isn't at least the minimum version
+        if not self.check_min_version():
+            message =  _("The version of Tor Browser you have installed is earlier than it should be, which could be a sign of an attack!")
+            print message
+
+            md = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_WARNING, gtk.BUTTONS_CLOSE, _(message))
+            md.set_position(gtk.WIN_POS_CENTER)
+            md.run()
+            md.destroy()
+
+            return
+
         # play modem sound?
         if self.common.settings['modem_sound']:
             def play_modem_sound():
