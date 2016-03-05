@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.3-1) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.3-1) unstable; urgency=medium
 
   * New upstream version. Drop all debian/patches. Quoting from upstream
     CHANGELOG.md:
@@ -9,7 +9,7 @@ torbrowser-launcher (0.2.3-1) UNRELEASED; urgency=medium
     - Make Tor SOCKS5 proxy configurable, for users not running on 9050
      (Closes: #797339, #797337)
     - Improved AppArmor profiles
-    - Added translations
+    - Added Russian translation
     - Switched from xpm icons to png icons (Closes: #802013)
     - Changed "Exit" button to "Cancel" button (Closes: #796216)
     - New package description (inspired by #812664)
@@ -17,7 +17,7 @@ torbrowser-launcher (0.2.3-1) UNRELEASED; urgency=medium
     - Bump standards version to 3.9.7, no changes needed.
     - Use /git/ not /cgit/ in Vcs-* headers.
 
- -- Holger Levsen <holger@debian.org>  Wed, 03 Feb 2016 10:55:10 +0100
+ -- Holger Levsen <holger@debian.org>  Sat, 05 Mar 2016 16:23:04 +0100
 
 torbrowser-launcher (0.2.2-3) sid; urgency=medium
 
