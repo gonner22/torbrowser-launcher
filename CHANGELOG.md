@@ -1,8 +1,19 @@
 # Tor Browser Launcher Changelog
 
+## 0.2.3
+
+* Removed certificate pinning to https://www.torproject.org to avoid issues with upcoming certificate change, and hard-coded minimum Tor Browser version in the release
+* Fix issue with detecting language
+* Make Tor SOCKS5 proxy configurable, for users not running on 9050
+* Improved AppArmor profiles
+* Added translations
+* Switched from xpm icons to png icons
+* Changed "Exit" button to "Cancel" button
+* New package description
+
 ## 0.2.2
 
-* Tor Browser Lanucher no longer attempts to auto-update, now that Tor Browser has this feature
+* Tor Browser Launcher no longer attempts to auto-update, now that Tor Browser has this feature
 * System Tor is now an optional dependency
 * Fix issue where downloads fail because of unicode URLs
 * Removed window management code that stopped working many releases ago, and removed wmctrl dependency

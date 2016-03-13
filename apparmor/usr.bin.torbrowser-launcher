@@ -1,7 +1,7 @@
 # Last Modified: Thu Jan  2 15:12:38 2014
 #include <tunables/global>
 
-/usr/bin/torbrowser-launcher {
+/usr/bin/torbrowser-launcher flags=(complain) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/python>
@@ -49,4 +49,6 @@
 
   # including abstractions/audio is not enough to play modem sound
   /usr/bin/pulseaudio Pixr,
+
+  #include <local/usr.bin.torbrowser-launcher>
 }

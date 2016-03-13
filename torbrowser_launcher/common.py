@@ -71,7 +71,7 @@ class Common:
 
         # figure out the language
         available_languages = ['en-US', 'ar', 'de', 'es-ES', 'fa', 'fr', 'it', 'ko', 'nl', 'pl', 'pt-PT', 'ru', 'vi', 'zh-CN']
-        default_locale = locale.getdefaultlocale()[0]
+        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
         if default_locale is None:
             self.language = 'en-US'
         else:
@@ -130,7 +130,7 @@ class Common:
                 },
                 'old_data_dir': old_tbb_data,
                 'tbl_bin': sys.argv[0],
-                'icon_file': os.path.join(os.path.dirname(SHARE), 'pixmaps/torbrowser80.xpm'),
+                'icon_file': os.path.join(os.path.dirname(SHARE), 'pixmaps/torbrowser.png'),
                 'torproject_pem': os.path.join(SHARE, 'torproject.pem'),
                 'signing_keys': [os.path.join(SHARE, 'tor-browser-developers.asc')],
                 'mirrors_txt': [os.path.join(SHARE, 'mirrors.txt'),
@@ -194,6 +194,7 @@ class Common:
             'installed': False,
             'download_over_tor': False,
             'modem_sound': False,
+            'tor_socks_address': 'tcp:127.0.0.1:9050',
             'mirror': self.default_mirror
         }
 
@@ -234,4 +235,3 @@ class Common:
     def save_settings(self):
         json.dump(self.settings, open(self.paths['settings_file'], 'w'))
         return True
-
