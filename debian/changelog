@@ -2,6 +2,8 @@ torbrowser-launcher (0.2.4-1) UNRELEASED; urgency=high
 
   * New upstream version which prevents a signature verification attack, see
     https://github.com/micahflee/torbrowser-launcher/issues/229 for more info.
+  * Fix AppArmor profile to allow self upgrades. Thanks intrigeri for the
+    patch! (Closes: #817267)
 
  -- Holger Levsen <holger@debian.org>  Tue, 15 Mar 2016 20:17:28 -0400
 
