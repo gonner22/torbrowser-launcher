@@ -5,6 +5,8 @@ torbrowser-launcher (0.2.5-1) UNRELEASED; urgency=medium
   * Drop patch which has been applied upstream:
     - 0001-AppArmor-try-to-fix-Tor-Browser-upgrade-again.patch
   * Bump standards version to 3.9.8, no changes needed.
+  * Remove obsolete conffile /etc/apparmor.d/torbrowser.start-tor-browser
+    thanks to Paul Wise. (Closes: #805706)
 
  -- Holger Levsen <holger@debian.org>  Wed, 23 Mar 2016 18:07:18 -0400
 
