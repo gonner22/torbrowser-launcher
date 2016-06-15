@@ -1,7 +1,6 @@
 Source: torbrowser-launcher
 Maintainer: Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alioth.debian.org>
-Uploaders: Jacob Appelbaum <jacob@appelbaum.net>,
- Ulrike Uhlig <u@451f.org>,
+Uploaders: Ulrike Uhlig <u@451f.org>,
  Holger Levsen <holger@debian.org>
 Section: contrib/web
 Priority: optional
