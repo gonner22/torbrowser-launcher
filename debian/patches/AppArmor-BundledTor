@@ -1,0 +1,61 @@
+Author: intrigeri <intrigeri@debian.org>
+Description: AppArmor should work with bundled Tor.
+
+Integrate several AppArmor patches:
+https://github.com/intrigeri/torbrowser-launcher/commit/8152968beb4845a67b3519566a80ec0ce06efc67
+AppArmor: try to fix Tor Browser upgrade, again.
+This rule is apparently needed to allow the browser to complete its upgrade
+process and restart after an update has been applied.
+
+https://github.com/intrigeri/torbrowser-launcher/commit/33f1d89270c17caf6934f49bf890b900d3b1a3c0
+AppArmor: allow Firefox to start Tor without libc's Secure Execution.
+It needs to know what LD_LIBRARY_PATH was set to, otherwise it won't
+be able to load its bundled libraries, and then all kinds of problems
+can arise, such as not finding needed symbols in the version of these
+libraries installed system-wide.
+
+In practice, due to Secure Execution I have seen Tor fail to start
+due to evutil_secure_rng_set_urandom_device_file not being found
+on a current Debian unstable system.
+---
+Index: torbrowser-launcher/apparmor/torbrowser.Browser.firefox
+===================================================================
+--- torbrowser-launcher.orig/apparmor/torbrowser.Browser.firefox
++++ torbrowser-launcher/apparmor/torbrowser.Browser.firefox
+@@ -41,17 +41,17 @@
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/ rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/** rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser.bak/ rwk,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser.bak/updated/ rwk,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser.bak/** rwk,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/*.so mr,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/components/*.so mr,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/browser/components/*.so mr,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/firefox rix,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/updates/[0-9]*/updater ix,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/updates/0/MozUpdater/bgupdate/updater ix,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/{,TorBrowser/UpdateInfo/}updates/[0-9]*/updater ix,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/{,TorBrowser/UpdateInfo/}updates/0/MozUpdater/bgupdate/updater ix,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Data/Browser/profiles.ini r,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Data/Browser/profile.default/ r,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Data/Browser/profile.default/** rwk,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Tor/tor Px,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Tor/tor px,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/TorBrowser/Tor/libstdc++.so.6 m,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/Desktop/ rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/Desktop/** rwk,
+Index: torbrowser-launcher/apparmor/torbrowser.Tor.tor
+===================================================================
+--- torbrowser-launcher.orig/apparmor/torbrowser.Tor.tor
++++ torbrowser-launcher/apparmor/torbrowser.Tor.tor
+@@ -13,8 +13,8 @@
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Tor/tor mr,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/* rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/lock rwk,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Lib/*.so mr,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Lib/*.so.* mr,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/Tor,Lib}/*.so mr,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/Tor,Lib}/*.so.* mr,
+   @{PROC}/meminfo r,
+   @{PROC}/sys/kernel/random/uuid r,
+   /sys/devices/system/cpu/ r,
