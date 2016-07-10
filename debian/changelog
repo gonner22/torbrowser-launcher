@@ -1,16 +1,20 @@
-torbrowser-launcher (0.2.5-1) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.5-1) unstable; urgency=medium
 
-  * (preparing the next upstream release which is currently still in
-    development.)
+  [Ulrike Uhlig]
+  * New upstream version. (Closes: #803171)
+  * debian/gb.conf: Make it clear that we don't use pristine-tar anymore.
+
+  [Holger Levsen]
   * Drop patch which has been applied upstream:
     - 0001-AppArmor-try-to-fix-Tor-Browser-upgrade-again.patch
+    (Closes: #824460)
   * Bump standards version to 3.9.8, no changes needed.
   * Remove obsolete conffile /etc/apparmor.d/torbrowser.start-tor-browser
     thanks to Paul Wise. (Closes: #805706)
   * debian/rules: don't try to installed removed file apparmor profile
     torbrowser.start-tor-browser.
 
- -- Holger Levsen <holger@debian.org>  Wed, 23 Mar 2016 18:07:18 -0400
+ -- Ulrike Uhlig <u@451f.org>  Sat, 09 Jul 2016 10:00:43 +0200
 
 torbrowser-launcher (0.2.4-2) unstable; urgency=medium
 
