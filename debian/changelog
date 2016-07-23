@@ -2,7 +2,7 @@ torbrowser-launcher (0.2.6-1) unstable; urgency=medium
 
   * New upstream version.
 
- -- Holger Levsen <holger@debian.org>  Sat, 23 Jul 2016 12:43:24 -0400
+ -- Holger Levsen <holger@debian.org>  Sat, 23 Jul 2016 13:03:12 -0400
 
 torbrowser-launcher (0.2.5-1) unstable; urgency=medium
 
