@@ -33,9 +33,9 @@
   /etc/machine-id r,
   /var/lib/dbus/machine-id r,
 
-  @{PROC}/[0-9]*/mountinfo r,
-  @{PROC}/[0-9]*/stat r,
-  @{PROC}/[0-9]*/task/*/stat r,
+  owner @{PROC}/[0-9]*/mountinfo r,
+  owner @{PROC}/[0-9]*/stat r,
+  owner @{PROC}/[0-9]*/task/*/stat r,
   @{PROC}/sys/kernel/random/uuid r,
 
   /usr/local/lib/tor-browser/ r,
