@@ -1,6 +1,12 @@
+torbrowser-launcher (0.2.6-3) UNRELEASED; urgency=medium
+
+  * debian/patches: Patch AppArmor profile (Closes: #835479).
+
+ -- Ulrike Uhlig <u@451f.org>  Sun, 20 Nov 2016 17:17:13 +0100
+
 torbrowser-launcher (0.2.6-2) unstable; urgency=medium
 
-  * Remove myself from uploaders. 
+  * Remove myself from uploaders.
 
  -- Holger Levsen <holger@debian.org>  Mon, 19 Sep 2016 12:34:21 +0200
 
@@ -126,7 +132,7 @@ torbrowser-launcher (0.2.0-2) unstable; urgency=medium
  -- intrigeri <intrigeri@debian.org>  Wed, 12 Aug 2015 10:42:50 +0200
 
 torbrowser-launcher (0.2.0-1) unstable; urgency=medium
- 
+
   * New upstream version. (Closes: #784041)
 
  -- Ulrike Uhlig <u@451f.org>  Thu, 14 May 2015 22:18:10 +0200
