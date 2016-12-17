@@ -1,0 +1,22 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 5 Dec 2016 09:56:53 +0000
+Origin: upstream, https://github.com/micahflee/torbrowser-launcher/commit/80028a209fe627f939a25e63b093258cbb973e12
+Subject: AppArmor: support merged-/usr systems.
+
+---
+ apparmor/usr.bin.torbrowser-launcher | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apparmor/usr.bin.torbrowser-launcher b/apparmor/usr.bin.torbrowser-launcher
+index 0e87a13..3875d1f 100644
+--- a/apparmor/usr.bin.torbrowser-launcher
++++ b/apparmor/usr.bin.torbrowser-launcher
+@@ -17,7 +17,7 @@
+   # This script doesn't really need to read the interpreter that's running it.
+   deny /usr/bin/python{2,3}.[0-7]* r,
+ 
+-  /bin/{dash,grep,ps} rix,
++  /{usr/,}bin/{dash,grep,ps} rix,
+   /dev/ r,
+   /etc/magic r,
+   @{HOME}/.config/torbrowser/ rw,
