@@ -1,3 +1,17 @@
+torbrowser-launcher (0.2.7-1) unstable; urgency=medium
+
+  * New upstream version.
+    - Updated Tor Browser signing key because they added a new
+      subkey and verification was failing.
+    - Updated AppArmor profile (Closes: #852732).
+    - Improved localization. Added Russian.
+  * debian/patches:
+    Delete cherry-picked AppArmor patches.
+  * debian/source/include-binaries:
+    - Include binary mo files.
+
+ -- Ulrike Uhlig <u@451f.org>  Fri, 27 Jan 2017 19:20:00 +0100
+
 torbrowser-launcher (0.2.6-3) unstable; urgency=medium
 
   * Team upload.
