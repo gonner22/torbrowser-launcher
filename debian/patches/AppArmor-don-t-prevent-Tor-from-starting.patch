@@ -1,3 +1,15 @@
+From: Debian Privacy Tools Maintainers
+ <pkg-privacy-maintainers@lists.alioth.debian.org>
+Date: Sat, 17 Dec 2016 14:03:20 +0000
+Origin: upstream, https://github.com/micahflee/torbrowser-launcher/commit/a29f2d98484f43b123a7452f89a4f2342771594e
+Subject: AppArmor: don't prevent Tor from starting.
+
+---
+ apparmor/torbrowser.Tor.tor | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apparmor/torbrowser.Tor.tor b/apparmor/torbrowser.Tor.tor
+index b4af278..013f458 100644
 --- a/apparmor/torbrowser.Tor.tor
 +++ b/apparmor/torbrowser.Tor.tor
 @@ -11,6 +11,7 @@

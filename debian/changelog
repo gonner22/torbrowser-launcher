@@ -1,8 +1,17 @@
-torbrowser-launcher (0.2.6-3) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.6-3) unstable; urgency=medium
 
-  * debian/patches: Patch AppArmor profile (Closes: #835479).
+  * Team upload.
 
- -- Ulrike Uhlig <u@451f.org>  Sun, 20 Nov 2016 17:17:13 +0100
+  [ Ulrike Uhlig ]
+  * AppArmor-don-t-prevent-Tor-from-starting.patch: new patch,
+    cherry-picked from upstream (Closes: #835479).
+
+  [ intrigeri ]
+  * AppArmor-support-merged-usr-systems.patch: new patch cherry-picked
+    from upstream, adding support for merged-/usr systems
+    in the AppArmor profiles.
+
+ -- intrigeri <intrigeri@debian.org>  Sat, 17 Dec 2016 14:18:04 +0000
 
 torbrowser-launcher (0.2.6-2) unstable; urgency=medium
 
