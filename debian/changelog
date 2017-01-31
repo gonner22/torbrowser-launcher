@@ -7,10 +7,10 @@ torbrowser-launcher (0.2.7-1) unstable; urgency=medium
     - Improved localization. Added Russian.
   * debian/patches:
     Delete cherry-picked AppArmor patches.
-  * debian/source/include-binaries:
-    - Include binary mo files.
+  * debian/rules:
+    - Clean binary mo files.
 
- -- Ulrike Uhlig <u@451f.org>  Fri, 27 Jan 2017 19:20:00 +0100
+ -- Ulrike Uhlig <u@451f.org>  Tue, 31 Jan 2017 17:43:27 +0100
 
 torbrowser-launcher (0.2.6-3) unstable; urgency=medium
 
