@@ -1,3 +1,11 @@
+torbrowser-launcher (0.2.6-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+    * debian/patches/update-tor-signing-key.patch:
+   - Updates the signing key to include the new subkey. (Closes: #852732)
+
+ -- Iain R. Learmonth <irl@debian.org>  Tue, 07 Mar 2017 23:18:36 +0000
+
 torbrowser-launcher (0.2.6-3) unstable; urgency=medium
 
   * Team upload.
