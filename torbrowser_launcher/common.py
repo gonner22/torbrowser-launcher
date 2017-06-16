@@ -2,7 +2,7 @@
 Tor Browser Launcher
 https://github.com/micahflee/torbrowser-launcher/
 
-Copyright (c) 2013-2014 Micah Lee <micah@micahflee.com>
+Copyright (c) 2013-2017 Micah Lee <micah@micahflee.com>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -26,7 +26,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import os, sys, platform, subprocess, locale, pickle, json, psutil, re
+import os, sys, platform, subprocess, locale, pickle, json, re
 
 import pygtk
 pygtk.require('2.0')
@@ -35,7 +35,7 @@ import gtk
 SHARE = os.getenv('TBL_SHARE', sys.prefix+'/share/torbrowser-launcher')
 
 import gettext
-gettext.install('torbrowser-launcher', os.path.join(SHARE, 'locale'))
+gettext.install('torbrowser-launcher')
 
 from twisted.internet import gtk2reactor
 gtk2reactor.install()

@@ -1,3 +1,48 @@
+torbrowser-launcher (0.2.7-2) unstable; urgency=medium
+
+  * New upstream version.
+    - Updated Tor Browser signing key because they added a new
+      subkey and verification was failing.
+    - Updated AppArmor profile (Closes: #852732).
+    - Improved localization. Added Russian.
+  * debian/patches:
+    - Delete cherry-picked AppArmor patches.
+  * debian/rules:
+    - Clean binary mo files.
+  * debian/copyright:
+    - Bump years.
+
+ -- Ulrike Uhlig <u@451f.org>  Wed, 19 Apr 2017 18:30:32 +0200
+
+torbrowser-launcher (0.2.6-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+    * debian/patches/update-tor-signing-key.patch:
+   - Updates the signing key to include the new subkey. (Closes: #852732)
+
+ -- Iain R. Learmonth <irl@debian.org>  Tue, 07 Mar 2017 23:18:36 +0000
+
+torbrowser-launcher (0.2.6-3) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ulrike Uhlig ]
+  * AppArmor-don-t-prevent-Tor-from-starting.patch: new patch,
+    cherry-picked from upstream (Closes: #835479).
+
+  [ intrigeri ]
+  * AppArmor-support-merged-usr-systems.patch: new patch cherry-picked
+    from upstream, adding support for merged-/usr systems
+    in the AppArmor profiles.
+
+ -- intrigeri <intrigeri@debian.org>  Sat, 17 Dec 2016 14:18:04 +0000
+
+torbrowser-launcher (0.2.6-2) unstable; urgency=medium
+
+  * Remove myself from uploaders.
+
+ -- Holger Levsen <holger@debian.org>  Mon, 19 Sep 2016 12:34:21 +0200
+
 torbrowser-launcher (0.2.6-1) unstable; urgency=medium
 
   * New upstream version.
@@ -120,7 +165,7 @@ torbrowser-launcher (0.2.0-2) unstable; urgency=medium
  -- intrigeri <intrigeri@debian.org>  Wed, 12 Aug 2015 10:42:50 +0200
 
 torbrowser-launcher (0.2.0-1) unstable; urgency=medium
- 
+
   * New upstream version. (Closes: #784041)
 
  -- Ulrike Uhlig <u@451f.org>  Thu, 14 May 2015 22:18:10 +0200
