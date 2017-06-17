@@ -1,4 +1,5 @@
 #include <tunables/global>
+#include <tunables/torbrowser>
 
 /usr/local/lib/tor-browser/firefox {
   #include <abstractions/gnome>
@@ -39,13 +40,13 @@
   owner @{PROC}/@{pid}/task/*/stat r,
   @{PROC}/sys/kernel/random/uuid r,
 
-  /usr/local/lib/tor-browser/ r,
-  /usr/local/lib/tor-browser/** r,
-  /usr/local/lib/tor-browser/*.so{,.6} mr,
-  /usr/local/lib/tor-browser/**/*.so mr,
-  /usr/local/lib/tor-browser/browser/* r,
-  /usr/local/lib/tor-browser/TorBrowser/Data/Browser/profiles.ini r,
-  /usr/local/lib/tor-browser/plugin-container px -> torbrowser_plugin_container,
+  @{torbrowser_home_dir}/ r,
+  @{torbrowser_home_dir}/** r,
+  @{torbrowser_home_dir}/*.so{,.6} mr,
+  @{torbrowser_home_dir}/**/*.so mr,
+  @{torbrowser_home_dir}/browser/* r,
+  @{torbrowser_home_dir}/TorBrowser/Data/Browser/profiles.ini r,
+  @{torbrowser_home_dir}/plugin-container px -> torbrowser_plugin_container,
 
   owner "@{HOME}/Tor Browser/" rw,
   owner "@{HOME}/Tor Browser/**" rwk,
@@ -109,7 +110,7 @@
 
   deny /usr/bin/pulseaudio x,
 
-  /usr/local/lib/tor-browser/firefox Pix,
+  @{torbrowser_home_dir}/firefox Pix,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:
