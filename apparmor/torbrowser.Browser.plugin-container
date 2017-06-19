@@ -23,7 +23,7 @@ profile torbrowser_plugin_container {
 
   @{torbrowser_home_dir}/*.dat r,
   @{torbrowser_home_dir}/*.manifest r,
-  @{torbrowser_home_dir}/*.so mr,
+  @{torbrowser_home_dir}/*.so{,.6} mr,
   @{torbrowser_home_dir}/browser/** r,
   @{torbrowser_home_dir}/components/*.so mr,
   @{torbrowser_home_dir}/browser/components/*.so mr,
