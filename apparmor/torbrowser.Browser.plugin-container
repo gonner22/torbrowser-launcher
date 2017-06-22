@@ -44,6 +44,9 @@ profile torbrowser_plugin_container {
   /usr/share/xul-ext/ r,
   /usr/share/xul-ext/** r,
 
+  /usr/share/doc/tails/website/ r,
+  /usr/share/doc/tails/website/** r,
+
   /sys/devices/system/cpu/ r,
   /sys/devices/system/cpu/present r,
   /sys/devices/system/node/ r,
