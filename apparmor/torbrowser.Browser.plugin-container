@@ -6,10 +6,10 @@ profile torbrowser_plugin_container {
 
   # Uncomment the following lines if you don'want the Tor Browser
   # to have direct access to your sound hardware.
-  # #include <abstractions/audio>
-  # /etc/asound.conf r,
-  # owner @{PROC}/@{pid}/fd/ r,
-  # owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/tmp/mozilla-temp-* rw,
+  #include <abstractions/audio>
+  /etc/asound.conf r,
+  owner @{PROC}/@{pid}/fd/ r,
+  owner @{HOME}/.tor-browser/profile.default/tmp/mozilla-temp-* rw,
 
   deny /etc/host.conf r,
   deny /etc/hosts r,
@@ -19,8 +19,8 @@ profile torbrowser_plugin_container {
   deny /etc/group r,
   deny /etc/mailcap r,
 
-  deny /etc/machine-id r,
-  deny /var/lib/dbus/machine-id r,
+  /etc/machine-id r,
+  /var/lib/dbus/machine-id r,
 
   owner @{PROC}/@{pid}/mountinfo r,
   owner @{PROC}/@{pid}/stat r,

@@ -14,7 +14,6 @@
   #dbus,
   network tcp,
 
-  /etc/asound.conf r,
   deny /etc/host.conf r,
   /etc/hosts r,
   /etc/nsswitch.conf r,
@@ -25,8 +24,8 @@
   deny @{HOME}/.local/share/gvfs-metadata/home r,
   deny /run/resolvconf/resolv.conf r,
 
-  /etc/machine-id r,
-  /var/lib/dbus/machine-id r,
+  deny /etc/machine-id r,
+  deny /var/lib/dbus/machine-id r,
 
   owner @{PROC}/@{pid}/environ r,
   owner @{PROC}/@{pid}/mountinfo r,
