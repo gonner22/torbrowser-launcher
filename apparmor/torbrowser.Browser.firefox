@@ -44,6 +44,7 @@
   @{torbrowser_home_dir}/** r,
   @{torbrowser_home_dir}/*.so{,.6} mr,
   @{torbrowser_home_dir}/**/*.so mr,
+  @{torbrowser_home_dir}/**/*.so.* mr,
   @{torbrowser_home_dir}/browser/* r,
   @{torbrowser_home_dir}/TorBrowser/Data/Browser/profiles.ini r,
   @{torbrowser_home_dir}/plugin-container px -> torbrowser_plugin_container,
