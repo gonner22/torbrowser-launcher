@@ -75,4 +75,11 @@ profile torbrowser_plugin_container {
   deny @{PROC}/@{pid}/net/route r,
   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+
+  # Deny access to global tmp directories, that's granted by the user-tmp
+  # abstraction, which is sourced by the gnome abstraction, that we include.
+  deny owner /var/tmp/**     rwklx,
+  deny /var/tmp/             rwklx,
+  deny owner /tmp/**         rwklx,
+  deny /tmp/                 rwklx,
 }
