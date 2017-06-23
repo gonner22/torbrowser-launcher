@@ -46,6 +46,8 @@ profile torbrowser_plugin_container {
   @{torbrowser_home_dir}/TorBrowser/Tor/*.so mr,
   @{torbrowser_home_dir}/TorBrowser/Tor/*.so.* mr,
 
+  owner @{HOME}/.tor-browser/profile.default/tmp/* rw,
+
   owner "@{HOME}/Tor Browser/" rw,
   owner "@{HOME}/Tor Browser/**" rwk,
   owner "@{HOME}/Persistent/Tor Browser/" rw,
