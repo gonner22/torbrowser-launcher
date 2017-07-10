@@ -12,7 +12,7 @@ Vcs-Browser: https://anonscm.debian.org/git/pkg-privacy/packages/torbrowser-laun
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
-Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-psutil, python-twisted, python-lzma, gnupg, wmctrl, python-txsocksx (>= 1.13.0.1), python-parsley (>= 1.2), ca-certificates
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-psutil, python-twisted, python-lzma, gnupg, python-txsocksx (>= 1.13.0.1), python-parsley (>= 1.2), ca-certificates
 Recommends: tor
 Suggests: apparmor, python-pygame
 Description: helps download and run the Tor Browser Bundle
