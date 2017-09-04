@@ -1,3 +1,10 @@
+torbrowser-launcher (0.2.7-3~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Mon, 04 Sep 2017 23:20:05 +0900
+
 torbrowser-launcher (0.2.7-3~bpo9+1) stretch-backports; urgency=medium
 
   * Team upload.
