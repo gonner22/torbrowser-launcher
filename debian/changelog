@@ -1,3 +1,17 @@
+torbrowser-launcher (0.2.8-1) unstable; urgency=medium
+
+  * Team upload.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Tue, 05 Sep 2017 01:28:16 +0900
+
+torbrowser-launcher (0.2.7-3) unstable; urgency=medium
+
+  * debian/control:
+    - remove dependendency on wmctrl. (Closes: #867019)
+    - change maintainer email address.
+
+ -- Ulrike Uhlig <ulrike@debian.org>  Mon, 10 Jul 2017 08:55:10 +0200
+
 torbrowser-launcher (0.2.7-2) unstable; urgency=medium
 
   * New upstream version.
