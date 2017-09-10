@@ -6,6 +6,9 @@ torbrowser-launcher (0.2.8-2) UNRELEASED; urgency=medium
   * debian/rules and debian/help2man:
     - Add script to build manpage automatically.
   * Remove debian/torbrowser-launcher.1
+  * debian/patches:
+    - Add a patch to support sysvinit systems for AppArmor.
+      Thanks to intrigeri and gregor herrmann. (Closes: #874383)
 
  -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 10 Sep 2017 12:27:52 +0900
 
