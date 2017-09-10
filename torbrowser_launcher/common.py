@@ -26,7 +26,20 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 """
 
-import os, sys, platform, subprocess, locale, pickle, json, re
+import os
+import sys
+import platform
+import subprocess
+import locale
+import pickle
+import json
+import re
+
+try:
+    import gpg
+    gpgme_support = True
+except ImportError:
+    gpgme_support = False
 
 import pygtk
 pygtk.require('2.0')
@@ -40,12 +53,11 @@ gettext.install('torbrowser-launcher')
 from twisted.internet import gtk2reactor
 gtk2reactor.install()
 
-
 # We're looking for output which:
 #
-#   1. The first portion must be `[GNUPG:] IMPORT_OK`
-#   2. The second must be an integer between [0, 15], inclusive
-#   3. The third must be an uppercased hex-encoded 160-bit fingerprint
+#  1. The first portion must be `[GNUPG:] IMPORT_OK`
+#  2. The second must be an integer between [0, 15], inclusive
+#  3. The third must be an uppercased hex-encoded 160-bit fingerprint
 gnupg_import_ok_pattern = re.compile(
     "(\[GNUPG\:\]) (IMPORT_OK) ([0-9]|[1]?[0-5]) ([A-F0-9]{40})")
 
@@ -147,6 +159,7 @@ class Common:
                 'tbl_bin': sys.argv[0],
                 'icon_file': os.path.join(os.path.dirname(SHARE), 'pixmaps/torbrowser.png'),
                 'torproject_pem': os.path.join(SHARE, 'torproject.pem'),
+                'keyserver_ca': os.path.join(SHARE, 'sks-keyservers.netCA.pem'),
                 'signing_keys': {
                     'tor_browser_developers': os.path.join(SHARE, 'tor-browser-developers.asc')
                 },
@@ -157,7 +170,7 @@ class Common:
                 'gnupg_homedir': tbb_local+'/gnupg_homedir',
                 'settings_file': tbb_config+'/settings.json',
                 'settings_file_pickle': tbb_config+'/settings',
-                'version_check_url': 'https://dist.torproject.org/torbrowser/update_2/release/Linux_x86_64-gcc3/x/en-US',
+                'version_check_url': 'https://aus1.torproject.org/torbrowser/update_3/release/Linux_x86_64-gcc3/x/en-US',
                 'version_check_file': tbb_cache+'/download/release.xml',
                 'tbb': {
                     'dir': tbb_local+'/tbb/'+self.architecture,
@@ -194,39 +207,75 @@ class Common:
             self.mkdir(self.paths['gnupg_homedir'])
         self.import_keys()
 
-    def import_key_and_check_status(self, key):
-        """Import a GnuPG key and check that the operation was successful.
-
-        :param str key: A string specifying the key's filepath from
-            ``Common.paths``, as well as its fingerprint in
-            ``Common.fingerprints``.
-        :rtype: bool
-        :returns: ``True`` if the key is now within the keyring (or was
-            previously and hasn't changed). ``False`` otherwise.
-        """
-        success = False
+    def refresh_keyring(self, fingerprint=None):
+        if fingerprint is not None:
+            print('Refreshing local keyring... Missing key: ' + fingerprint)
+        else:
+            print('Refreshing local keyring...')
 
         p = subprocess.Popen(['/usr/bin/gpg', '--status-fd', '2',
                               '--homedir', self.paths['gnupg_homedir'],
-                              '--import', self.paths['signing_keys'][key]],
-                             stderr=subprocess.PIPE)
+                              '--keyserver', 'hkps://hkps.pool.sks-keyservers.net',
+                              '--keyserver-options', 'ca-cert-file=' + self.paths['keyserver_ca']
+                              + ',include-revoked,no-honor-keyserver-url,no-honor-pka-record',
+                              '--refresh-keys'], stderr=subprocess.PIPE)
         p.wait()
 
         for output in p.stderr.readlines():
             match = gnupg_import_ok_pattern.match(output)
-            if match:
-                # The output must match everything in the
-                # ``gnupg_import_ok_pattern``, as well as the expected fingerprint:
-                if match.group().find(self.fingerprints[key]) >= 0:
-                    success = True
-                    break
+            if match and match.group(2) == 'IMPORT_OK':
+                fingerprint = str(match.group(4))
+                if match.group(3) == '0':
+                    print('Keyring refreshed successfully...\n  No key updates for key: ' + fingerprint)
+                elif match.group(3) == '4':
+                    print('Keyring refreshed successfully...\n  New signatures for key: ' + fingerprint)
+                else:
+                    print('Keyring refreshed successfully...')
 
-        return success
+    def import_key_and_check_status(self, key):
+        """Import a GnuPG key and check that the operation was successful.
+        :param str key: A string specifying the key's filepath from
+            ``Common.paths``
+        :rtype: bool
+        :returns: ``True`` if the key is now within the keyring (or was
+            previously and hasn't changed). ``False`` otherwise.
+        """
+        if gpgme_support:
+            with gpg.Context() as c:
+                c.set_engine_info(gpg.constants.protocol.OpenPGP, home_dir=self.paths['gnupg_homedir'])
+
+                impkey = self.paths['signing_keys'][key]
+                try:
+                    c.op_import(gpg.Data(file=impkey))
+                except:
+                    return False
+                else:
+                    result = c.op_import_result()
+                    if result and self.fingerprints[key] in result.imports[0].fpr:
+                        return True
+                    else:
+                        return False
+        else:
+            success = False
+
+            p = subprocess.Popen(['/usr/bin/gpg', '--status-fd', '2',
+                                  '--homedir', self.paths['gnupg_homedir'],
+                                  '--import', self.paths['signing_keys'][key]],
+                                 stderr=subprocess.PIPE)
+            p.wait()
+
+            for output in p.stderr.readlines():
+                match = gnupg_import_ok_pattern.match(output)
+                if match:
+                    if match.group().find(self.fingerprints[key]) >= 0:
+                        success = True
+                        break
+
+            return success
 
     # import gpg keys
     def import_keys(self):
         """Import all GnuPG keys.
-
         :rtype: bool
         :returns: ``True`` if all keys were successfully imported; ``False``
             otherwise.
@@ -244,6 +293,7 @@ class Common:
         if not all_imports_succeeded:
             print _('Not all keys were imported successfully!')
 
+        self.refresh_keyring()
         return all_imports_succeeded
 
     # load mirrors
