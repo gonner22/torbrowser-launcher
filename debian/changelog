@@ -1,6 +1,14 @@
+torbrowser-launcher (0.2.8-2) UNRELEASED; urgency=medium
+
+  * debian/control:
+    - wrap and sort
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 10 Sep 2017 12:27:52 +0900
+
 torbrowser-launcher (0.2.8-1) unstable; urgency=medium
 
   * Team upload.
+  * New upstream 0.2.8
 
  -- Roger Shimizu <rogershimizu@gmail.com>  Tue, 05 Sep 2017 01:28:16 +0900
 

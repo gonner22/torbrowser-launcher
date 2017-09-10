@@ -3,7 +3,12 @@ Maintainer: Debian Privacy Tools Maintainers <pkg-privacy-maintainers@lists.alio
 Uploaders: Ulrike Uhlig <ulrike@debian.org>
 Section: contrib/web
 Priority: optional
-Build-Depends: python-all (>= 2.7.3-4), debhelper (>= 9.20120909~), dh-python, dh-apparmor, lsb-release
+Build-Depends:
+ debhelper (>= 9.20120909~),
+ dh-apparmor,
+ dh-python,
+ lsb-release,
+ python-all (>= 2.7.3-4)
 X-Python-Version: >= 2.7
 Standards-Version: 3.9.8
 Homepage: https://micahflee.com/torbrowser-launcher/
@@ -12,7 +17,17 @@ Vcs-Browser: https://anonscm.debian.org/git/pkg-privacy/packages/torbrowser-laun
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
-Depends: ${misc:Depends}, ${python:Depends}, python-gtk2, python-psutil, python-twisted, python-lzma, gnupg, python-txsocksx (>= 1.13.0.1), python-parsley (>= 1.2), ca-certificates
+Depends:
+ ${misc:Depends},
+ ${python:Depends},
+ ca-certificates,
+ gnupg,
+ python-gtk2,
+ python-lzma,
+ python-parsley (>= 1.2),
+ python-psutil,
+ python-twisted,
+ python-txsocksx (>= 1.13.0.1)
 Recommends: tor
 Suggests: apparmor, python-pygame
 Description: helps download and run the Tor Browser Bundle
