@@ -2,6 +2,9 @@ torbrowser-launcher (0.2.8-2) UNRELEASED; urgency=medium
 
   * debian/control:
     - wrap and sort
+    - Add help2man to Build-Depends.
+  * debian/rules and debian/help2man:
+    - Add script to build manpage automatically.
 
  -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 10 Sep 2017 12:27:52 +0900
 

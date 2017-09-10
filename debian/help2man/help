@@ -1,0 +1,8 @@
+usage: torbrowser-launcher [-h] [--settings] [url [url ...]]
+
+positional arguments:
+  url         URL to load
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --settings  Open Tor Browser Launcher settings

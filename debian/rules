@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+
 %:
 	dh $@ --with python2 --buildsystem=python_distutils
 
@@ -8,6 +10,9 @@ override_dh_install:
 		cp apparmor/$$PROFILE debian/torbrowser-launcher/etc/apparmor.d/ ; \
 		dh_apparmor --profile-name=$$PROFILE -ptorbrowser-launcher ; \
 	done
+	help2man -N -n "helps download and run the Tor Browser Bundle" \
+		--version-string="$(DEB_VERSION)" \
+		-o build/torbrowser-launcher.1 debian/help2man/torbrowser-launcher
 
 override_dh_clean:
 	rm -rf share/locale/
