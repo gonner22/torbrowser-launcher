@@ -1,5 +1,6 @@
-torbrowser-launcher (0.2.8-2) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.8-2) unstable; urgency=medium
 
+  * Team upload.
   * debian/control:
     - wrap and sort
     - Add help2man to Build-Depends.
@@ -10,7 +11,7 @@ torbrowser-launcher (0.2.8-2) UNRELEASED; urgency=medium
     - Add a patch to support sysvinit systems for AppArmor.
       Thanks to intrigeri and gregor herrmann. (Closes: #874383)
 
- -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 10 Sep 2017 12:27:52 +0900
+ -- Roger Shimizu <rogershimizu@gmail.com>  Wed, 20 Sep 2017 22:31:34 +0900
 
 torbrowser-launcher (0.2.8-1~bpo8+1) jessie-backports-sloppy; urgency=medium
 
