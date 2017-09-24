@@ -1,3 +1,11 @@
+torbrowser-launcher (0.2.8-3) UNRELEASED; urgency=medium
+
+  * Team upload.
+  * debian/patches:
+    - Add patch to update mirror list.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 24 Sep 2017 11:57:53 +0900
+
 torbrowser-launcher (0.2.8-2) unstable; urgency=medium
 
   * Team upload.
