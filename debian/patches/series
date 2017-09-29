@@ -1,2 +1,3 @@
 0001-AppArmor-support-sysvinit-systems.patch
 0002-Update-mirror-list.patch
+0003-AppArmor-allow-the-tor-process-to-modify-its-data-di.patch

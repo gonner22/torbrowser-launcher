@@ -1,0 +1,28 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Sun, 24 Sep 2017 05:33:35 +0000
+Subject: AppArmor: allow the tor process to modify its data directory.
+Forwarded: https://github.com/micahflee/torbrowser-launcher/pull/290
+
+It's unclear to me why this is not needed _all the time_, but it does make sense
+that at least in some circumstances, it needs to do that, e.g. to create
+that directory.
+
+Originally reported by Chris Lamb <lamby@debian.org> on
+https://bugs.debian.org/876484.
+---
+ apparmor/torbrowser.Tor.tor | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apparmor/torbrowser.Tor.tor b/apparmor/torbrowser.Tor.tor
+index 013f458..2410637 100644
+--- a/apparmor/torbrowser.Tor.tor
++++ b/apparmor/torbrowser.Tor.tor
+@@ -11,7 +11,7 @@
+   /etc/passwd r,
+   /etc/resolv.conf r,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Tor/tor mr,
+-  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/ r,
++  owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/ rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/* rw,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/,}Data/Tor/lock rwk,
+   owner @{HOME}/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/{Browser/TorBrowser/Tor,Lib}/*.so mr,
