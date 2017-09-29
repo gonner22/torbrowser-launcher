@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.8-3) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.8-3) unstable; urgency=medium
 
   * Team upload.
   * debian/patches:
@@ -7,7 +7,7 @@ torbrowser-launcher (0.2.8-3) UNRELEASED; urgency=medium
       its data directory. Originally reported by Chris Lamb #876484.
       Kudos to intrigeri for the patch.
 
- -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 24 Sep 2017 11:57:53 +0900
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 29 Sep 2017 23:23:47 +0900
 
 torbrowser-launcher (0.2.8-2) unstable; urgency=medium
 
