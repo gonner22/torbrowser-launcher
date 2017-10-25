@@ -6,7 +6,7 @@ include /usr/share/dpkg/pkg-info.mk
 	dh $@ --with python2 --buildsystem=python_distutils
 
 override_dh_install:
-	for PROFILE in usr.bin.torbrowser-launcher torbrowser.Tor.tor torbrowser.Browser.firefox ; do \
+	for PROFILE in torbrowser.Tor.tor torbrowser.Browser.firefox ; do \
 		cp apparmor/$$PROFILE debian/torbrowser-launcher/etc/apparmor.d/ ; \
 		dh_apparmor --profile-name=$$PROFILE -ptorbrowser-launcher ; \
 	done
