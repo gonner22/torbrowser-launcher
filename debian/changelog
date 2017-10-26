@@ -1,3 +1,14 @@
+torbrowser-launcher (0.2.8-4~1.gbpa9ddd0) UNRELEASED; urgency=medium
+
+  ** SNAPSHOT build @a9ddd00736431e7764a7fd6e99fe427ebf8c76c6 **
+
+  * Stop shipping /etc/apparmor.d/usr.bin.torbrowser-launcher
+    and clean it up with rm_conffile.
+  * Add patches to make torbrowser-launcher work with AppArmor enabled
+    on Linux 4.14.
+
+ -- intrigeri <intrigeri@debian.org>  Thu, 26 Oct 2017 11:38:13 +0000
+
 torbrowser-launcher (0.2.8-3) unstable; urgency=medium
 
   * Team upload.
