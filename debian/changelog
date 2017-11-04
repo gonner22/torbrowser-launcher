@@ -8,6 +8,20 @@ torbrowser-launcher (0.2.8-4) unstable; urgency=medium
 
  -- intrigeri <intrigeri@debian.org>  Thu, 26 Oct 2017 11:38:13 +0000
 
+torbrowser-launcher (0.2.8-3~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 06 Oct 2017 00:33:20 +0900
+
+torbrowser-launcher (0.2.8-3~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 06 Oct 2017 00:30:31 +0900
+
 torbrowser-launcher (0.2.8-3) unstable; urgency=medium
 
   * Team upload.
