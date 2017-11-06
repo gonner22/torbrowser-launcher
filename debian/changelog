@@ -1,8 +1,73 @@
+torbrowser-launcher (0.2.8-4) unstable; urgency=medium
+
+  * Team upload.
+  * Stop shipping /etc/apparmor.d/usr.bin.torbrowser-launcher
+    and clean it up with rm_conffile (Closes: #879776).
+  * Add patches to make torbrowser-launcher work with AppArmor enabled
+    on Linux 4.14 (Closes: #879830).
+
+ -- intrigeri <intrigeri@debian.org>  Thu, 26 Oct 2017 11:38:13 +0000
+
+torbrowser-launcher (0.2.8-3) unstable; urgency=medium
+
+  * Team upload.
+  * debian/patches:
+    - Add patch to update mirror list.
+    - Add patch of apparmor config to allow the tor process to modify
+      its data directory. Originally reported by Chris Lamb #876484.
+      Kudos to intrigeri for the patch.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 29 Sep 2017 23:23:47 +0900
+
+torbrowser-launcher (0.2.8-2) unstable; urgency=medium
+
+  * Team upload.
+  * debian/control:
+    - wrap and sort
+    - Add help2man to Build-Depends.
+  * debian/rules and debian/help2man:
+    - Add script to build manpage automatically.
+  * Remove debian/torbrowser-launcher.1
+  * debian/patches:
+    - Add a patch to support sysvinit systems for AppArmor.
+      Thanks to intrigeri and gregor herrmann. (Closes: #874383)
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Wed, 20 Sep 2017 22:31:34 +0900
+
+torbrowser-launcher (0.2.8-1~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Mon, 11 Sep 2017 08:54:21 +0900
+
+torbrowser-launcher (0.2.8-1~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Mon, 11 Sep 2017 08:46:27 +0900
+
 torbrowser-launcher (0.2.8-1) unstable; urgency=medium
 
   * Team upload.
+  * New upstream 0.2.8
 
  -- Roger Shimizu <rogershimizu@gmail.com>  Tue, 05 Sep 2017 01:28:16 +0900
+
+torbrowser-launcher (0.2.7-3~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Mon, 04 Sep 2017 23:20:05 +0900
+
+torbrowser-launcher (0.2.7-3~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Tue, 29 Aug 2017 00:33:34 +0900
 
 torbrowser-launcher (0.2.7-3) unstable; urgency=medium
 

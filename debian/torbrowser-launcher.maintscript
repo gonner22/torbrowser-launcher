@@ -1,1 +1,2 @@
 rm_conffile /etc/apparmor.d/torbrowser.start-tor-browser 0.2.1-2~ torbrowser-launcher
+rm_conffile /etc/apparmor.d/usr.bin.torbrowser-launcher 0.2.8-4~ torbrowser-launcher
