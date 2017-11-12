@@ -1,3 +1,12 @@
+torbrowser-launcher (0.2.8-5) unstable; urgency=medium
+
+  * Team upload.
+  * Remove the torbrowser.start-tor-browser AppArmor profile conffile
+    by bumping the buggy version that was initially passed to rm_conffile
+    (Closes: #838817).
+
+ -- intrigeri <intrigeri@debian.org>  Sun, 12 Nov 2017 11:35:10 +0000
+
 torbrowser-launcher (0.2.8-4) unstable; urgency=medium
 
   * Team upload.
