@@ -1,3 +1,10 @@
+torbrowser-launcher (0.2.8-5~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 19 Nov 2017 10:54:53 +0900
+
 torbrowser-launcher (0.2.8-5) unstable; urgency=medium
 
   * Team upload.
