@@ -16,4 +16,5 @@ override_dh_install:
 		-o build/torbrowser-launcher.1 debian/help2man/torbrowser-launcher
 
 override_dh_clean:
-	rm -rf share/locale/
+	rm -rf build share/locale
+	dh_clean
