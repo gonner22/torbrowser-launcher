@@ -1,3 +1,14 @@
+torbrowser-launcher (0.2.8-6) UNRELEASED; urgency=medium
+
+  * debian/rules:
+    - Clean up all built files during dh_clean. This makes
+      dpkg-buildpackage be able to run again. Thanks to
+      Andreas Beckmann for the bugreport. (Closes: #884419)
+  * debian/control:
+    - Add myself as uploader.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 26 Dec 2017 08:47:02 +0900
+
 torbrowser-launcher (0.2.8-5~bpo8+1) jessie-backports-sloppy; urgency=medium
 
   * Team upload.
