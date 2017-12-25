@@ -1,0 +1,39 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Sun, 24 Dec 2017 23:18:09 +0900
+Subject: Update AppStream metadata
+Forwarded: https://github.com/micahflee/torbrowser-launcher/pull/302
+
+Upgrade to the new spec of AppStream metadata:
+ - https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+
+And rename to share/metainfo/torbrowser.appdata.xml
+---
+ share/{appdata => metainfo}/torbrowser.appdata.xml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+ rename share/{appdata => metainfo}/torbrowser.appdata.xml (93%)
+
+diff --git a/share/appdata/torbrowser.appdata.xml b/share/metainfo/torbrowser.appdata.xml
+similarity index 93%
+rename from share/appdata/torbrowser.appdata.xml
+rename to share/metainfo/torbrowser.appdata.xml
+index 5a5a0bd..5577868 100644
+--- a/share/appdata/torbrowser.appdata.xml
++++ b/share/metainfo/torbrowser.appdata.xml
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2014 Micah Lee <micah@micahflee.com> -->
+-<application>
+- <id type="desktop">torbrowser.desktop</id>
++<component>
++ <id>org.torproject.torbrowser.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Tor Browser Launcher</name>
+@@ -26,5 +26,5 @@
+   </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/micahflee/torbrowser-launcher</url>
+- <updatecontact>micah@micahflee.com</updatecontact>
+-</application>
++ <update_contact>micah@micahflee.com</update_contact>
++</component>

@@ -3,3 +3,4 @@
 0003-AppArmor-allow-the-tor-process-to-modify-its-data-di.patch
 0004-AppArmor-add-rules-needed-with-new-mediation-support.patch
 0005-AppArmor-grant-access-to-mostly-innocuous-stuff-Fire.patch
+0006-Update-AppStream-metadata.patch
