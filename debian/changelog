@@ -6,6 +6,7 @@ torbrowser-launcher (0.2.8-6) UNRELEASED; urgency=medium
       Andreas Beckmann for the bugreport. (Closes: #884419)
   * debian/control:
     - Add myself as uploader.
+    - Add libdbus-glib-1-2 as dependency (Closes: #862799).
 
  -- Roger Shimizu <rosh@debian.org>  Tue, 26 Dec 2017 08:47:02 +0900
 

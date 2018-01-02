@@ -23,6 +23,7 @@ Depends:
  ${python:Depends},
  ca-certificates,
  gnupg,
+ libdbus-glib-1-2,
  python-gtk2,
  python-lzma,
  python-parsley (>= 1.2),
