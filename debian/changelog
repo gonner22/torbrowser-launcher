@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.8-6) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.8-6) unstable; urgency=medium
 
   * debian/rules:
     - Clean up all built files during dh_clean. This makes
@@ -8,7 +8,7 @@ torbrowser-launcher (0.2.8-6) UNRELEASED; urgency=medium
     - Add myself as uploader.
     - Add libdbus-glib-1-2 as dependency (Closes: #862799).
 
- -- Roger Shimizu <rosh@debian.org>  Tue, 26 Dec 2017 08:47:02 +0900
+ -- Roger Shimizu <rosh@debian.org>  Wed, 03 Jan 2018 12:38:32 +0900
 
 torbrowser-launcher (0.2.8-5~bpo8+1) jessie-backports-sloppy; urgency=medium
 
