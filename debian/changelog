@@ -1,3 +1,11 @@
+torbrowser-launcher (0.2.9-1) UNRELEASED; urgency=medium
+
+  * New upstream release 0.2.9
+  * debian/watch:
+    - Change filenamemangle to match with the filename in archive.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 29 Jan 2018 22:00:51 +0900
+
 torbrowser-launcher (0.2.8-6) unstable; urgency=medium
 
   * debian/rules:
