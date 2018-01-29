@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.9-1) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.9-1) unstable; urgency=medium
 
   * New upstream release 0.2.9 (Closes: #888236)
   * debian/watch:
@@ -8,7 +8,7 @@ torbrowser-launcher (0.2.9-1) UNRELEASED; urgency=medium
   * debian/rules:
     - Add new apparmor profile: torbrowser.Browser.plugin-container.
 
- -- Roger Shimizu <rosh@debian.org>  Mon, 29 Jan 2018 22:00:51 +0900
+ -- Roger Shimizu <rosh@debian.org>  Mon, 29 Jan 2018 23:17:18 +0900
 
 torbrowser-launcher (0.2.8-6) unstable; urgency=medium
 
