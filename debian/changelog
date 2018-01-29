@@ -1,6 +1,6 @@
 torbrowser-launcher (0.2.9-1) UNRELEASED; urgency=medium
 
-  * New upstream release 0.2.9
+  * New upstream release 0.2.9 (Closes: #888236)
   * debian/watch:
     - Change filenamemangle to match with the filename in archive.
   * debian/patches:
