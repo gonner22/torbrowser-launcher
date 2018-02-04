@@ -11,7 +11,10 @@
   # @{HOME}/ r,
 
   #dbus,
+  network netlink raw,
   network tcp,
+
+  ptrace (trace) peer=@{profile_name},
 
   deny /etc/host.conf r,
   deny /etc/hosts r,
@@ -26,7 +29,11 @@
   deny /etc/machine-id r,
   deny /var/lib/dbus/machine-id r,
 
+  /dev/ r,
+  /dev/shm/ r,
+
   owner @{PROC}/@{pid}/environ r,
+  owner @{PROC}/@{pid}/fd/ r,
   owner @{PROC}/@{pid}/mountinfo r,
   owner @{PROC}/@{pid}/stat r,
   owner @{PROC}/@{pid}/status r,
@@ -82,7 +89,7 @@
   deny /sys/devices/virtual/block/*/uevent r,
 
   # Required for multiprocess Firefox (aka Electrolysis, i.e. e10s)
-  owner /dev/shm/org.chromium.* rw,
+  owner /{dev,run}/shm/org.chromium.* rw,
 
   # Deny access to DRM nodes, that's granted by the X abstraction, which is
   # sourced by the gnome abstraction, that we include.

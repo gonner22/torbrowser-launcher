@@ -75,8 +75,11 @@ if distro != 'Ubuntu':
             ('/etc/apparmor.d/', [
                 'apparmor/torbrowser.Browser.firefox',
                 'apparmor/torbrowser.Browser.plugin-container',
-                'apparmor/torbrowser.Tor.tor',
-                'apparmor/usr.bin.torbrowser-launcher']),
+                'apparmor/torbrowser.Tor.tor']),
+            ('/etc/apparmor.d/local/', [
+                'apparmor/local/torbrowser.Browser.firefox',
+                'apparmor/local/torbrowser.Browser.plugin-container',
+                'apparmor/local/torbrowser.Tor.tor']),
             ('/etc/apparmor.d/tunables/', ['apparmor/tunables/torbrowser'])
         ]
 

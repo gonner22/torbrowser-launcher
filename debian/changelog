@@ -1,3 +1,64 @@
+torbrowser-launcher (0.2.9-1) unstable; urgency=medium
+
+  * New upstream release 0.2.9 (Closes: #888236)
+  * debian/watch:
+    - Change filenamemangle to match with the filename in archive.
+  * debian/patches:
+    - Remove all upstreamed patches.
+  * debian/rules:
+    - Add new apparmor profile: torbrowser.Browser.plugin-container.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 29 Jan 2018 23:17:18 +0900
+
+torbrowser-launcher (0.2.8-6) unstable; urgency=medium
+
+  * debian/rules:
+    - Clean up all built files during dh_clean. This makes
+      dpkg-buildpackage be able to run again. Thanks to
+      Andreas Beckmann for the bugreport. (Closes: #884419)
+  * debian/control:
+    - Add myself as uploader.
+    - Add libdbus-glib-1-2 as dependency (Closes: #862799).
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 03 Jan 2018 12:38:32 +0900
+
+torbrowser-launcher (0.2.8-5~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 19 Nov 2017 10:56:07 +0900
+
+torbrowser-launcher (0.2.8-5~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sun, 19 Nov 2017 10:54:53 +0900
+
+torbrowser-launcher (0.2.8-5) unstable; urgency=medium
+
+  * Team upload.
+  * Remove the torbrowser.start-tor-browser AppArmor profile conffile
+    by bumping the buggy version that was initially passed to rm_conffile
+    (Closes: #838817).
+
+ -- intrigeri <intrigeri@debian.org>  Sun, 12 Nov 2017 11:35:10 +0000
+
+torbrowser-launcher (0.2.8-4~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sat, 04 Nov 2017 21:41:47 +0900
+
+torbrowser-launcher (0.2.8-4~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Sat, 04 Nov 2017 21:29:33 +0900
+
 torbrowser-launcher (0.2.8-4) unstable; urgency=medium
 
   * Team upload.
@@ -7,6 +68,20 @@ torbrowser-launcher (0.2.8-4) unstable; urgency=medium
     on Linux 4.14 (Closes: #879830).
 
  -- intrigeri <intrigeri@debian.org>  Thu, 26 Oct 2017 11:38:13 +0000
+
+torbrowser-launcher (0.2.8-3~bpo8+1) jessie-backports-sloppy; urgency=medium
+
+  * Team upload.
+  * Rebuild for jessie-backports-sloppy.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 06 Oct 2017 00:33:20 +0900
+
+torbrowser-launcher (0.2.8-3~bpo9+1) stretch-backports; urgency=medium
+
+  * Team upload.
+  * Rebuild for stretch-backports.
+
+ -- Roger Shimizu <rogershimizu@gmail.com>  Fri, 06 Oct 2017 00:30:31 +0900
 
 torbrowser-launcher (0.2.8-3) unstable; urgency=medium
 
