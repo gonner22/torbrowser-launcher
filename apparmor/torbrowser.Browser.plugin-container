@@ -24,6 +24,8 @@ profile torbrowser_plugin_container {
   /etc/machine-id r,
   /var/lib/dbus/machine-id r,
 
+  /usr/share/applications/gnome-mimeapps.list r,
+
   owner @{PROC}/@{pid}/mountinfo r,
   owner @{PROC}/@{pid}/stat r,
   owner @{PROC}/@{pid}/status r,
