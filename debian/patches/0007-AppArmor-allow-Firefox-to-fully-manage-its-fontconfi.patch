@@ -1,0 +1,23 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 29 Jan 2018 07:38:41 +0000
+Subject: AppArmor: allow Firefox to fully manage its fontconfig cache.
+
+So far we allowed it to do everything in there except a link operation, so let's
+be consistent.
+---
+ apparmor/torbrowser.Browser.firefox | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 5f7f1a7..e6a455b 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -49,6 +49,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   owner @{torbrowser_home_dir}.bak/ rwk,
+   owner @{torbrowser_home_dir}.bak/** rwk,
+   owner @{torbrowser_home_dir}/*.so mr,
++  owner @{torbrowser_home_dir}/.cache/fontconfig/ rwk,
++  owner @{torbrowser_home_dir}/.cache/fontconfig/** rwkl,
+   owner @{torbrowser_home_dir}/components/*.so mr,
+   owner @{torbrowser_home_dir}/browser/components/*.so mr,
+   owner @{torbrowser_home_dir}/firefox rix,

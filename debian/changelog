@@ -1,3 +1,15 @@
+torbrowser-launcher (0.2.9-2) UNRELEASED; urgency=medium
+
+  * debian/patches:
+    - Add AppArmor profiles, 2018-01 edition. Thanks to intrigeri.
+      Some breakdown of the patches:
+      + Make e10s work fine especially with a Linux 4.14 kernel
+      + Silencing all the denial logs I could observe
+      + Support for obfs4 and obfs3
+      + Various updates, refactoring and clean-ups
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 18 Mar 2018 22:39:20 +0900
+
 torbrowser-launcher (0.2.9-1) unstable; urgency=medium
 
   * New upstream release 0.2.9 (Closes: #888236)

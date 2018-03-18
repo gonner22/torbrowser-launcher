@@ -1,0 +1,25 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 29 Jan 2018 06:36:55 +0000
+Subject: AppArmor: allow Firefox to ptrace plugin-container and to send it
+ term signals.
+
+With e10s Firefox does not need to ptrace itself anymore but instead it needs
+to ptrace and kill its child plugin-container processes.
+---
+ apparmor/torbrowser.Browser.firefox | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 05f4d16..2069d6f 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -13,7 +13,8 @@
+   network netlink raw,
+   network tcp,
+ 
+-  ptrace (trace) peer=@{profile_name},
++  ptrace (trace) peer=torbrowser_plugin_container,
++  signal (send) set=("term") peer=torbrowser_plugin_container,
+ 
+   deny /etc/host.conf r,
+   deny /etc/hosts r,

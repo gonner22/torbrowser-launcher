@@ -1,0 +1,25 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 29 Jan 2018 06:34:14 +0000
+Subject: AppArmor: allow plugin-container to read file/app association
+ information.
+
+We already allow the main browser profile to do that but with e10s
+plugin-container now needs it as well.
+---
+ apparmor/torbrowser.Browser.plugin-container | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.plugin-container b/apparmor/torbrowser.Browser.plugin-container
+index ee30fd4..eb28cc0 100644
+--- a/apparmor/torbrowser.Browser.plugin-container
++++ b/apparmor/torbrowser.Browser.plugin-container
+@@ -24,6 +24,9 @@ profile torbrowser_plugin_container {
+   deny /etc/machine-id r,
+   deny /var/lib/dbus/machine-id r,
+ 
++  /etc/mime.types r,
++  /usr/share/applications/gnome-mimeapps.list r,
++
+   owner @{PROC}/@{pid}/mountinfo r,
+   owner @{PROC}/@{pid}/stat r,
+   owner @{PROC}/@{pid}/status r,
