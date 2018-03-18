@@ -13,3 +13,4 @@
 0013-AppArmor-give-the-tor-profile-a-stable-name.patch
 0014-AppArmor-support-some-of-the-included-pluggable-tran.patch
 0015-AppArmor-remove-boilerplate-from-local-override-file.patch
+0016-Remove-apparmor-local-path-from-setup.py.patch
