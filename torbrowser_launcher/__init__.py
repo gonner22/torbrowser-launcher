@@ -37,6 +37,8 @@ from .common import Common, SHARE
 from .settings import Settings
 from .launcher import Launcher
 
+# Allow ctrl-c to work
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 class Application(QtWidgets.QApplication):
     """
@@ -76,23 +78,24 @@ def main():
     if settings:
         # Settings mode
         gui = Settings(common, app)
+        gui.show()
+        sys.exit(app.exec_())
+
     else:
         # Launcher mode
         gui = Launcher(common, app, url_list)
 
-    # Center the window
-    desktop = app.desktop()
-    window_size = gui.size()
-    gui.move(
-        (desktop.width() - window_size.width()) / 2,
-        (desktop.height() - window_size.height()) / 2
-    )
-    gui.show()
-
-    # Allow ctrl-c to work
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-
-    sys.exit(app.exec_())
+        # Show gui only if not installed
+        common = common
+        if not common.settings['installed']:
+            desktop = app.desktop()
+            window_size = gui.size()
+            gui.move(
+                (desktop.width() - window_size.width()) / 2,
+                (desktop.height() - window_size.height()) / 2
+            )
+            gui.show()
+            sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
