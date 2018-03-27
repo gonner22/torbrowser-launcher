@@ -15,6 +15,13 @@ torbrowser-launcher (0.3.0~dev-1~exp1) UNRELEASED; urgency=medium
     - Improved python style with flake8
   * debian/patches:
     - Refresh patches.
+  * debian/control:
+    - Update Build-Depends list to python3 series.
+    - Update Depends list to match current python3 implementation.
+    - Move debian/source.lintian-overrides
+      to debian/source/lintian-overrides to comfort lintian.
+  * debian/rules:
+    - Use pybuild as buildsystem to avoid pyversions command error.
 
  -- Roger Shimizu <rosh@debian.org>  Tue, 27 Mar 2018 22:22:51 +0900
 
