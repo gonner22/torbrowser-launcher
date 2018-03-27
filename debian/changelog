@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.9-2) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.9-2) unstable; urgency=medium
 
   * debian/patches:
     - Add AppArmor profiles, 2018-01 edition. Thanks to intrigeri.
@@ -10,7 +10,7 @@ torbrowser-launcher (0.2.9-2) UNRELEASED; urgency=medium
     - Add a local patch to fix FTBFS:
       Remove apparmor local path from setup.py
 
- -- Roger Shimizu <rosh@debian.org>  Sun, 18 Mar 2018 22:39:20 +0900
+ -- Roger Shimizu <rosh@debian.org>  Tue, 27 Mar 2018 22:10:49 +0900
 
 torbrowser-launcher (0.2.9-1) unstable; urgency=medium
 
