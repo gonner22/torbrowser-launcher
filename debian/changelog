@@ -1,3 +1,23 @@
+torbrowser-launcher (0.3.0~dev-1~exp1) UNRELEASED; urgency=medium
+
+  * New upstream release 0.3.0.dev in develop branch
+    - Switch from python2 to python3
+    - Switch from gtk2 to Qt5 (Closes: #885489)
+    - Switch from twisted to requests/socks
+    - Use QThreads for async, and now download, verify, and extract
+      in separate threads too
+    - Remove modem sound
+    - Stopped refreshing the gpg keyring each time, and instead only
+      refresh it when you hit a verification error (and then try
+      verifying again before actually displaying the error)
+    - On verification error, it saves a copy of the tarball and sig
+      that failed to verify
+    - Improved python style with flake8
+  * debian/patches:
+    - Refresh patches.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 27 Mar 2018 22:22:51 +0900
+
 torbrowser-launcher (0.2.9-2) unstable; urgency=medium
 
   * debian/patches:

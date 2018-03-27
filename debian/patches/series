@@ -1,4 +1,3 @@
-0001-Update-AppArmor-comments.patch
 0002-Drop-spurious-trailing-whitespace.patch
 0003-AppArmor-allow-plugin-container-to-read-file-app-ass.patch
 0004-AppArmor-allow-Firefox-to-ptrace-plugin-container-an.patch
