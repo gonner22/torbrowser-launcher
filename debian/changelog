@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.0~dev-1~exp1) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.0~dev-1~exp1) experimental; urgency=medium
 
   * New upstream release 0.3.0.dev in develop branch
     - Switch from python2 to python3
@@ -24,7 +24,7 @@ torbrowser-launcher (0.3.0~dev-1~exp1) UNRELEASED; urgency=medium
   * debian/rules:
     - Use pybuild as buildsystem to avoid pyversions command error.
 
- -- Roger Shimizu <rosh@debian.org>  Tue, 27 Mar 2018 22:22:51 +0900
+ -- Roger Shimizu <rosh@debian.org>  Wed, 28 Mar 2018 20:15:00 +0900
 
 torbrowser-launcher (0.2.9-2) unstable; urgency=medium
 
