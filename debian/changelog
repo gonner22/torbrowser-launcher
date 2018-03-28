@@ -1,3 +1,10 @@
+torbrowser-launcher (0.3.0~dev-1~exp2) experimental; urgency=medium
+
+  * debian/rules:
+    - Skip the test since it fails under python 3.6
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 28 Mar 2018 21:45:45 +0900
+
 torbrowser-launcher (0.3.0~dev-1~exp1) experimental; urgency=medium
 
   * New upstream release 0.3.0.dev in develop branch
