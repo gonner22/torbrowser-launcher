@@ -91,8 +91,7 @@ def main():
         # Launcher mode
         gui = Launcher(common, app, url_list)
 
-        # Show gui only if not installed
-        common = common
+        # Show gui only if tbb not installed
         if not common.settings['installed']:
             desktop = app.desktop()
             window_size = gui.size()
