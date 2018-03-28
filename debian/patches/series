@@ -13,3 +13,5 @@
 0014-AppArmor-support-some-of-the-included-pluggable-tran.patch
 0015-AppArmor-remove-boilerplate-from-local-override-file.patch
 0016-Remove-apparmor-local-path-from-setup.py.patch
+0017-show-gui-only-if-tbb-not-installed.patch
+0018-remove-double-common-assignment.patch

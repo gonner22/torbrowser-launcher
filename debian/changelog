@@ -15,6 +15,7 @@ torbrowser-launcher (0.3.0~dev-1~exp1) UNRELEASED; urgency=medium
     - Improved python style with flake8
   * debian/patches:
     - Refresh patches.
+    - Add patch 0017 and 0018 to fix the extra dialog issue.
   * debian/control:
     - Update Build-Depends list to python3 series.
     - Update Depends list to match current python3 implementation.

@@ -1,0 +1,23 @@
+From: troubadoour <trobador@riseup.net>
+Date: Wed, 28 Mar 2018 03:52:42 -0400
+Subject: remove double 'common' assignment
+Origin: https://github.com/troubadoour/torbrowser-launcher/commit/63646cb69521d40bf25484831d58bcf691f71cca
+
+---
+ torbrowser_launcher/__init__.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/torbrowser_launcher/__init__.py b/torbrowser_launcher/__init__.py
+index f8b66da..72f7937 100644
+--- a/torbrowser_launcher/__init__.py
++++ b/torbrowser_launcher/__init__.py
+@@ -85,8 +85,7 @@ def main():
+         # Launcher mode
+         gui = Launcher(common, app, url_list)
+ 
+-        # Show gui only if not installed
+-        common = common
++        # Show gui only if tbb not installed
+         if not common.settings['installed']:
+             desktop = app.desktop()
+             window_size = gui.size()
