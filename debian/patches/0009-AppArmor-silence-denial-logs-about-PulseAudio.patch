@@ -1,0 +1,53 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 29 Jan 2018 07:42:09 +0000
+Subject: AppArmor: silence denial logs about PulseAudio.
+
+We don't currently allow access to the audio subsystem; let's not let AppArmor
+spam the logs about it.
+---
+ apparmor/torbrowser.Browser.firefox          |  4 ++++
+ apparmor/torbrowser.Browser.plugin-container | 10 ++++++++--
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index e6a455b..d0aded9 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -108,6 +108,10 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
+   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+ 
++  # Silence denial logs about PulseAudio
++  deny /etc/pulse/client.conf r,
++  deny /usr/bin/pulseaudio x,
++
+   # KDE 4
+   owner @{HOME}/.kde/share/config/* r,
+ 
+diff --git a/apparmor/torbrowser.Browser.plugin-container b/apparmor/torbrowser.Browser.plugin-container
+index 4ee65ec..fe95fdb 100644
+--- a/apparmor/torbrowser.Browser.plugin-container
++++ b/apparmor/torbrowser.Browser.plugin-container
+@@ -6,8 +6,10 @@ profile torbrowser_plugin_container {
+ 
+   # Uncomment the following lines if you want Tor Browser
+   # to have direct access to your sound hardware. You will also
+-  # need to remove the "deny" word in the machine-id lines further
+-  # bellow.
++  # need to remove, further bellow:
++  #  - the "deny" word in the machine-id lines
++  #  - the rules that deny reading /etc/pulse/client.conf
++  #    and executing /usr/bin/pulseaudio
+   # #include <abstractions/audio>
+   # /etc/asound.conf r,
+   # owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/tmp/mozilla-temp-* rw,
+@@ -85,5 +87,9 @@ profile torbrowser_plugin_container {
+   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
+   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+ 
++  # Silence denial logs about PulseAudio
++  deny /etc/pulse/client.conf r,
++  deny /usr/bin/pulseaudio x,
++
+   #include <local/torbrowser.Browser.plugin-container>
+ }

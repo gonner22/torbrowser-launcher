@@ -1,0 +1,16 @@
+0001-Update-AppArmor-comments.patch
+0002-Drop-spurious-trailing-whitespace.patch
+0003-AppArmor-allow-plugin-container-to-read-file-app-ass.patch
+0004-AppArmor-allow-Firefox-to-ptrace-plugin-container-an.patch
+0005-AppArmor-allow-plugin-container-to-receive-term-sign.patch
+0006-Fix-comment.patch
+0007-AppArmor-allow-Firefox-to-fully-manage-its-fontconfi.patch
+0008-AppArmor-grant-access-to-mostly-innocuous-stuff-plug.patch
+0009-AppArmor-silence-denial-logs-about-PulseAudio.patch
+0010-AppArmor-silence-more-inherited-files-access-denial.patch
+0011-AppArmor-drop-support-for-long-obsolete-paths.patch
+0012-AppArmor-refactor-thanks-to-variables-defined-in-tun.patch
+0013-AppArmor-give-the-tor-profile-a-stable-name.patch
+0014-AppArmor-support-some-of-the-included-pluggable-tran.patch
+0015-AppArmor-remove-boilerplate-from-local-override-file.patch
+0016-Remove-apparmor-local-path-from-setup.py.patch
