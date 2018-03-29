@@ -50,6 +50,7 @@ profile torbrowser_plugin_container {
   owner "@{HOME}/Persistent/Tor Browser/" rw,
   owner "@{HOME}/Persistent/Tor Browser/**" rwk,
 
+  owner @{HOME}/.tor-browser/profile.default/extensions/*.xpi r,
   /etc/xul-ext/ r,
   /etc/xul-ext/** r,
   /usr/local/share/tor-browser-extensions/ r,

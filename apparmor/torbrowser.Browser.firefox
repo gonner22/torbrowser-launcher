@@ -29,8 +29,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny @{HOME}/.local/share/gvfs-metadata/home r,
   deny /run/resolvconf/resolv.conf r,
 
-  deny /etc/machine-id r,
-  deny /var/lib/dbus/machine-id r,
+  /etc/machine-id r,
+  /var/lib/dbus/machine-id r,
 
   /dev/ r,
   /dev/shm/ r,
