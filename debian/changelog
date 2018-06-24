@@ -1,3 +1,11 @@
+torbrowser-launcher (0.3.0~dev-1~exp3) experimental; urgency=medium
+
+  * Merge debian/sid branch to incorporate latest changes.
+  * debian/control:
+    - Amend Vcs-* a bit to specify debian/sid branch as default.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 25 Jun 2018 02:21:12 +0900
+
 torbrowser-launcher (0.2.9-3) unstable; urgency=medium
 
   * Team upload.

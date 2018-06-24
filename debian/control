@@ -13,8 +13,8 @@ Build-Depends:
 X-Python3-Version: >= 3.0
 Standards-Version: 3.9.8
 Homepage: https://micahflee.com/torbrowser-launcher/
-Vcs-Git: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher.git
-Vcs-Browser: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher/tree/debian/sid
+Vcs-Git: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher.git -b debian/sid
+Vcs-Browser: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
