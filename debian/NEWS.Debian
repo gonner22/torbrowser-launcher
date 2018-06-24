@@ -1,0 +1,9 @@
+torbrowser-launcher (0.2.9-2) unstable; urgency=medium
+
+  After applying this upgrade, please reboot the system.
+
+  Otherwise, any already running Tor Browser and newly started Tor Browser
+  will run under an unsupported combination of AppArmor profiles
+  and will behave erroneously.
+
+ -- intrigeri <intrigeri@debian.org>  Tue, 27 Mar 2018 22:10:49 +0900
