@@ -112,7 +112,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny /usr/local/lib/tor-browser/TorBrowser/UpdateInfo/ rw,
   deny /usr/local/lib/tor-browser/update.test/ rw,
 
-  @{torbrowser_firefox_executable} px -> torbrowser_firefox,
+  @{torbrowser_firefox_executable} px -> torbrowser_plugin_container,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:
