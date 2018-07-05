@@ -64,8 +64,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /etc/xul-ext/** r,
   /usr/local/share/tor-browser-extensions/ r,
   /usr/local/share/tor-browser-extensions/** rk,
-  /usr/share/xul-ext/ r,
-  /usr/share/xul-ext/** r,
+  /usr/share/{xul-,web}ext/ r,
+  /usr/share/{xul-,web}ext/** r,
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
