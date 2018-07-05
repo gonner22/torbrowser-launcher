@@ -76,6 +76,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/ r,
   /usr/share/mime/ r,
   /usr/share/themes/ r,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
   /usr/share/applications/** rk,
   /usr/share/gnome/applications/ r,
   /usr/share/gnome/applications/kde4/ r,
