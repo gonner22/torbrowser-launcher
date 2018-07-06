@@ -32,6 +32,7 @@ profile torbrowser_plugin_container {
 
   /dev/shm/ r,
 
+  owner @{PROC}/@{pid}/environ r,
   owner @{PROC}/@{pid}/fd/ r,
   owner @{PROC}/@{pid}/mountinfo r,
   owner @{PROC}/@{pid}/stat r,
@@ -43,6 +44,7 @@ profile torbrowser_plugin_container {
   @{torbrowser_home_dir}/** mr,
   @{torbrowser_home_dir}/plugin-container ixmr,
 
+  owner @{HOME}/.tor-browser/profile.default/startupCache/scriptCache-child-current.bin r,
   owner @{HOME}/.tor-browser/profile.default/tmp/* rw,
 
   owner "@{HOME}/Tor Browser/" rw,
