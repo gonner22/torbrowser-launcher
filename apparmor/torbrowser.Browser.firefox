@@ -64,8 +64,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /etc/xul-ext/** r,
   /usr/local/share/tor-browser-extensions/ r,
   /usr/local/share/tor-browser-extensions/** rk,
-  /usr/share/xul-ext/ r,
-  /usr/share/xul-ext/** r,
+  /usr/share/{xul-,web}ext/ r,
+  /usr/share/{xul-,web}ext/** r,
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
@@ -76,6 +76,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/ r,
   /usr/share/mime/ r,
   /usr/share/themes/ r,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
   /usr/share/applications/** rk,
   /usr/share/gnome/applications/ r,
   /usr/share/gnome/applications/kde4/ r,
@@ -111,7 +112,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny /usr/local/lib/tor-browser/TorBrowser/UpdateInfo/ rw,
   deny /usr/local/lib/tor-browser/update.test/ rw,
 
-  /usr/local/lib/tor-browser/firefox Pix,
+  @{torbrowser_firefox_executable} px -> torbrowser_plugin_container,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:
