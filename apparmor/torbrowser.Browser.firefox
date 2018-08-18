@@ -1,7 +1,7 @@
 #include <tunables/global>
 #include <tunables/torbrowser>
 
-@{torbrowser_firefox_executable} = /usr/local/lib/tor-browser/firefox
+@{torbrowser_firefox_executable} = /usr/local/lib/tor-browser/firefox.real
 
 profile torbrowser_firefox @{torbrowser_firefox_executable} {
   #include <abstractions/gnome>
