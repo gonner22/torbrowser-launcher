@@ -4,6 +4,8 @@ torbrowser-launcher (0.3.0~dev-1~exp4) UNRELEASED; urgency=medium
     - Refresh patches.
     - Cherry-pick 5 upstream patches to fix appamor profile for
       Tor Browser 8.0
+  * debian/control:
+    - Rename tag X-Python-Version to XS-Python-Version.
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 09 Sep 2018 16:08:01 +0900
 
