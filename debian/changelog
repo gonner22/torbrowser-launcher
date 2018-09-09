@@ -1,3 +1,12 @@
+torbrowser-launcher (0.2.9-5) UNRELEASED; urgency=medium
+
+  * debian/source/lintian-overrides:
+    - Rename from debian/source.lintian-overrides
+  * debian/control:
+    - Rename tag X-Python-Version to XS-Python-Version.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 10 Sep 2018 00:22:29 +0900
+
 torbrowser-launcher (0.2.9-4) unstable; urgency=medium
 
   [ Ulrike Uhlig ]
