@@ -1,3 +1,16 @@
+torbrowser-launcher (0.2.9-4) UNRELEASED; urgency=medium
+
+  [ Ulrike Uhlig ]
+  * debian/control:
+    - Remove myself from uploaders.
+
+  [ Roger Shimizu ]
+  * debian/patches:
+    - Cherry-pick two upstream commits to fix appamor profile for
+      Tor Browser 8.0a9 (Closes: #908068).
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 09 Sep 2018 16:24:18 +0900
+
 torbrowser-launcher (0.2.9-3) unstable; urgency=medium
 
   * Team upload.
