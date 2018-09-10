@@ -14,3 +14,5 @@
 0014-AppArmor-support-some-of-the-included-pluggable-tran.patch
 0015-AppArmor-remove-boilerplate-from-local-override-file.patch
 0016-Remove-apparmor-local-path-from-setup.py.patch
+0017-AppArmor-allow-Firefox-to-read-usr-share-glib-2.0-sc.patch
+0018-AppArmor-adjust-Firefox-binary-path-for-Tor-Browser-.patch
