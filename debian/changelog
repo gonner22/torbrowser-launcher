@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.9-5) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.9-5) unstable; urgency=high
 
   * debian/source/lintian-overrides:
     - Rename from debian/source.lintian-overrides
@@ -12,7 +12,7 @@ torbrowser-launcher (0.2.9-5) UNRELEASED; urgency=medium
     - rm_conffile appamor profile /etc/apparmor.d/local/*, which was
       removed since 0.2.9-2. Thanks to gregor herrmann for the fix.
 
- -- Roger Shimizu <rosh@debian.org>  Mon, 10 Sep 2018 00:22:29 +0900
+ -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 01:17:18 +0900
 
 torbrowser-launcher (0.2.9-4) unstable; urgency=medium
 
