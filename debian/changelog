@@ -6,6 +6,9 @@ torbrowser-launcher (0.3.0~dev-1~exp4) UNRELEASED; urgency=medium
       Tor Browser 8.0
   * debian/control:
     - Rename tag X-Python-Version to XS-Python-Version.
+  * debian/torbrowser-launcher.maintscript:
+    - rm_conffile appamor profile /etc/apparmor.d/local/*, which was
+      removed since 0.2.9-2. Thanks to gregor herrmann for the fix.
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 09 Sep 2018 16:08:01 +0900
 
