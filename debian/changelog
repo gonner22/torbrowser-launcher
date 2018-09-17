@@ -7,6 +7,9 @@ torbrowser-launcher (0.2.9-5) UNRELEASED; urgency=medium
   * debian/patches:
     - Cherry-pick three upstream commits to fix appamor profile for
       Web Content process (Closes: #908463).
+  * debian/torbrowser-launcher.maintscript:
+    - rm_conffile appamor profile /etc/apparmor.d/local/*, which was
+      removed since 0.2.9-2. Thanks to gregor herrmann for the fix.
 
  -- Roger Shimizu <rosh@debian.org>  Mon, 10 Sep 2018 00:22:29 +0900
 
