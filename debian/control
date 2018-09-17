@@ -30,6 +30,7 @@ Depends:
  python-psutil,
  python-twisted,
  python-txsocksx (>= 1.13.0.1)
+XB-Python-Version: ${python:Versions}
 Recommends: tor
 Suggests: apparmor, python-pygame
 Description: helps download and run the Tor Browser Bundle

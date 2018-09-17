@@ -4,6 +4,7 @@ torbrowser-launcher (0.2.9-5) UNRELEASED; urgency=medium
     - Rename from debian/source.lintian-overrides
   * debian/control:
     - Rename tag X-Python-Version to XS-Python-Version.
+    - Add XB-Python-Version tag for binary package.
   * debian/patches:
     - Cherry-pick three upstream commits to fix appamor profile for
       Web Content process (Closes: #908463).
