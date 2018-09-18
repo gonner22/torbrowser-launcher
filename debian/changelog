@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.0~dev-1~exp4) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.0~dev-1~exp4) experimental; urgency=medium
 
   * debian/patches:
     - Refresh patches.
@@ -11,7 +11,7 @@ torbrowser-launcher (0.3.0~dev-1~exp4) UNRELEASED; urgency=medium
     - rm_conffile appamor profile /etc/apparmor.d/local/*, which was
       removed since 0.2.9-2. Thanks to gregor herrmann for the fix.
 
- -- Roger Shimizu <rosh@debian.org>  Sun, 09 Sep 2018 16:08:01 +0900
+ -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 22:42:28 +0900
 
 torbrowser-launcher (0.3.0~dev-1~exp3) experimental; urgency=medium
 
