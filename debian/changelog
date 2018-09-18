@@ -1,3 +1,21 @@
+torbrowser-launcher (0.3.0-1~exp1) UNRELEASED; urgency=medium
+
+  * New upstream release 0.3.0
+    - Switched from python2 to python3
+    - Switched from gtk2 to Qt5
+    - Switched from twisted to requests/socks
+    - Use QThreads for async
+    - Removed modem sound
+    - Only refresh gpg keyring on verification error, instead of every time
+    - Updated AppArmor profiles
+    - Updated available languages, and fixed locale detection bug
+    - Fixed false signature verification error related to twisted
+  * debian/patches:
+    - Refresh patches.
+    - Remove upstreamed patches.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 23:45:26 +0900
+
 torbrowser-launcher (0.3.0~dev-1~exp4) experimental; urgency=medium
 
   * debian/patches:
