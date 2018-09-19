@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.0-1~exp1) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.0-1~exp1) experimental; urgency=medium
 
   * New upstream release 0.3.0
     - Switched from python2 to python3
@@ -17,7 +17,7 @@ torbrowser-launcher (0.3.0-1~exp1) UNRELEASED; urgency=medium
     - Remove XS-Python-Version and XB-Python-Version, since lintian says
       it's not necessary.
 
- -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 23:45:26 +0900
+ -- Roger Shimizu <rosh@debian.org>  Wed, 19 Sep 2018 23:06:56 +0900
 
 torbrowser-launcher (0.3.0~dev-1~exp4) experimental; urgency=medium
 
