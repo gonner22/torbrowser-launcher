@@ -10,7 +10,6 @@ Build-Depends:
  help2man,
  lsb-release,
  python-all (>= 2.7.3-4)
-XS-Python-Version: >= 2.7
 Standards-Version: 3.9.8
 Homepage: https://micahflee.com/torbrowser-launcher/
 Vcs-Git: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher.git

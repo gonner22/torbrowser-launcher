@@ -1,3 +1,10 @@
+torbrowser-launcher (0.2.9-6) UNRELEASED; urgency=medium
+
+  * debian/control:
+    - Remove XS-Python-Version since lintian says it's not necessary.
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 20 Sep 2018 09:31:56 +0900
+
 torbrowser-launcher (0.2.9-5) unstable; urgency=high
 
   * debian/source/lintian-overrides:
