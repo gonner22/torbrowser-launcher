@@ -1,6 +1,8 @@
 #include <tunables/global>
 #include <tunables/torbrowser>
 
+@{torbrowser_firefox_executable} = /usr/local/lib/tor-browser/firefox.real
+
 profile torbrowser_plugin_container {
   #include <abstractions/gnome>
 
@@ -42,9 +44,8 @@ profile torbrowser_plugin_container {
 
   @{torbrowser_home_dir}/ r,
   @{torbrowser_home_dir}/** mr,
-  @{torbrowser_home_dir}/plugin-container ixmr,
 
-  owner @{HOME}/.tor-browser/profile.default/startupCache/scriptCache-child-current.bin r,
+  owner @{HOME}/.tor-browser/profile.default/startupCache/* r,
   owner @{HOME}/.tor-browser/profile.default/tmp/* rw,
 
   owner "@{HOME}/Tor Browser/" rw,
@@ -62,6 +63,8 @@ profile torbrowser_plugin_container {
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
+
+  @{torbrowser_firefox_executable} ixmr -> torbrowser_plugin_container,
 
   /sys/devices/system/cpu/ r,
   /sys/devices/system/cpu/present r,

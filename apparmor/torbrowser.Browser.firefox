@@ -45,7 +45,6 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
 
   @{torbrowser_home_dir}/ r,
   @{torbrowser_home_dir}/** mr,
-  @{torbrowser_home_dir}/plugin-container px -> torbrowser_plugin_container,
 
   owner "@{HOME}/Tor Browser/" rw,
   owner "@{HOME}/Tor Browser/**" rwk,
@@ -69,6 +68,9 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
+
+  # Web Content processes
+  @{torbrowser_firefox_executable} px -> torbrowser_plugin_container,
 
   /etc/mailcap r,
   /etc/mime.types r,
@@ -111,8 +113,6 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
   deny /usr/local/lib/tor-browser/TorBrowser/UpdateInfo/ rw,
   deny /usr/local/lib/tor-browser/update.test/ rw,
-
-  @{torbrowser_firefox_executable} px -> torbrowser_plugin_container,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:

@@ -1,0 +1,30 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Mon, 10 Sep 2018 07:55:36 +0000
+Subject: AppArmor: give Tor Browser's Web Content process some more innocuous
+ access it now needs.
+
+(cherry picked from commit 45265423d7fea40f93a3924146933aa6e94f0d97)
+---
+ apparmor/torbrowser.Browser.plugin-container | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.plugin-container b/apparmor/torbrowser.Browser.plugin-container
+index c1c4ccb..ae2a9ba 100644
+--- a/apparmor/torbrowser.Browser.plugin-container
++++ b/apparmor/torbrowser.Browser.plugin-container
+@@ -34,6 +34,7 @@ profile torbrowser_plugin_container {
+ 
+   /dev/shm/ r,
+ 
++  owner @{PROC}/@{pid}/environ r,
+   owner @{PROC}/@{pid}/fd/ r,
+   owner @{PROC}/@{pid}/mountinfo r,
+   owner @{PROC}/@{pid}/stat r,
+@@ -51,6 +52,7 @@ profile torbrowser_plugin_container {
+   owner @{torbrowser_home_dir}/browser/components/*.so mr,
+   owner @{torbrowser_home_dir}/defaults/pref/     r,
+   owner @{torbrowser_home_dir}/defaults/pref/*.js r,
++  owner @{torbrowser_home_dir}/dependentlibs.list r,
+   owner @{torbrowser_home_dir}/fonts/   r,
+   owner @{torbrowser_home_dir}/fonts/** r,
+   owner @{torbrowser_home_dir}/omni.ja r,
