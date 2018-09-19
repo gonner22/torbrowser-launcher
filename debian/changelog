@@ -13,6 +13,9 @@ torbrowser-launcher (0.3.0-1~exp1) UNRELEASED; urgency=medium
   * debian/patches:
     - Refresh patches.
     - Remove upstreamed patches.
+  * debian/control:
+    - Remove XS-Python-Version and XB-Python-Version, since lintian says
+      it's not necessary.
 
  -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 23:45:26 +0900
 
