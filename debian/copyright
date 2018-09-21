@@ -2,6 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: torbrowser-launcher
 Upstream-contact: micah@micahflee.com
 Source: https://github.com/micahflee/torbrowser-launcher
+Comment: contrib package because it's just a downloader of prebuilt Tor Browser Bundle.
 
 Files: *
 Copyright: Copyright (c) 2013-2017 Micah Lee <micah@micahflee.com>
