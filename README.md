@@ -35,3 +35,11 @@ Run `torbrowser-launcher` either by using the GUI desktop launcher, or by runnin
 ```
 flatpak run com.github.micahflee.torbrowser-launcher
 ```
+# Installing in blackPanther OS
+
+Can you install torbrowser-launcher to blackPanther OS from offical repositiries or use App-Helper service
+
+```sh
+updating repos
+installing  torbrowser-launcher
+```
