@@ -24,3 +24,11 @@ If you want to always have the latest version of the `torbrowser-launcher` packa
 sudo add-apt-repository ppa:micahflee/ppa
 sudo apt install torbrowser-launcher
 ```
+# Installing in blackPanther OS
+
+Can you install torbrowser-launcher to blackPanther OS from offical repositiries or use App-Helper service
+
+```sh
+updating repos
+installing  torbrowser-launcher
+```
