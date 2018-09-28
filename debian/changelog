@@ -3,6 +3,9 @@ torbrowser-launcher (0.3.0-1~exp2) UNRELEASED; urgency=medium
   * debian/copyright:
     - Add comment section to explain why this is contrib package,
       which comforts lintian.
+  * debian/patches:
+    - Cherry-pick upstream patch to update Tor Browser Developers
+      public key.
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 30 Sep 2018 10:15:31 +0900
 
