@@ -1,4 +1,4 @@
-torbrowser-launcher (0.2.9-6) UNRELEASED; urgency=medium
+torbrowser-launcher (0.2.9-6) unstable; urgency=high
 
   * debian/control:
     - Remove XS-Python-Version since lintian says it's not necessary.
@@ -9,7 +9,7 @@ torbrowser-launcher (0.2.9-6) UNRELEASED; urgency=medium
     - Cherry-pick upstream patch to update Tor Browser Developers
       public key.
 
- -- Roger Shimizu <rosh@debian.org>  Thu, 20 Sep 2018 09:31:56 +0900
+ -- Roger Shimizu <rosh@debian.org>  Sat, 29 Sep 2018 01:45:32 +0900
 
 torbrowser-launcher (0.2.9-5) unstable; urgency=high
 
