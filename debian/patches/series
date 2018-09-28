@@ -19,3 +19,4 @@
 0019-AppArmor-confine-Firefox-60-Web-Content-processes-un.patch
 0020-AppArmor-give-Tor-Browser-s-Web-Content-process-some.patch
 0021-AppArmor-give-Web-Content-processes-read-access-to-t.patch
+0022-Update-Tor-Browser-Developers-public-key.patch
