@@ -1,3 +1,15 @@
+torbrowser-launcher (0.3.1-1~exp1) UNRELEASED; urgency=medium
+
+  * New upstream release 0.3.1
+    - Ship with latest version of the Tor Browser Developers
+      OpenPGP public key
+    - Fix bug where TBL window stays open after Tor Browser
+      is launched
+  * debian/patches:
+    - Remove 0004 patch which is already merged upstream.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 28 Oct 2018 01:47:33 +0900
+
 torbrowser-launcher (0.3.0-1~exp2) experimental; urgency=medium
 
   * debian/copyright:
