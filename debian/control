@@ -9,27 +9,23 @@ Build-Depends:
  dh-python,
  help2man,
  lsb-release,
- python-all (>= 2.7.3-4)
+ python3-all
 Standards-Version: 3.9.8
 Homepage: https://micahflee.com/torbrowser-launcher/
 Vcs-Git: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher.git
-Vcs-Browser: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher/tree/debian/sid
+Vcs-Browser: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher
 
 Package: torbrowser-launcher
 Architecture: i386 amd64
 Depends:
  ${misc:Depends},
- ${python:Depends},
+ ${python3:Depends},
  ca-certificates,
- gnupg,
  libdbus-glib-1-2,
- python-gtk2,
- python-lzma,
- python-parsley (>= 1.2),
- python-psutil,
- python-twisted,
- python-txsocksx (>= 1.13.0.1)
-XB-Python-Version: ${python:Versions}
+ python3-pyqt5,
+ python3-gpg,
+ python3-requests,
+ python3-socks
 Recommends: tor
 Suggests: apparmor, python-pygame
 Description: helps download and run the Tor Browser Bundle

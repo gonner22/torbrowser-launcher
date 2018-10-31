@@ -1,0 +1,59 @@
+From: troubadoour <trobador@riseup.net>
+Date: Tue, 27 Mar 2018 18:19:26 -0400
+Subject: show gui only if tbb not installed
+
+---
+ torbrowser_launcher/__init__.py | 29 ++++++++++++++++-------------
+ 1 file changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/torbrowser_launcher/__init__.py b/torbrowser_launcher/__init__.py
+index ce542a4..f8b66da 100644
+--- a/torbrowser_launcher/__init__.py
++++ b/torbrowser_launcher/__init__.py
+@@ -37,6 +37,8 @@ from .common import Common, SHARE
+ from .settings import Settings
+ from .launcher import Launcher
+ 
++# Allow ctrl-c to work
++signal.signal(signal.SIGINT, signal.SIG_DFL)
+ 
+ class Application(QtWidgets.QApplication):
+     """
+@@ -76,23 +78,24 @@ def main():
+     if settings:
+         # Settings mode
+         gui = Settings(common, app)
++        gui.show()
++        sys.exit(app.exec_())
++
+     else:
+         # Launcher mode
+         gui = Launcher(common, app, url_list)
+ 
+-    # Center the window
+-    desktop = app.desktop()
+-    window_size = gui.size()
+-    gui.move(
+-        (desktop.width() - window_size.width()) / 2,
+-        (desktop.height() - window_size.height()) / 2
+-    )
+-    gui.show()
+-
+-    # Allow ctrl-c to work
+-    signal.signal(signal.SIGINT, signal.SIG_DFL)
+-
+-    sys.exit(app.exec_())
++        # Show gui only if not installed
++        common = common
++        if not common.settings['installed']:
++            desktop = app.desktop()
++            window_size = gui.size()
++            gui.move(
++                (desktop.width() - window_size.width()) / 2,
++                (desktop.height() - window_size.height()) / 2
++            )
++            gui.show()
++            sys.exit(app.exec_())
+ 
+ 
+ if __name__ == "__main__":
