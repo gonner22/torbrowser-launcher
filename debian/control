@@ -27,7 +27,7 @@ Depends:
  python3-requests,
  python3-socks
 Recommends: tor
-Suggests: apparmor, python-pygame
+Suggests: apparmor
 Description: helps download and run the Tor Browser Bundle
  Tor Browser Launcher is intended to make the Tor Browser Bundle (TBB) easier
  to maintain and use for GNU/Linux users. torbrowser-launcher handles
