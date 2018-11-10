@@ -1,10 +1,13 @@
 torbrowser-launcher (0.3.1-2) UNRELEASED; urgency=medium
 
   * debian/control:
-    - Remove Suggests for python-pygame (Closes: #912490).
+    - Remove Suggests for python-pygame, which was related to modem
+      sound (Closes: #912490, #913151).
   * debian/patches:
     - Add translation patches from pull-request of upstream: hu, da,
       and sv.
+    - Add patch 0008 to remove mention of modem sound in docs and
+      translation po files. Thanks to Paul Wise for the information.
 
  -- Roger Shimizu <rosh@debian.org>  Fri, 02 Nov 2018 00:13:43 +0900
 
