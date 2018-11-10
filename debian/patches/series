@@ -1,3 +1,7 @@
 0001-Remove-apparmor-local-path-from-setup.py.patch
 0002-show-gui-only-if-tbb-not-installed.patch
 0003-remove-double-common-assignment.patch
+0004-Update-Hungarian-translation.patch
+0005-Create-da.po.patch
+0006-Fix-two-spelling-errors.patch
+0007-Add-Swedish-translation.patch

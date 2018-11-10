@@ -1,0 +1,30 @@
+From: scootergrisen <scootergrisen@gmail.com>
+Date: Mon, 1 Oct 2018 16:07:16 +0200
+Subject: Fix two spelling errors
+
+---
+ po/da.po | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/po/da.po b/po/da.po
+index 23d153e..3680945 100644
+--- a/po/da.po
++++ b/po/da.po
+@@ -105,7 +105,7 @@ msgstr "Fejl ved registrering af Tor Browser-version."
+ 
+ #: launcher.py:256 launcher.py:357
+ msgid "Verifying Signature"
+-msgstr "Verificer signatur"
++msgstr "Verificerer signatur"
+ 
+ #: launcher.py:260
+ msgid "Extracting"
+@@ -150,7 +150,7 @@ msgstr "Downloader Tor Browser på ny."
+ 
+ #: launcher.py:516 launcher.py:525 launcher.py:533
+ msgid "Download Error:"
+-msgstr "Fej ved download:"
++msgstr "Fejl ved download:"
+ 
+ #: launcher.py:517
+ msgid "You are currently using a non-default mirror"
