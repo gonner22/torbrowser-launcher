@@ -8,6 +8,13 @@ torbrowser-launcher (0.3.1-2) UNRELEASED; urgency=medium
       and sv.
     - Add patch 0008 to remove mention of modem sound in docs and
       translation po files. Thanks to Paul Wise for the information.
+    - Cherry-pick 2 new appamor patch from pull-request of upstream:
+      [1b2e6aa] AppArmor: allow Web Content processes to check
+                the update status.
+      [3cd8aeb] AppArmor: allow Web Content processes to read
+                profile.ini and the updates' "updater" file.
+      Thanks to intrigeri for the patches, and Diederik de Haas
+      & Shirish Agarwal for the bug report (Closes: #910827, #913366).
 
  -- Roger Shimizu <rosh@debian.org>  Fri, 02 Nov 2018 00:13:43 +0900
 

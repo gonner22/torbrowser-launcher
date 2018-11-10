@@ -6,3 +6,5 @@
 0006-Fix-two-spelling-errors.patch
 0007-Add-Swedish-translation.patch
 0008-Remove-mention-of-modem-sound-in-docs-and-translatio.patch
+0009-AppArmor-allow-Web-Content-processes-to-check-the-up.patch
+0010-AppArmor-allow-Web-Content-processes-to-read-profile.patch
