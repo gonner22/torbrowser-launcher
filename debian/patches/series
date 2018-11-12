@@ -8,3 +8,4 @@
 0008-Remove-mention-of-modem-sound-in-docs-and-translatio.patch
 0009-AppArmor-allow-Web-Content-processes-to-check-the-up.patch
 0010-AppArmor-allow-Web-Content-processes-to-read-profile.patch
+0011-Revert-Properly-detect-the-system-s-locale.patch
