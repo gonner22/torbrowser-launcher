@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.1-2) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.1-2) unstable; urgency=medium
 
   * debian/control:
     - Remove Suggests for python-pygame, which was related to modem
@@ -17,7 +17,7 @@ torbrowser-launcher (0.3.1-2) UNRELEASED; urgency=medium
       & Shirish Agarwal for the bug report (Closes: #910827, #913366).
     - Revert [b828bdf] to fix detecting system locale (Closes: #753173).
 
- -- Roger Shimizu <rosh@debian.org>  Fri, 02 Nov 2018 00:13:43 +0900
+ -- Roger Shimizu <rosh@debian.org>  Sat, 17 Nov 2018 19:15:20 +0900
 
 torbrowser-launcher (0.3.1-1) unstable; urgency=low
 
