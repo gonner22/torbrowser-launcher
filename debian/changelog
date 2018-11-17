@@ -1,3 +1,145 @@
+torbrowser-launcher (0.3.1-2) unstable; urgency=medium
+
+  * debian/control:
+    - Remove Suggests for python-pygame, which was related to modem
+      sound (Closes: #912490, #913151).
+  * debian/patches:
+    - Add translation patches from pull-request of upstream: hu, da,
+      and sv.
+    - Add patch 0008 to remove mention of modem sound in docs and
+      translation po files. Thanks to Paul Wise for the information.
+    - Cherry-pick 2 new appamor patch from pull-request of upstream:
+      [1b2e6aa] AppArmor: allow Web Content processes to check
+                the update status.
+      [3cd8aeb] AppArmor: allow Web Content processes to read
+                profile.ini and the updates' "updater" file.
+      Thanks to intrigeri for the patches, and Diederik de Haas
+      & Shirish Agarwal for the bug report (Closes: #910827, #913366).
+    - Revert [b828bdf] to fix detecting system locale (Closes: #753173).
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 17 Nov 2018 19:15:20 +0900
+
+torbrowser-launcher (0.3.1-1) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 01 Nov 2018 00:46:54 +0900
+
+torbrowser-launcher (0.3.1-1~exp1) experimental; urgency=medium
+
+  * New upstream release 0.3.1
+    - Ship with latest version of the Tor Browser Developers
+      OpenPGP public key
+    - Fix bug where TBL window stays open after Tor Browser
+      is launched
+  * debian/patches:
+    - Remove 0004 patch which is already merged upstream.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 28 Oct 2018 02:27:31 +0900
+
+torbrowser-launcher (0.3.0-1~exp2) experimental; urgency=medium
+
+  * debian/copyright:
+    - Add comment section to explain why this is contrib package,
+      which comforts lintian.
+  * debian/patches:
+    - Cherry-pick upstream patch to update Tor Browser Developers
+      public key.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 30 Sep 2018 10:20:22 +0900
+
+torbrowser-launcher (0.3.0-1~exp1) experimental; urgency=medium
+
+  * New upstream release 0.3.0
+    - Switched from python2 to python3
+    - Switched from gtk2 to Qt5
+    - Switched from twisted to requests/socks
+    - Use QThreads for async
+    - Removed modem sound
+    - Only refresh gpg keyring on verification error, instead of every time
+    - Updated AppArmor profiles
+    - Updated available languages, and fixed locale detection bug
+    - Fixed false signature verification error related to twisted
+  * debian/patches:
+    - Refresh patches.
+    - Remove upstreamed patches.
+  * debian/control:
+    - Remove XS-Python-Version and XB-Python-Version, since lintian says
+      it's not necessary.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 19 Sep 2018 23:06:56 +0900
+
+torbrowser-launcher (0.3.0~dev-1~exp4) experimental; urgency=medium
+
+  * debian/patches:
+    - Refresh patches.
+    - Cherry-pick 5 upstream patches to fix appamor profile for
+      Tor Browser 8.0
+  * debian/control:
+    - Rename tag X-Python-Version to XS-Python-Version.
+    - Add XB-Python-Version tag for binary package.
+  * debian/torbrowser-launcher.maintscript:
+    - rm_conffile appamor profile /etc/apparmor.d/local/*, which was
+      removed since 0.2.9-2. Thanks to gregor herrmann for the fix.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 18 Sep 2018 22:42:28 +0900
+
+torbrowser-launcher (0.3.0~dev-1~exp3) experimental; urgency=medium
+
+  * Merge debian/sid branch to incorporate latest changes.
+  * debian/control:
+    - Amend Vcs-* a bit to specify debian/sid branch as default.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 25 Jun 2018 02:21:12 +0900
+
+torbrowser-launcher (0.3.0~dev-1~exp2) experimental; urgency=medium
+
+  * debian/rules:
+    - Skip the test since it fails under python 3.6
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 28 Mar 2018 21:45:45 +0900
+
+torbrowser-launcher (0.3.0~dev-1~exp1) experimental; urgency=medium
+
+  * New upstream release 0.3.0.dev in develop branch
+    - Switch from python2 to python3
+    - Switch from gtk2 to Qt5 (Closes: #885489)
+    - Switch from twisted to requests/socks
+    - Use QThreads for async, and now download, verify, and extract
+      in separate threads too
+    - Remove modem sound
+    - Stopped refreshing the gpg keyring each time, and instead only
+      refresh it when you hit a verification error (and then try
+      verifying again before actually displaying the error)
+    - On verification error, it saves a copy of the tarball and sig
+      that failed to verify
+    - Improved python style with flake8
+  * debian/patches:
+    - Refresh patches.
+    - Add patch 0017 and 0018 to fix the extra dialog issue.
+  * debian/control:
+    - Update Build-Depends list to python3 series.
+    - Update Depends list to match current python3 implementation.
+    - Move debian/source.lintian-overrides
+      to debian/source/lintian-overrides to comfort lintian.
+  * debian/rules:
+    - Use pybuild as buildsystem to avoid pyversions command error.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 28 Mar 2018 20:15:00 +0900
+
+torbrowser-launcher (0.2.9-6) unstable; urgency=high
+
+  * debian/control:
+    - Remove XS-Python-Version since lintian says it's not necessary.
+  * debian/copyright:
+    - Add comment section to explain why this is contrib package,
+      which comforts lintian.
+  * debian/patches:
+    - Cherry-pick upstream patch to update Tor Browser Developers
+      public key.
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 29 Sep 2018 01:45:32 +0900
+
 torbrowser-launcher (0.2.9-5) unstable; urgency=high
 
   * debian/source/lintian-overrides:

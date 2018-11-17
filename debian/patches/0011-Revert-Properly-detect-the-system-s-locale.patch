@@ -1,0 +1,22 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Tue, 13 Nov 2018 00:53:09 +0900
+Subject: Revert "Properly detect the system's locale"
+
+This reverts commit b828bdfafe60bb9bcf93ec660ad5c07ff7fdbdf5.
+---
+ torbrowser_launcher/common.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
+index 4e3a30a..9740e1d 100644
+--- a/torbrowser_launcher/common.py
++++ b/torbrowser_launcher/common.py
+@@ -73,7 +73,7 @@ class Common(object):
+ 
+         # figure out the language
+         available_languages = ['ar', 'ca', 'da', 'de', 'en-US', 'es-ES', 'fa', 'fr', 'ga-IE', 'he', 'id', 'is', 'it', 'ja', 'ko', 'nb-NO', 'nl', 'pl', 'pt-BR', 'ru', 'sv-SE', 'tr', 'vi', 'zh-CN', 'zh-TW']
+-        default_locale = locale.getlocale()[0]
++        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
+         if default_locale is None:
+             self.language = 'en-US'
+         else:

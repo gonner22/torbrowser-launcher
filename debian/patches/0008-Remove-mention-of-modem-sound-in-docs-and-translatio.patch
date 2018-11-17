@@ -1,0 +1,174 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Sun, 11 Nov 2018 00:55:36 +0900
+Subject: Remove mention of modem sound in docs and translation po files
+
+---
+ README.md                             | 1 -
+ po/cs.po                              | 7 -------
+ po/fr.po                              | 8 --------
+ po/hu.po                              | 7 -------
+ po/nl.po                              | 3 ---
+ po/ru.po                              | 7 -------
+ po/sv.po                              | 8 --------
+ share/metainfo/torbrowser.appdata.xml | 1 -
+ 8 files changed, 42 deletions(-)
+
+diff --git a/README.md b/README.md
+index c71ef13..0245b86 100644
+--- a/README.md
++++ b/README.md
+@@ -6,7 +6,6 @@ Tor Browser Launcher is intended to make Tor Browser easier to install and use f
+ * Verifies Tor Browser's [signature](https://www.torproject.org/docs/verifying-signatures.html.en) for you, to ensure the version you downloaded was cryptographically signed by Tor developers and was not tampered with
+ * Adds "Tor Browser" and "Tor Browser Launcher Settings" application launcher to your desktop environment's menu
+ * Includes AppArmor profiles to make a Tor Browser compromise not as bad
+-* Optionally plays a modem sound when you open Tor Browser (because Tor is so slow)
+ 
+ Tor Browser Launcher is included in Ubuntu, Debian, and Fedora. To install it in any other distribution, see the [build instructions](/BUILD.md).
+ 
+diff --git a/po/cs.po b/po/cs.po
+index bde983f..f50a7dc 100644
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -279,10 +279,6 @@ msgstr "Uložit a ukončit"
+ #~ "Možná je na vás veden útok, anebo může jít pouze o síťovou závadu. Pro "
+ #~ "nové stažení klikněte na Spustit."
+ 
+-#~ msgid ""
+-#~ "The python-pygame package is missing, the modem sound is unavailable."
+-#~ msgstr "Chybí balíček python-pygame, zvuk modemu není dostupný."
+-
+ #~ msgid ""
+ #~ "This option is only available when using a system wide Tor installation."
+ #~ msgstr ""
+@@ -291,8 +287,5 @@ msgstr "Uložit a ukončit"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Tato možnost vyžaduje balíček python-txsocksx."
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Přehrávat zvuk modemu, jelikož je Tor pomalý :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Tato možnost vyžaduje nainstalovaný python-pygame"
+diff --git a/po/fr.po b/po/fr.po
+index 6e1e8b5..3c3afc6 100644
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -281,11 +281,6 @@ msgstr "Enregistrer et quitter"
+ #~ "Vous pourriez être l'objet d'une attaque, ou il peut s'agir d'un problème "
+ #~ "de réseau. Cliquer sur Démarrer pour télécharger à nouveau."
+ 
+-#~ msgid ""
+-#~ "The python-pygame package is missing, the modem sound is unavailable."
+-#~ msgstr ""
+-#~ "Le paquet python-pygame est manquant, le son de modem est indisponible."
+-
+ #~ msgid ""
+ #~ "This option is only available when using a system wide Tor installation."
+ #~ msgstr ""
+@@ -295,8 +290,5 @@ msgstr "Enregistrer et quitter"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Cette option nécessite le paquet python-txsocksx"
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Jouer un son de modem, car Tor est lent :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Cette option requiert le paquet python-pygame"
+diff --git a/po/hu.po b/po/hu.po
+index 533ba6a..ad73b40 100644
+--- a/po/hu.po
++++ b/po/hu.po
+@@ -285,10 +285,6 @@ msgstr "Mentés és kilépés"
+ #~ "Lehet, hogy támadás alatt vagy, vagy előfordulhat egy hálózati probléma "
+ #~ "is. Kattints az indításra az újbóli letöltéshez."
+ 
+-#~ msgid ""
+-#~ "The python-pygame package is missing, the modem sound is unavailable."
+-#~ msgstr "A python-pygame csomag nem található, a modem hang nem elérhető."
+-
+ #~ msgid ""
+ #~ "This option is only available when using a system wide Tor installation."
+ #~ msgstr ""
+@@ -298,8 +294,5 @@ msgstr "Mentés és kilépés"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Ehhez az opcióhoz szükséges a python-txsocksx csomag"
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Modem hang lejátszása, mert a Tor lassú :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Ehhez az opcióhoz szükséges  hogy a python-pygame telepítve legyen"
+diff --git a/po/nl.po b/po/nl.po
+index 2f89e3a..ddca8b9 100644
+--- a/po/nl.po
++++ b/po/nl.po
+@@ -268,8 +268,5 @@ msgstr "Opslaan & afsluiten"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Voor deze optie is het python-txsocksx pakket nodig."
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Speel modem geluid, omdat Tor langzaam is :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Voor deze optie moet python-pygame geïnstalleerd zijn"
+diff --git a/po/ru.po b/po/ru.po
+index e4d5dc3..a9d0a37 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -285,10 +285,6 @@ msgstr "Сохранить и выйти"
+ #~ "Вы можете бы быть под атакой, или имеют место проблемы с сетью. Нажмите "
+ #~ "кнопку Пуск и попробуйте снова."
+ 
+-#~ msgid ""
+-#~ "The python-pygame package is missing, the modem sound is unavailable."
+-#~ msgstr "Пакет python-pygame не найден, звуки модема недоступны."
+-
+ #~ msgid ""
+ #~ "This option is only available when using a system wide Tor installation."
+ #~ msgstr "Эта опция доступна только при установки Tor в систему."
+@@ -296,8 +292,5 @@ msgstr "Сохранить и выйти"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Эта опция требует пакет python-txsocksx."
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Играть звуки модема, если Tor слишком медленный :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Эта опция требует установленный python-pygame"
+diff --git a/po/sv.po b/po/sv.po
+index 80acd82..7d173d0 100644
+--- a/po/sv.po
++++ b/po/sv.po
+@@ -285,11 +285,6 @@ msgstr "Spara && avsluta"
+ #~ "Vous pourriez être l'objet d'une attaque, ou il peut s'agir d'un problème "
+ #~ "de réseau. Cliquer sur Démarrer pour télécharger à nouveau."
+ 
+-#~ msgid ""
+-#~ "The python-pygame package is missing, the modem sound is unavailable."
+-#~ msgstr ""
+-#~ "Le paquet python-pygame est manquant, le son de modem est indisponible."
+-
+ #~ msgid ""
+ #~ "This option is only available when using a system wide Tor installation."
+ #~ msgstr ""
+@@ -299,8 +294,5 @@ msgstr "Spara && avsluta"
+ #~ msgid "This option requires the python-txsocksx package."
+ #~ msgstr "Cette option nécessite le paquet python-txsocksx"
+ 
+-#~ msgid "Play modem sound, because Tor is slow :]"
+-#~ msgstr "Jouer un son de modem, car Tor est lent :]"
+-
+ #~ msgid "This option requires python-pygame to be installed"
+ #~ msgstr "Cette option requiert le paquet python-pygame"
+diff --git a/share/metainfo/torbrowser.appdata.xml b/share/metainfo/torbrowser.appdata.xml
+index 5577868..ba10fd6 100644
+--- a/share/metainfo/torbrowser.appdata.xml
++++ b/share/metainfo/torbrowser.appdata.xml
+@@ -16,7 +16,6 @@
+    <li>Includes AppArmor profiles to make a Tor Browser compromise not as bad (in some distros)</li>
+    <li>Adding a Tor Browser application launcher to your desktop environment's menu</li>
+    <li>Lets you set Tor Browser as your default browser</li>
+-   <li>Optionally playing a modem sound when you open Tor Browser (because Tor is so slow)</li>
+   </ul>
+  </description>
+  <screenshots>
