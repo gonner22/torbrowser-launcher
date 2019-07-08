@@ -60,6 +60,8 @@ profile torbrowser_plugin_container {
   /usr/local/share/tor-browser-extensions/** rk,
   /usr/share/{xul-,web}ext/ r,
   /usr/share/{xul-,web}ext/** r,
+  /usr/share/mozilla/extensions/ r,
+  /usr/share/mozilla/extensions/** r,
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
