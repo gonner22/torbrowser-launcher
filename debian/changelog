@@ -1,3 +1,15 @@
+torbrowser-launcher (0.3.2-1) unstable; urgency=medium
+
+  * New upstream release 0.3.2
+    - Switch to keys.openpgp.org when refreshing signing key, because
+      SKS keyservers are broken.
+    - Use new Tor Browser logo.
+  * debian/patches:
+    - Remove upstreamed patches.
+    - Refresh patches.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 07 Aug 2019 01:40:22 +0900
+
 torbrowser-launcher (0.3.1-2) unstable; urgency=medium
 
   * debian/control:
