@@ -8,12 +8,12 @@ Subject: Update Hungarian translation
  2 files changed, 25 insertions(+), 13 deletions(-)
 
 diff --git a/README.md b/README.md
-index 9ca9f3a..c71ef13 100644
+index df3d365..be37a35 100644
 --- a/README.md
 +++ b/README.md
-@@ -23,3 +23,11 @@ sudo add-apt-repository ppa:micahflee/ppa
- sudo apt-get update
- sudo apt-get install torbrowser-launcher
+@@ -24,3 +24,11 @@ If you want to always have the latest version of the `torbrowser-launcher` packa
+ sudo add-apt-repository ppa:micahflee/ppa
+ sudo apt install torbrowser-launcher
  ```
 +# Installing in blackPanther OS
 +

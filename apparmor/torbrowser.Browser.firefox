@@ -4,6 +4,7 @@
 @{torbrowser_firefox_executable} = /usr/local/lib/tor-browser/firefox.real
 
 profile torbrowser_firefox @{torbrowser_firefox_executable} {
+  #include <abstractions/audio>
   #include <abstractions/gnome>
   #include <abstractions/ibus>
 
@@ -12,12 +13,16 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # #include <abstractions/user-download>
   # @{HOME}/ r,
 
+  # Audio support
+  /{,usr/}bin/pulseaudio Pixr,
+  /etc/asound.conf r,
+
   #dbus,
   network netlink raw,
   network tcp,
 
-  ptrace (trace) peer=torbrowser_plugin_container,
-  signal (send) set=("term") peer=torbrowser_plugin_container,
+  ptrace (trace) peer=@{profile_name},
+  signal (receive, send) set=("term") peer=@{profile_name},
 
   deny /etc/host.conf r,
   deny /etc/hosts r,
@@ -56,8 +61,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   owner @{HOME}/.mozilla/firefox/bookmarks/** rwk,
   owner /live/persistence/TailsData_unlocked/bookmarks/ rwk,
   owner /live/persistence/TailsData_unlocked/bookmarks/** rwk,
-  owner @{HOME}/.tor-browser/profile.default/ r,
-  owner @{HOME}/.tor-browser/profile.default/** rwk,
+  owner @{HOME}/.tor-browser/profile.default/{,**} rwk,
 
   /etc/xul-ext/ r,
   /etc/xul-ext/** r,
@@ -65,14 +69,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/local/share/tor-browser-extensions/** rk,
   /usr/share/{xul-,web}ext/ r,
   /usr/share/{xul-,web}ext/** r,
-  /usr/share/mozilla/extensions/ r,
-  /usr/share/mozilla/extensions/** r,
+  /usr/share/{chromium,mozilla}/extensions/ r,
+  /usr/share/{chromium,mozilla}/extensions/** r,
 
   /usr/share/doc/tails/website/ r,
   /usr/share/doc/tails/website/** r,
 
-  # Web Content processes
-  @{torbrowser_firefox_executable} px -> torbrowser_plugin_container,
+  # parent Firefox process when restarting after upgrade, Web Content processes
+  @{torbrowser_firefox_executable} ixmr -> torbrowser_firefox,
 
   /etc/mailcap r,
   /etc/mime.types r,
@@ -135,6 +139,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny @{PROC}/@{pid}/net/route r,
   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+  deny /run/user/[0-9]*/dconf/user rw,
 
   # Silence denial logs about PulseAudio
   deny /etc/pulse/client.conf r,
