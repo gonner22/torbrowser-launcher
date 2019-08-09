@@ -14,10 +14,10 @@ Subject: Remove mention of modem sound in docs and translation po files
  8 files changed, 42 deletions(-)
 
 diff --git a/README.md b/README.md
-index c71ef13..0245b86 100644
+index be37a35..96cb581 100644
 --- a/README.md
 +++ b/README.md
-@@ -6,7 +6,6 @@ Tor Browser Launcher is intended to make Tor Browser easier to install and use f
+@@ -8,7 +8,6 @@ Tor Browser Launcher is intended to make Tor Browser easier to install and use f
  * Verifies Tor Browser's [signature](https://www.torproject.org/docs/verifying-signatures.html.en) for you, to ensure the version you downloaded was cryptographically signed by Tor developers and was not tampered with
  * Adds "Tor Browser" and "Tor Browser Launcher Settings" application launcher to your desktop environment's menu
  * Includes AppArmor profiles to make a Tor Browser compromise not as bad
