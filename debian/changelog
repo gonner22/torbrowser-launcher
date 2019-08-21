@@ -1,3 +1,11 @@
+torbrowser-launcher (0.3.2-2) unstable; urgency=medium
+
+  * debian/rules and debian/torbrowser-launcher.maintscript:
+    - Remove the obsolete appamor profile:
+        torbrowser.Browser.plugin-container
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 22 Aug 2019 02:06:21 +0900
+
 torbrowser-launcher (0.3.2-1) unstable; urgency=medium
 
   * New upstream release 0.3.2
