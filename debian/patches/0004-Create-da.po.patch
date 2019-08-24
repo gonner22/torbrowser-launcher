@@ -1,6 +1,7 @@
 From: scootergrisen <scootergrisen@gmail.com>
 Date: Sun, 30 Sep 2018 16:33:05 +0200
 Subject: Create da.po
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/364
 
 ---
  po/da.po | 254 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

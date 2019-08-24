@@ -1,6 +1,7 @@
 From: Roger Shimizu <rosh@debian.org>
 Date: Sun, 11 Nov 2018 00:55:36 +0900
 Subject: Remove mention of modem sound in docs and translation po files
+Origin: https://bugs.debian.org/913151
 
 ---
  README.md                             | 1 -

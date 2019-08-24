@@ -1,6 +1,7 @@
 From: troubadoour <trobador@riseup.net>
 Date: Tue, 27 Mar 2018 18:19:26 -0400
 Subject: show gui only if tbb not installed
+Origin: https://github.com/troubadoour/torbrowser-launcher/commit/1402015487db5559847492ca294ac6c895245dca
 
 ---
  torbrowser_launcher/__init__.py | 29 ++++++++++++++++-------------
