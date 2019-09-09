@@ -76,7 +76,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/doc/tails/website/** r,
 
   # parent Firefox process when restarting after upgrade, Web Content processes
-  @{torbrowser_firefox_executable} ixmr -> torbrowser_firefox,
+  @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
 
   /etc/mailcap r,
   /etc/mime.types r,
