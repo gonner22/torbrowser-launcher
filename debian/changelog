@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-3) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-3) unstable; urgency=medium
 
   * debian/patches:
     - Add back patch origin.
@@ -13,7 +13,7 @@ torbrowser-launcher (0.3.2-3) UNRELEASED; urgency=medium
       Thanks to Carl Joseph Hirner III.
   * debian/control: Add python3-distro to Build-Depends.
 
- -- Roger Shimizu <rosh@debian.org>  Thu, 21 Nov 2019 00:27:42 +0900
+ -- Roger Shimizu <rosh@debian.org>  Thu, 21 Nov 2019 02:01:05 +0900
 
 torbrowser-launcher (0.3.2-2) unstable; urgency=medium
 
