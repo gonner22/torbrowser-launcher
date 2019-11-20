@@ -9,6 +9,9 @@ torbrowser-launcher (0.3.2-3) UNRELEASED; urgency=medium
       + [0b78aea] AppArmor: allow new path for the Firefox 68 IPC
       + [73fc84b] AppArmor: Pass the environment to Firefox content processes
       + [b8a13f9] AppArmor: allow running the Firefox updater from its new path
+    - Cherry-pick a patch from upstream pull-request queue to fix FTBFS issue.
+      Thanks to Carl Joseph Hirner III.
+  * debian/control: Add python3-distro to Build-Depends.
 
  -- Roger Shimizu <rosh@debian.org>  Thu, 21 Nov 2019 00:27:42 +0900
 
