@@ -12,6 +12,7 @@ Build-Depends:
  python3-all,
  python3-distro
 Standards-Version: 3.9.8
+Rules-Requires-Root: no
 Homepage: https://micahflee.com/torbrowser-launcher/
 Vcs-Git: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher.git
 Vcs-Browser: https://salsa.debian.org/pkg-privacy-team/torbrowser-launcher

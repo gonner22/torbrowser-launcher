@@ -2,6 +2,8 @@ torbrowser-launcher (0.3.2-4) UNRELEASED; urgency=medium
 
   * debian/tests:
     - Add a simple test command.
+  * debian/control:
+    - Add Rules-Requires-Root: no
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 24 Nov 2019 12:53:15 +0900
 
