@@ -6,6 +6,7 @@ torbrowser-launcher (0.3.2-4) UNRELEASED; urgency=medium
     - Add Rules-Requires-Root: no
   * debian/copyright:
     - Merge MIT with Expat license, which is exact the same.
+  * Add debian/upstream/metadata.
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 24 Nov 2019 12:53:15 +0900
 
