@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-4) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-4) unstable; urgency=medium
 
   * debian/tests:
     - Add a simple test command.
@@ -8,7 +8,7 @@ torbrowser-launcher (0.3.2-4) UNRELEASED; urgency=medium
     - Merge MIT with Expat license, which is exact the same.
   * Add debian/upstream/metadata.
 
- -- Roger Shimizu <rosh@debian.org>  Sun, 24 Nov 2019 12:53:15 +0900
+ -- Roger Shimizu <rosh@debian.org>  Thu, 28 Nov 2019 00:37:10 +0900
 
 torbrowser-launcher (0.3.2-3) unstable; urgency=medium
 
