@@ -31,11 +31,3 @@ Can you install torbrowser-launcher to blackPanther OS from offical repositiries
 updating repos
 installing  torbrowser-launcher
 ```
-# Installing in blackPanther OS
-
-Can you install torbrowser-launcher to blackPanther OS from offical repositiries or use App-Helper service
-
-```sh
-updating repos
-installing  torbrowser-launcher
-```

@@ -1,6 +1,7 @@
 From: Jony <23194385+jony0008@users.noreply.github.com>
 Date: Sat, 10 Nov 2018 11:40:47 +0100
 Subject: Add Swedish translation
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/377
 
 ---
  po/sv.po | 306 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -1,3 +1,40 @@
+torbrowser-launcher (0.3.2-4) unstable; urgency=medium
+
+  * debian/tests:
+    - Add a simple test command.
+  * debian/control:
+    - Add Rules-Requires-Root: no
+  * debian/copyright:
+    - Merge MIT with Expat license, which is exact the same.
+  * Add debian/upstream/metadata.
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 28 Nov 2019 00:37:10 +0900
+
+torbrowser-launcher (0.3.2-3) unstable; urgency=medium
+
+  * debian/patches:
+    - Add back patch origin.
+    - Backports a few patches from upstream (Closes: #942901).
+      + [0bd4779] pt_BR translation
+      + [f12222d] pt_BR translation
+      + [88046fb] Update French translation
+      + [0b78aea] AppArmor: allow new path for the Firefox 68 IPC
+      + [73fc84b] AppArmor: Pass the environment to Firefox content processes
+      + [b8a13f9] AppArmor: allow running the Firefox updater from its new path
+    - Cherry-pick a patch from upstream pull-request queue to fix FTBFS issue.
+      Thanks to Carl Joseph Hirner III.
+  * debian/control: Add python3-distro to Build-Depends.
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 21 Nov 2019 02:01:05 +0900
+
+torbrowser-launcher (0.3.2-2) unstable; urgency=medium
+
+  * debian/rules and debian/torbrowser-launcher.maintscript:
+    - Remove the obsolete appamor profile:
+        torbrowser.Browser.plugin-container
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 22 Aug 2019 02:06:21 +0900
+
 torbrowser-launcher (0.3.2-1) unstable; urgency=medium
 
   * New upstream release 0.3.2

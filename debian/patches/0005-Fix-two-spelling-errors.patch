@@ -1,6 +1,7 @@
 From: scootergrisen <scootergrisen@gmail.com>
 Date: Mon, 1 Oct 2018 16:07:16 +0200
 Subject: Fix two spelling errors
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/364
 
 ---
  po/da.po | 4 ++--

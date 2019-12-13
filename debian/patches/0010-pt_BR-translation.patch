@@ -1,0 +1,30 @@
+From: =?utf-8?b?Ikpvw6NvIFbDrXRvciBTLiBGIg==?=
+ <48962164+jjoaovitor7@users.noreply.github.com>
+Date: Mon, 29 Jul 2019 08:35:16 -0300
+Subject: pt_BR translation.
+
+Name[pt_BR]=Navegador Tor
+Comment[pt_BR]=Navegador Tor
+
+(cherry picked from commit f12222d5d18a29cc51009897174986c14911b9d0)
+---
+ share/applications/torbrowser.desktop | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/share/applications/torbrowser.desktop b/share/applications/torbrowser.desktop
+index 739be8d..7a25076 100644
+--- a/share/applications/torbrowser.desktop
++++ b/share/applications/torbrowser.desktop
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+ Name=Tor Browser
+ Name[hu]=Tor-böngésző
++Name[pt_BR]=Navegador Tor
+ GenericName=Tor browser
+ GenericName[hu]=Tor böngésző indító
+ Comment=Launch Tor Browser
+ Comment[hu]=Tor böngésző indító
++Comment[pt_BR]=Navegador Tor
+ Exec=torbrowser-launcher %u
+ Terminal=false
+ Type=Application
