@@ -109,7 +109,7 @@ class Common(object):
                 except:
                     self.set_gui('error', _("Error creating {0}").format(homedir), [], False)
         if not os.access(homedir, os.W_OK):
-            self.set_gui('error', _("{0} is not writable").format(homedir), [], False)
+            self.set_gui('error', _("{0} is not writeable").format(homedir), [], False)
 
         tbb_config = '{0}/.config/torbrowser'.format(homedir)
         tbb_cache = '{0}/.cache/torbrowser'.format(homedir)
