@@ -6,6 +6,8 @@ torbrowser-launcher (0.3.2-5) UNRELEASED; urgency=medium
       from rm_conffile line:
         /etc/apparmor.d/local/torbrowser.Browser.firefox
         /etc/apparmor.d/local/torbrowser.Tor.tor
+  * debian/manpages:
+    - Move from torbrowser-launcher.manpages to manpages.
 
  -- Roger Shimizu <rosh@debian.org>  Sun, 05 Jan 2020 22:08:12 +0900
 
