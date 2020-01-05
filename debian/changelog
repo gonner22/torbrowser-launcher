@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-5) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-5) unstable; urgency=medium
 
   * debian/maintscript:
     - Move from torbrowser-launcher.maintscript to maintscript.
@@ -17,7 +17,7 @@ torbrowser-launcher (0.3.2-5) UNRELEASED; urgency=medium
         /etc/apparmor.d/local/torbrowser.Tor.tor
       (Closes: #934119)
 
- -- Roger Shimizu <rosh@debian.org>  Sun, 05 Jan 2020 22:08:12 +0900
+ -- Roger Shimizu <rosh@debian.org>  Mon, 06 Jan 2020 01:07:36 +0900
 
 torbrowser-launcher (0.3.2-4) unstable; urgency=medium
 
