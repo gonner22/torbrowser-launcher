@@ -7,6 +7,7 @@ torbrowser-launcher (0.3.2-6) UNRELEASED; urgency=medium
   * debian/preinst:
     - Create dummy local apparmor profile if it's nonexisting.
       (Closes: #934119).
+    - Update the commit SHA-1.
 
  -- Roger Shimizu <rosh@debian.org>  Wed, 08 Jan 2020 00:39:16 +0900
 
