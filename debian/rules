@@ -5,6 +5,10 @@ include /usr/share/dpkg/pkg-info.mk
 %:
 	dh $@ --with python3 --buildsystem=pybuild
 
+override_dh_auto_install:
+	dh_auto_install
+	rm -r debian/*/etc/apparmor.d/local
+
 override_dh_install:
 	for PROFILE in torbrowser.Tor.tor torbrowser.Browser.firefox ; do \
 		dh_apparmor --profile-name=$$PROFILE -ptorbrowser-launcher ; \
@@ -16,6 +20,3 @@ override_dh_install:
 override_dh_clean:
 	rm -rf build share/locale
 	dh_clean
-
-override_dh_auto_test:
-	@echo skip the test

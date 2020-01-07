@@ -1,3 +1,15 @@
+torbrowser-launcher (0.3.2-6) UNRELEASED; urgency=medium
+
+  * debian/rules:
+    - Remove override_dh_auto_test, it seems fine without it.
+    - Add override_dh_auto_install, to exclude local apparmor profile
+      from shipping as conffile nor normal file.
+  * debian/preinst:
+    - Create dummy local apparmor profile if it's nonexisting.
+      (Closes: #934119).
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 08 Jan 2020 00:39:16 +0900
+
 torbrowser-launcher (0.3.2-5) unstable; urgency=medium
 
   * debian/maintscript:
