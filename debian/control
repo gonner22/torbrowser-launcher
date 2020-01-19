@@ -10,7 +10,10 @@ Build-Depends:
  help2man,
  lsb-release,
  python3-all,
- python3-distro
+ python3-distro,
+ python3-gpg,
+ python3-pyqt5,
+ python3-requests
 Standards-Version: 3.9.8
 Rules-Requires-Root: no
 Homepage: https://micahflee.com/torbrowser-launcher/
@@ -24,8 +27,8 @@ Depends:
  ${python3:Depends},
  ca-certificates,
  libdbus-glib-1-2,
- python3-pyqt5,
  python3-gpg,
+ python3-pyqt5,
  python3-requests,
  python3-socks
 Recommends: tor

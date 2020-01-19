@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-6) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-6) unstable; urgency=medium
 
   * debian/rules:
     - Remove override_dh_auto_test, it seems fine without it.
@@ -8,8 +8,10 @@ torbrowser-launcher (0.3.2-6) UNRELEASED; urgency=medium
     - Create dummy local apparmor profile if it's nonexisting.
       (Closes: #934119).
     - Update the commit SHA-1.
+  * debian/control:
+    - Add a few Depends to Build-Depends to pass dh_auto_test.
 
- -- Roger Shimizu <rosh@debian.org>  Wed, 08 Jan 2020 00:39:16 +0900
+ -- Roger Shimizu <rosh@debian.org>  Mon, 20 Jan 2020 01:06:01 +0900
 
 torbrowser-launcher (0.3.2-5) unstable; urgency=medium
 
