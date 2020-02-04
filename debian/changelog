@@ -1,3 +1,10 @@
+torbrowser-launcher (0.3.2-8) UNRELEASED; urgency=medium
+
+  * debian/rules:
+    - Revert the workaround for skipping test on i386.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 05 Feb 2020 01:27:43 +0900
+
 torbrowser-launcher (0.3.2-7) unstable; urgency=medium
 
   * debian/rules:

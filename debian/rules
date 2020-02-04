@@ -20,9 +20,3 @@ override_dh_install:
 override_dh_clean:
 	rm -rf build share/locale
 	dh_clean
-
-# skip test for i386, since gpgme is broken on 32bit system
-override_dh_auto_test:
-ifneq (i386, $(DEB_TARGET_ARCH))
-	dh_auto_test
-endif
