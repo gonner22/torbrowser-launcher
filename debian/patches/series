@@ -13,3 +13,4 @@
 0013-AppArmor-Pass-the-environment-to-Firefox-content-pro.patch
 0014-AppArmor-allow-running-the-Firefox-updater-from-its-.patch
 0015-Update-setup.py.patch
+0016-AppArmor-allow-u2f-devices.patch
