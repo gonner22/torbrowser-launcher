@@ -2,6 +2,10 @@ torbrowser-launcher (0.3.2-8) UNRELEASED; urgency=medium
 
   * debian/rules:
     - Revert the workaround for skipping test on i386.
+  * debian/patches:
+    - Backport patch from upstream.
+      + [704e5ca] Allow torbrowser to access u2f devices
+        (Closes: #955821)
 
  -- Roger Shimizu <rosh@debian.org>  Wed, 05 Feb 2020 01:27:43 +0900
 
