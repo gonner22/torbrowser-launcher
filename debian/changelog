@@ -6,6 +6,7 @@ torbrowser-launcher (0.3.2-8) UNRELEASED; urgency=medium
     - Backport patch from upstream.
       + [704e5ca] Allow torbrowser to access u2f devices
         (Closes: #955821)
+  * debian/NEWS: rename from NEWS.Debian
 
  -- Roger Shimizu <rosh@debian.org>  Wed, 05 Feb 2020 01:27:43 +0900
 
