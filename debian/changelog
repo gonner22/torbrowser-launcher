@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-8) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-8) unstable; urgency=medium
 
   * debian/rules:
     - Revert the workaround for skipping test on i386.
@@ -8,7 +8,7 @@ torbrowser-launcher (0.3.2-8) UNRELEASED; urgency=medium
         (Closes: #955821)
   * debian/NEWS: rename from NEWS.Debian
 
- -- Roger Shimizu <rosh@debian.org>  Wed, 05 Feb 2020 01:27:43 +0900
+ -- Roger Shimizu <rosh@debian.org>  Sun, 12 Apr 2020 16:30:34 +0900
 
 torbrowser-launcher (0.3.2-7) unstable; urgency=medium
 
