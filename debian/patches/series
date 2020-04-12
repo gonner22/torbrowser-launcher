@@ -14,3 +14,4 @@
 0014-AppArmor-allow-running-the-Firefox-updater-from-its-.patch
 0015-Update-setup.py.patch
 0016-AppArmor-allow-u2f-devices.patch
+0017-Silence-the-deny-apparmor-log-from-lsb_release.patch

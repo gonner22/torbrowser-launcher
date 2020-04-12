@@ -1,0 +1,23 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Sun, 12 Apr 2020 16:02:51 +0900
+Subject: Silence the deny apparmor log from lsb_release
+
+This resolves debian bug: https://bugs.debian.org/913104
+
+(cherry picked from commit c08280a8bd7cb0bd548a38acd9326e8647d00db8)
+---
+ apparmor/torbrowser.Browser.firefox | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git apparmor/torbrowser.Browser.firefox apparmor/torbrowser.Browser.firefox
+index 1266476..e7ebddc 100644
+--- apparmor/torbrowser.Browser.firefox
++++ apparmor/torbrowser.Browser.firefox
+@@ -122,6 +122,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
+   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+   deny /run/user/[0-9]*/dconf/user rw,
++  deny /usr/bin/lsb_release x,
+ 
+   # Silence denial logs about PulseAudio
+   deny /etc/pulse/client.conf r,
