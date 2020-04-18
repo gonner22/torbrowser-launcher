@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-9) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-9) unstable; urgency=medium
 
   * debian/patches:
     - Refresh patches.
@@ -11,7 +11,7 @@ torbrowser-launcher (0.3.2-9) UNRELEASED; urgency=medium
     - Bump policy version to 4.5.0
   * Remove debian/compat.
 
- -- Roger Shimizu <rosh@debian.org>  Sat, 18 Apr 2020 16:39:12 +0900
+ -- Roger Shimizu <rosh@debian.org>  Sat, 18 Apr 2020 17:38:14 +0900
 
 torbrowser-launcher (0.3.2-8) unstable; urgency=medium
 
