@@ -7,7 +7,7 @@ include /usr/share/dpkg/pkg-info.mk
 
 override_dh_auto_install:
 	dh_auto_install
-	rm -r debian/*/etc/apparmor.d/local
+	rm -rf debian/*/etc/apparmor.d/local
 
 override_dh_install:
 	for PROFILE in torbrowser.Tor.tor torbrowser.Browser.firefox ; do \

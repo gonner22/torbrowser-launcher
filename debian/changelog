@@ -4,6 +4,8 @@ torbrowser-launcher (0.3.2-9) UNRELEASED; urgency=medium
     - Refresh patches.
     - Amend 0017 patch to add more description.
       Thanks to intrigeri's review and help. (Closes: #913104)
+  * debian/rules:
+    - Minor fix for FTBFS on ubuntu. (Closes: #958063)
 
  -- Roger Shimizu <rosh@debian.org>  Sat, 18 Apr 2020 16:39:12 +0900
 
