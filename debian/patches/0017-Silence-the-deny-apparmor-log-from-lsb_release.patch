@@ -4,15 +4,19 @@ Subject: Silence the deny apparmor log from lsb_release
 
 This resolves debian bug: https://bugs.debian.org/913104
 
-(cherry picked from commit c08280a8bd7cb0bd548a38acd9326e8647d00db8)
+lsb_release is only used by Firefox to add extra information to crash reports,
+and Tor Browser is built with --disable-crashreporter.
+
+Therefore, AppArmor denying execution of lsb_release should be a no-op,
+and we can silence the corresponding log message.
 ---
  apparmor/torbrowser.Browser.firefox | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git apparmor/torbrowser.Browser.firefox apparmor/torbrowser.Browser.firefox
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
 index 1266476..e7ebddc 100644
---- apparmor/torbrowser.Browser.firefox
-+++ apparmor/torbrowser.Browser.firefox
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
 @@ -122,6 +122,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
    deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
    deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,

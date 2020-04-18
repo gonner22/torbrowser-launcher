@@ -8,10 +8,10 @@ Subject: [PATCH] Allow torbrowser to access u2f devices
  1 file changed, 9 insertions(+)
 
 diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
-index 42516b6..c067375 100644
+index 8d96043..1266476 100644
 --- a/apparmor/torbrowser.Browser.firefox
 +++ b/apparmor/torbrowser.Browser.firefox
-@@ -133,5 +133,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+@@ -134,5 +134,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
    /etc/xfce4/defaults.list r,
    /usr/share/xfce4/applications/ r,
  
