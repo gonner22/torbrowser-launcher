@@ -101,12 +101,20 @@ class Common(object):
             "zh-CN",
             "zh-TW",
         ]
+
+        # a list of manually configured language fallback overriding
+        language_overrides = {
+            'zh-HK': 'zh-TW',
+        }
+
         locale.setlocale(locale.LC_MESSAGES, '')
         default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
         if default_locale is None:
             self.language = "en-US"
         else:
             self.language = default_locale.replace("_", "-")
+            if self.language in language_overrides:
+                self.language = language_overrides[self.language]
             if self.language not in available_languages:
                 self.language = self.language.split("-")[0]
                 if self.language not in available_languages:
