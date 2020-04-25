@@ -1,0 +1,31 @@
+From: Karl-Johan Karlsson <creideiki@ferretporn.se>
+Date: Sun, 6 Jan 2019 13:58:43 +0100
+Subject: Set language from LC_MESSAGES, not LC_CTYPE
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/383
+
+Calling `locale.getlocale()` checks LC_CTYPE, which is not meant for
+UI strings. Change the call to check LC_MESSAGES instead.
+
+Also call `locale.setlocale()` first to import the locale settings
+from the environment. This is not needed for LC_CTYPE due to
+https://bugs.python.org/issue6203 but is required for LC_MESSAGES.
+
+(cherry picked from commit cd8edcd637520d2a652dddbf0004b7eb96f4f748)
+---
+ torbrowser_launcher/common.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
+index 25bb984..6533723 100644
+--- a/torbrowser_launcher/common.py
++++ b/torbrowser_launcher/common.py
+@@ -73,7 +73,8 @@ class Common(object):
+ 
+         # figure out the language
+         available_languages = ['ar', 'ca', 'da', 'de', 'en-US', 'es-ES', 'fa', 'fr', 'ga-IE', 'he', 'id', 'is', 'it', 'ja', 'ko', 'nb-NO', 'nl', 'pl', 'pt-BR', 'ru', 'sv-SE', 'tr', 'vi', 'zh-CN', 'zh-TW']
+-        default_locale = locale.getlocale()[0]
++        locale.setlocale(locale.LC_MESSAGES, '')
++        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
+         if default_locale is None:
+             self.language = 'en-US'
+         else:

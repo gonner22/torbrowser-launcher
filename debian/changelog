@@ -1,3 +1,12 @@
+torbrowser-launcher (0.3.2-10) UNRELEASED; urgency=medium
+
+  * debian/patches:
+    - Remove 0008 patch.
+    - Cherry-pick patch 0017 to fix the locale issue for python.
+      (Closes: #943922)
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 25 Apr 2020 23:58:32 +0900
+
 torbrowser-launcher (0.3.2-9) unstable; urgency=medium
 
   * debian/patches:
