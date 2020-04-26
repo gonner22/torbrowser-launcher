@@ -15,3 +15,4 @@
 0015-AppArmor-allow-u2f-devices.patch
 0016-Silence-the-deny-apparmor-log-from-lsb_release.patch
 0017-Set-language-from-LC_MESSAGES-not-LC_CTYPE.patch
+0018-Fix-use-case-that-enforce-install-of-EN-version-on-n.patch
