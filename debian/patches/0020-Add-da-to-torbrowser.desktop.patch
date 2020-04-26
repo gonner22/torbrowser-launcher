@@ -1,0 +1,28 @@
+From: scootergrisen <scootergrisen@gmail.com>
+Date: Fri, 1 Mar 2019 17:31:07 +0100
+Subject: Add [da] to torbrowser.desktop
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/392
+
+(cherry picked from commit 1fa13798454a6f985438d36e387c09a34e20881c)
+---
+ share/applications/torbrowser.desktop | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/share/applications/torbrowser.desktop b/share/applications/torbrowser.desktop
+index 7a25076..c787e63 100644
+--- a/share/applications/torbrowser.desktop
++++ b/share/applications/torbrowser.desktop
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+ Name=Tor Browser
++Name[da]=Tor Browser
+ Name[hu]=Tor-böngésző
+ Name[pt_BR]=Navegador Tor
+ GenericName=Tor browser
++GenericName[da]=Tor Browser
+ GenericName[hu]=Tor böngésző indító
+ Comment=Launch Tor Browser
++Comment[da]=Start Tor Browser
+ Comment[hu]=Tor böngésző indító
+ Comment[pt_BR]=Navegador Tor
+ Exec=torbrowser-launcher %u

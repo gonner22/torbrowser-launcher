@@ -6,6 +6,8 @@ torbrowser-launcher (0.3.2-10) UNRELEASED; urgency=medium
       (Closes: #943922)
     - Add patch 0018 to fix use case that enforce install of EN version
       on non-EN user session (Closes: #842021).
+    - Cherry-pick patch 0019 - 0025 patch from github pull request
+      to add several translation po.
 
  -- Roger Shimizu <rosh@debian.org>  Sat, 25 Apr 2020 23:58:32 +0900
 

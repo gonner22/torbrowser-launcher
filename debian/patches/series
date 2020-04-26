@@ -16,3 +16,10 @@
 0016-Silence-the-deny-apparmor-log-from-lsb_release.patch
 0017-Set-language-from-LC_MESSAGES-not-LC_CTYPE.patch
 0018-Fix-use-case-that-enforce-install-of-EN-version-on-n.patch
+0019-Fix-language-fallback-for-Chinese-Hong-Kong.patch
+0020-Add-da-to-torbrowser.desktop.patch
+0021-Add-da-to-torbrowser-settings.desktop.patch
+0022-Belarusian-localization-is-added.patch
+0023-Added-de.po.patch
+0024-Added-hr.po.patch
+0025-Add-Chinese-Traditional-translation.patch
