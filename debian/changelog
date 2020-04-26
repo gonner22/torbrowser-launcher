@@ -2,6 +2,8 @@ torbrowser-launcher (0.3.2-11) UNRELEASED; urgency=medium
 
   * Set upstream metadata fields: Bug-Submit.
   * Fix field name typos in debian/copyright.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
 
  -- Debian Janitor <janitor@jelmer.uk>  Sun, 26 Apr 2020 19:04:30 +0000
 
