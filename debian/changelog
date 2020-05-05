@@ -1,5 +1,6 @@
 torbrowser-launcher (0.3.2-11) UNRELEASED; urgency=medium
 
+  [ Debian Janitor ]
   * Set upstream metadata fields: Bug-Submit.
   * Fix field name typos in debian/copyright.
   * Remove obsolete fields Contact, Name from debian/upstream/metadata
@@ -7,6 +8,12 @@ torbrowser-launcher (0.3.2-11) UNRELEASED; urgency=medium
   * debian/patches:
     - Add patch to append the apparmor rule for tbb fonts path.
       Thanks to Santiago R.R. (Closes: #959388).
+
+  [ Roger Shimizu ]
+  * debian/patches:
+    - Add patch to append the apparmor rule for tbb fonts path.
+      Thanks to Santiago R.R. (Closes: #959388).
+    - Add patch of apparmor to support obfs-meek.
 
  -- Debian Janitor <janitor@jelmer.uk>  Sun, 26 Apr 2020 19:04:30 +0000
 
