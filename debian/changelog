@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-11) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-11) unstable; urgency=medium
 
   [ Debian Janitor ]
   * Set upstream metadata fields: Bug-Submit.
@@ -15,7 +15,7 @@ torbrowser-launcher (0.3.2-11) UNRELEASED; urgency=medium
       Thanks to Santiago R.R. (Closes: #959388).
     - Add patch of apparmor to support obfs-meek.
 
- -- Debian Janitor <janitor@jelmer.uk>  Sun, 26 Apr 2020 19:04:30 +0000
+ -- Roger Shimizu <rosh@debian.org>  Sat, 16 May 2020 20:33:55 +0900
 
 torbrowser-launcher (0.3.2-10) unstable; urgency=medium
 
