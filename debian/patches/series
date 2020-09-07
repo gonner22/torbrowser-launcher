@@ -25,3 +25,5 @@
 0025-Add-Chinese-Traditional-translation.patch
 0026-torbrowser-fails-to-start-due-to-lacking-fonts-entry.patch
 0027-AppArmor-Support-pluggable-transports-especially-mee.patch
+0028-Update-Tor-Browser-Developers-public-key-481.patch
+0029-AppArmor-silence-sys_admin-capability.patch

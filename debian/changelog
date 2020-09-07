@@ -1,3 +1,11 @@
+torbrowser-launcher (0.3.2-12) UNRELEASED; urgency=medium
+
+  * debian/patches:
+    - Add patch to update Tor Browser Developers public key.
+    - Add patch to update AppArmor rule from upstream.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 08 Sep 2020 00:14:14 +0900
+
 torbrowser-launcher (0.3.2-11) unstable; urgency=medium
 
   [ Debian Janitor ]
