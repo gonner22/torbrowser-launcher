@@ -27,3 +27,4 @@
 0027-AppArmor-Support-pluggable-transports-especially-mee.patch
 0028-Update-Tor-Browser-Developers-public-key-481.patch
 0029-AppArmor-silence-sys_admin-capability.patch
+0030-Use-gpg-instead-of-gpg2.patch
