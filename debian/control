@@ -26,6 +26,7 @@ Depends:
  ${misc:Depends},
  ${python3:Depends},
  ca-certificates,
+ gnupg,
  libdbus-glib-1-2,
  python3-gpg,
  python3-pyqt5,

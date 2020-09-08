@@ -4,6 +4,8 @@ torbrowser-launcher (0.3.2-13) UNRELEASED; urgency=medium
     - Update patch to update TBB signing key by removing spammed sigs.
     - Add patch to use /usr/bin/gpg instead of /usr/bin/gpg2
       (Closes: #969901).
+  * debian/control:
+    - Add gnupg as depends.
 
  -- Roger Shimizu <rosh@debian.org>  Wed, 09 Sep 2020 01:54:15 +0900
 
