@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.2-13) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.2-13) unstable; urgency=medium
 
   * debian/patches:
     - Update patch to update TBB signing key by removing spammed sigs.
@@ -7,7 +7,7 @@ torbrowser-launcher (0.3.2-13) UNRELEASED; urgency=medium
   * debian/control:
     - Add gnupg as depends.
 
- -- Roger Shimizu <rosh@debian.org>  Wed, 09 Sep 2020 01:54:15 +0900
+ -- Roger Shimizu <rosh@debian.org>  Wed, 09 Sep 2020 02:04:53 +0900
 
 torbrowser-launcher (0.3.2-12) unstable; urgency=high
 
