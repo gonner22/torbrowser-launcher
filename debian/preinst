@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+# Remove old apparmor profiles shipped not as conffile before, only
+# if the checksum matches, which means without user modification
+[ "$1" = install -o "$1" = upgrade ] &&
+	for PROFILE in torbrowser.Browser.firefox torbrowser.Tor.tor ; do
+	profile=/etc/apparmor.d/local/$PROFILE
+	# commit [064ad1f]:
+	#	db8bcb0d87df8a9727707615ac3651c4  torbrowser.Browser.firefox
+	#	6862d1564692f7e61a55e2888d671dff  torbrowser.Tor.tor
+	# commit [06eea27]:
+	#	f211f31857d84b30b7d2bf5b4106dde3  torbrowser.Browser.firefox
+	if [ -f "$profile" ]; then
+		case $(md5sum "$profile"| sed -e 's/ .*//') in
+			"db8bcb0d87df8a9727707615ac3651c4" |\
+			"6862d1564692f7e61a55e2888d671dff" |\
+			"f211f31857d84b30b7d2bf5b4106dde3" )
+				rm -f "$profile"
+				touch $profile
+				;;
+		esac
+	else
+		mkdir -p /etc/apparmor.d/local
+		touch $profile
+	fi
+done
+
+#DEBHELPER#

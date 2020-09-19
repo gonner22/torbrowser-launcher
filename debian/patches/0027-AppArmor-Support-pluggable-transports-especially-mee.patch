@@ -1,0 +1,31 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Wed, 6 May 2020 17:01:41 +0900
+Subject: AppArmor: Support pluggable transports especially meek
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/469
+
+---
+ apparmor/torbrowser.Tor.tor | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/apparmor/torbrowser.Tor.tor b/apparmor/torbrowser.Tor.tor
+index b0bfce0..f5b8177 100644
+--- a/apparmor/torbrowser.Tor.tor
++++ b/apparmor/torbrowser.Tor.tor
+@@ -24,6 +24,7 @@ profile torbrowser_tor @{torbrowser_tor_executable} {
+   # Support some of the included pluggable transports
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/PluggableTransports/** rix,
+   @{PROC}/sys/net/core/somaxconn r,
++  #include <abstractions/ssl_certs>
+ 
+   # Silence file_inherit logs
+   deny @{torbrowser_home_dir}/{browser/,}omni.ja r,
+@@ -31,6 +32,9 @@ profile torbrowser_tor @{torbrowser_tor_executable} {
+   deny @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/.parentlock rw,
+   deny @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/extensions/*.xpi r,
+   deny @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/startupCache/* r,
++  # Silence logs from included pluggable transports
++  deny /etc/hosts r,
++  deny /etc/services r,
+ 
+   @{PROC}/sys/kernel/random/uuid r,
+   /sys/devices/system/cpu/ r,

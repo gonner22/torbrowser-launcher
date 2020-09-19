@@ -1,0 +1,31 @@
+From: scootergrisen <scootergrisen@gmail.com>
+Date: Fri, 1 Mar 2019 17:31:12 +0100
+Subject: Add [da] to torbrowser-settings.desktop
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/393
+
+(cherry picked from commit 897a532538e79a7d693284ab9aeffb1b074f73a0)
+---
+ share/applications/torbrowser-settings.desktop | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/share/applications/torbrowser-settings.desktop b/share/applications/torbrowser-settings.desktop
+index 4f12adb..2c45464 100644
+--- a/share/applications/torbrowser-settings.desktop
++++ b/share/applications/torbrowser-settings.desktop
+@@ -1,13 +1,16 @@
+ [Desktop Entry]
+ Name=Tor Browser Launcher Settings
++Name[da]=Indstillinger for Tor Browser-opstarter
+ Name[fr]=Tor Browser Launcher configurations
+ Name[hu]=Tor-böngésző indító beállításai
+ Name[nl]=Tor Browser Launcher Instellingen
+ Name[pt_BR]=Navegador Tor (Configurações do Lançador)
+ Name[ru]=Tor Browser (настройки запуска)
+ GenericName=Tor Browser Launcher Settings
++GenericName[da]=Indstillinger for Tor Browser-opstarter
+ GenericName[hu]=Tor-böngésző indító beállításai
+ Comment=Tor Browser Launcher Settings
++Comment[da]=Indstillinger for Tor Browser-opstarter
+ Comment[fr]=Tor Browser Launcher configurations
+ Comment[hu]=Tor-böngésző indító beállításai
+ Comment[nl]=Tor Browser Launcher Instellingen

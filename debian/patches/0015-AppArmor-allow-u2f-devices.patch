@@ -1,0 +1,28 @@
+From: Birger Schacht <birger@rantanplan.org>
+Date: Wed, 23 Oct 2019 19:47:55 +0200
+Subject: [PATCH] Allow torbrowser to access u2f devices
+
+(cherry picked from 704e5ca3b46ac1bcf7931875fc7d33ad13910e10)
+---
+ apparmor/torbrowser.Browser.firefox | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 8d96043..1266476 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -134,5 +134,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   /etc/xfce4/defaults.list r,
+   /usr/share/xfce4/applications/ r,
+ 
++  # u2f (tested with Yubikey 4)
++  /sys/class/ r,
++  /sys/bus/ r,
++  /sys/class/hidraw/ r,
++  /run/udev/data/c24{7,9}:* r,
++  /dev/hidraw* rw,
++  # Yubikey NEO also needs this:
++  /sys/devices/**/hidraw/hidraw*/uevent r,
++
+   #include <local/torbrowser.Browser.firefox>
+ }

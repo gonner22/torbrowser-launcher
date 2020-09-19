@@ -1,3 +1,121 @@
+torbrowser-launcher (0.3.2-13) unstable; urgency=medium
+
+  * debian/patches:
+    - Update patch to update TBB signing key by removing spammed sigs.
+    - Add patch to use /usr/bin/gpg instead of /usr/bin/gpg2
+      (Closes: #969901).
+  * debian/control:
+    - Add gnupg as depends.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 09 Sep 2020 02:04:53 +0900
+
+torbrowser-launcher (0.3.2-12) unstable; urgency=high
+
+  * debian/patches:
+    - Add patch to update Tor Browser Developers public key.
+    - Add patch to update AppArmor rule from upstream.
+
+ -- Roger Shimizu <rosh@debian.org>  Tue, 08 Sep 2020 01:34:54 +0900
+
+torbrowser-launcher (0.3.2-11) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Submit.
+  * Fix field name typos in debian/copyright.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+
+  [ Roger Shimizu ]
+  * debian/patches:
+    - Add patch to append the apparmor rule for tbb fonts path.
+      Thanks to Santiago R.R. (Closes: #959388).
+    - Add patch of apparmor to support obfs-meek.
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 16 May 2020 20:33:55 +0900
+
+torbrowser-launcher (0.3.2-10) unstable; urgency=medium
+
+  * debian/patches:
+    - Remove 0008 patch.
+    - Cherry-pick patch 0017 to fix the locale issue for python.
+      (Closes: #943922)
+    - Add patch 0018 to fix use case that enforce install of EN version
+      on non-EN user session (Closes: #842021).
+    - Cherry-pick patch 0019 - 0025 patch from github pull request
+      to add several translation po.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 26 Apr 2020 23:27:41 +0900
+
+torbrowser-launcher (0.3.2-9) unstable; urgency=medium
+
+  * debian/patches:
+    - Refresh patches.
+    - Amend 0017 patch to add more description.
+      Thanks to intrigeri's review and help. (Closes: #913104)
+  * debian/rules:
+    - Minor fix for FTBFS on ubuntu. (Closes: #958063)
+  * debian/control:
+    - Bump debhelper version to 12.
+    - Bump policy version to 4.5.0
+  * Remove debian/compat.
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 18 Apr 2020 17:38:14 +0900
+
+torbrowser-launcher (0.3.2-8) unstable; urgency=medium
+
+  * debian/rules:
+    - Revert the workaround for skipping test on i386.
+  * debian/patches:
+    - Backport patch from upstream.
+      + [704e5ca] Allow torbrowser to access u2f devices
+        (Closes: #955821)
+  * debian/NEWS: rename from NEWS.Debian
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 12 Apr 2020 16:30:34 +0900
+
+torbrowser-launcher (0.3.2-7) unstable; urgency=medium
+
+  * debian/rules:
+    - Skip test for i386, since gpgme is broken on 32bit system.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 26 Jan 2020 14:24:13 +0900
+
+torbrowser-launcher (0.3.2-6) unstable; urgency=medium
+
+  * debian/rules:
+    - Remove override_dh_auto_test, it seems fine without it.
+    - Add override_dh_auto_install, to exclude local apparmor profile
+      from shipping as conffile nor normal file.
+  * debian/preinst:
+    - Create dummy local apparmor profile if it's nonexisting.
+      (Closes: #934119).
+    - Update the commit SHA-1.
+  * debian/control:
+    - Add a few Depends to Build-Depends to pass dh_auto_test.
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 20 Jan 2020 01:06:01 +0900
+
+torbrowser-launcher (0.3.2-5) unstable; urgency=medium
+
+  * debian/maintscript:
+    - Move from torbrowser-launcher.maintscript to maintscript.
+    - The following files are still shipped by this package, so removed them
+      from rm_conffile line:
+        /etc/apparmor.d/local/torbrowser.Browser.firefox
+        /etc/apparmor.d/local/torbrowser.Tor.tor
+  * debian/manpages:
+    - Move from torbrowser-launcher.manpages to manpages.
+  * debian/rules:
+    - Remove copying apparmor profile, since this is handled by setup.py.
+  * debian/preinst:
+    - Remove old apparmor profiles shipped not as conffile before, only
+      if the checksum matches, which means without user modification:
+        /etc/apparmor.d/local/torbrowser.Browser.firefox
+        /etc/apparmor.d/local/torbrowser.Tor.tor
+      (Closes: #934119)
+
+ -- Roger Shimizu <rosh@debian.org>  Mon, 06 Jan 2020 01:07:36 +0900
+
 torbrowser-launcher (0.3.2-4) unstable; urgency=medium
 
   * debian/tests:

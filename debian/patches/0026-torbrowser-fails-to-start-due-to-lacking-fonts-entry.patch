@@ -1,0 +1,21 @@
+From: "Santiago R.R" <santiagorr@riseup.net>
+Date: Fri, 1 May 2020 21:47:35 +0200
+Subject: torbrowser fails to start due to lacking fonts/* entry in apparmor
+Origin: https://bugs.debian.org/959388
+
+---
+ apparmor/torbrowser.Browser.firefox | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index e7ebddc..ece3159 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -68,6 +68,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profiles.ini r,
+   owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/{,**} rwk,
+   owner @{torbrowser_home_dir}/TorBrowser/Data/fontconfig/fonts.conf r,
++  owner @{torbrowser_home_dir}/fonts/* l,
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/tor px,
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/ r,
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so mr,
