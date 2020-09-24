@@ -29,3 +29,4 @@
 0029-AppArmor-silence-sys_admin-capability.patch
 0030-Use-gpg-instead-of-gpg2.patch
 0031-Use-better-version-string-comparison.patch
+0032-apparmor-allow-Browser-to-memory-map-libstdc.patch

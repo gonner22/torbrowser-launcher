@@ -1,3 +1,12 @@
+torbrowser-launcher (0.3.2-14) unstable; urgency=high
+
+  * Upload to unstable.
+  * debian/patches:
+    - Cherry-pick patch 0032 to fix apparmor on libstdc++.
+      Thanks to Robert Sacks for the report and patch (Closes: #970799).
+
+ -- Roger Shimizu <rosh@debian.org>  Thu, 24 Sep 2020 23:28:33 +0900
+
 torbrowser-launcher (0.3.2-14~exp1) experimental; urgency=high
 
   * debian/patches:
