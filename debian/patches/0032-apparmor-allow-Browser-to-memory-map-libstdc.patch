@@ -1,0 +1,25 @@
+From: Robert Sacks <robert@rmsacks.com>
+Date: Wed, 23 Sep 2020 13:10:35 -0400
+Subject: apparmor: allow Browser to memory map libstdc++
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/503
+
+Fixes #502
+
+(cherry picked from commit e9816035a8d3d55be012c34d70bd84e1ad42fc62)
+---
+ apparmor/torbrowser.Browser.firefox | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 4363cdf..57c0359 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -73,6 +73,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/ r,
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so mr,
+   owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so.* mr,
++  owner @{torbrowser_home_dir}/TorBrowser/Tor/libstdc++/*.so mr,
++  owner @{torbrowser_home_dir}/TorBrowser/Tor/libstdc++/*.so.* mr,
+ 
+   # parent Firefox process when restarting after upgrade, Web Content processes
+   owner @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,

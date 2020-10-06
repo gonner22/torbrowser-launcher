@@ -62,6 +62,7 @@ class Common(object):
             self.mkdir(self.paths['dirs'][d])
         self.load_mirrors()
         self.load_settings()
+        self.build_paths()
         self.mkdir(self.paths['download_dir'])
         self.mkdir(self.paths['tbb']['dir'])
         self.init_gnupg()
@@ -73,11 +74,20 @@ class Common(object):
 
         # figure out the language
         available_languages = ['ar', 'ca', 'da', 'de', 'en-US', 'es-ES', 'fa', 'fr', 'ga-IE', 'he', 'id', 'is', 'it', 'ja', 'ko', 'nb-NO', 'nl', 'pl', 'pt-BR', 'ru', 'sv-SE', 'tr', 'vi', 'zh-CN', 'zh-TW']
-        default_locale = locale.getlocale()[0]
+
+        # a list of manually configured language fallback overriding
+        language_overrides = {
+            'zh-HK': 'zh-TW',
+        }
+
+        locale.setlocale(locale.LC_MESSAGES, '')
+        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
         if default_locale is None:
             self.language = 'en-US'
         else:
             self.language = default_locale.replace('_', '-')
+            if self.language in language_overrides:
+                self.language = language_overrides[self.language]
             if self.language not in available_languages:
                 self.language = self.language.split('-')[0]
                 if self.language not in available_languages:
@@ -99,13 +109,17 @@ class Common(object):
                 except:
                     self.set_gui('error', _("Error creating {0}").format(homedir), [], False)
         if not os.access(homedir, os.W_OK):
-            self.set_gui('error', _("{0} is not writable").format(homedir), [], False)
+            self.set_gui('error', _("{0} is not writeable").format(homedir), [], False)
 
         tbb_config = '{0}/.config/torbrowser'.format(homedir)
         tbb_cache = '{0}/.cache/torbrowser'.format(homedir)
         tbb_local = '{0}/.local/share/torbrowser'.format(homedir)
         old_tbb_data = '{0}/.torbrowser'.format(homedir)
 
+        if hasattr(self, 'settings') and self.settings['force_en-US']:
+            language = 'en-US'
+        else:
+            language = self.language
         if tbb_version:
             # tarball filename
             if self.architecture == 'x86_64':
@@ -113,10 +127,6 @@ class Common(object):
             else:
                 arch = 'linux32'
 
-            if hasattr(self, 'settings') and self.settings['force_en-US']:
-                language = 'en-US'
-            else:
-                language = self.language
             tarball_filename = 'tor-browser-' + arch + '-' + tbb_version + '_' + language + '.tar.xz'
 
             # tarball
@@ -152,11 +162,11 @@ class Common(object):
                 'version_check_file': tbb_cache + '/download/release.xml',
                 'tbb': {
                     'changelog': tbb_local + '/tbb/' + self.architecture + '/tor-browser_' +
-                                 self.language + '/Browser/TorBrowser/Docs/ChangeLog.txt',
+                                 language + '/Browser/TorBrowser/Docs/ChangeLog.txt',
                     'dir': tbb_local + '/tbb/' + self.architecture,
-                    'dir_tbb': tbb_local + '/tbb/' + self.architecture + '/tor-browser_' + self.language,
+                    'dir_tbb': tbb_local + '/tbb/' + self.architecture + '/tor-browser_' + language,
                     'start': tbb_local + '/tbb/' + self.architecture + '/tor-browser_' +
-                             self.language + '/start-tor-browser.desktop'
+                             language + '/start-tor-browser.desktop'
                 },
             }
 
@@ -193,7 +203,7 @@ class Common(object):
         else:
             print('Refreshing local keyring...')
 
-        p = subprocess.Popen(['/usr/bin/gpg2', '--status-fd', '2',
+        p = subprocess.Popen(['/usr/bin/gpg', '--status-fd', '2',
                               '--homedir', self.paths['gnupg_homedir'],
                               '--keyserver', 'hkps://keys.openpgp.org',
                               '--refresh-keys'], stderr=subprocess.PIPE)
