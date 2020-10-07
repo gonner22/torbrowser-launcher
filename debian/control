@@ -30,6 +30,7 @@ Depends:
  gnupg,
  libdbus-glib-1-2,
  python3-gpg,
+ python3-packaging,
  python3-pyqt5,
  python3-requests,
  python3-socks

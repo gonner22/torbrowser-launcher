@@ -1,3 +1,10 @@
+torbrowser-launcher (0.3.3-2) unstable; urgency=medium
+
+  * debian/control:
+    - Add to Depends: python3-packaging.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 07 Oct 2020 23:42:46 +0900
+
 torbrowser-launcher (0.3.3-1) unstable; urgency=medium
 
   * New upstream release 0.3.3
