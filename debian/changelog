@@ -1,3 +1,18 @@
+torbrowser-launcher (0.3.3-1) unstable; urgency=medium
+
+  * New upstream release 0.3.3
+    - Switch to Web Key Directory to refresh signing key from
+      torproject.org, because everything is broken.
+    - Use proper version comparison now that Tor Browser 10.0 is out.
+    - Fix DNS leak when downloading over Tor.
+    - Various bug fixes, as well as AppData and AppArmor fixes.
+  * debian/patches:
+    - Refresh patches.
+  * debian/control:
+    - Add to B-D: python3-packaging.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 07 Oct 2020 21:37:53 +0900
+
 torbrowser-launcher (0.3.2-14) unstable; urgency=high
 
   * Upload to unstable.

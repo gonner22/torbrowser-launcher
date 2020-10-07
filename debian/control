@@ -12,6 +12,7 @@ Build-Depends:
  python3-all,
  python3-distro,
  python3-gpg,
+ python3-packaging,
  python3-pyqt5,
  python3-requests
 Standards-Version: 4.5.0
