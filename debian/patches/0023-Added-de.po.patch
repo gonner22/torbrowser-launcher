@@ -5,9 +5,8 @@ Origin: https://github.com/micahflee/torbrowser-launcher/pull/449
 
 (cherry picked from commit 12481e0635b491fa359d39831b5e176fe6a21599)
 ---
- po/de.po                      | 255 ++++++++++++++++++++++++++++++++++++++++++
- torbrowser_launcher/common.py |   2 +-
- 2 files changed, 256 insertions(+), 1 deletion(-)
+ po/de.po | 255 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 255 insertions(+)
  create mode 100644 po/de.po
 
 diff --git a/po/de.po b/po/de.po
@@ -271,16 +270,3 @@ index 0000000..81317cd
 +#: settings.py:131
 +msgid "Save && Exit"
 +msgstr "Speichern && Exit"
-diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
-index b141894..9cff5dc 100644
---- a/torbrowser_launcher/common.py
-+++ b/torbrowser_launcher/common.py
-@@ -109,7 +109,7 @@ class Common(object):
-                 except:
-                     self.set_gui('error', _("Error creating {0}").format(homedir), [], False)
-         if not os.access(homedir, os.W_OK):
--            self.set_gui('error', _("{0} is not writable").format(homedir), [], False)
-+            self.set_gui('error', _("{0} is not writeable").format(homedir), [], False)
- 
-         tbb_config = '{0}/.config/torbrowser'.format(homedir)
-         tbb_cache = '{0}/.cache/torbrowser'.format(homedir)

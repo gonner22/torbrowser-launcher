@@ -16,16 +16,16 @@ https://bugs.python.org/issue6203 but is required for LC_MESSAGES.
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
-index 25bb984..6533723 100644
+index 1a05fb4..94ae39c 100644
 --- a/torbrowser_launcher/common.py
 +++ b/torbrowser_launcher/common.py
-@@ -73,7 +73,8 @@ class Common(object):
- 
-         # figure out the language
-         available_languages = ['ar', 'ca', 'da', 'de', 'en-US', 'es-ES', 'fa', 'fr', 'ga-IE', 'he', 'id', 'is', 'it', 'ja', 'ko', 'nb-NO', 'nl', 'pl', 'pt-BR', 'ru', 'sv-SE', 'tr', 'vi', 'zh-CN', 'zh-TW']
+@@ -100,7 +100,8 @@ class Common(object):
+             "zh-CN",
+             "zh-TW",
+         ]
 -        default_locale = locale.getlocale()[0]
 +        locale.setlocale(locale.LC_MESSAGES, '')
 +        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
          if default_locale is None:
-             self.language = 'en-US'
+             self.language = "en-US"
          else:

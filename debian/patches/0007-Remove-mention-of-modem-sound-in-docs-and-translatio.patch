@@ -15,7 +15,7 @@ Origin: https://bugs.debian.org/913151
  8 files changed, 42 deletions(-)
 
 diff --git a/README.md b/README.md
-index be37a35..96cb581 100644
+index 3e5a4ad..4f42a08 100644
 --- a/README.md
 +++ b/README.md
 @@ -8,7 +8,6 @@ Tor Browser Launcher is intended to make Tor Browser easier to install and use f
@@ -51,10 +51,10 @@ index bde983f..f50a7dc 100644
  #~ msgid "This option requires python-pygame to be installed"
  #~ msgstr "Tato možnost vyžaduje nainstalovaný python-pygame"
 diff --git a/po/fr.po b/po/fr.po
-index 6e1e8b5..3c3afc6 100644
+index 7b0d9b1..c0b60be 100644
 --- a/po/fr.po
 +++ b/po/fr.po
-@@ -281,11 +281,6 @@ msgstr "Enregistrer et quitter"
+@@ -288,11 +288,6 @@ msgstr "Enregistrer et quitter"
  #~ "Vous pourriez être l'objet d'une attaque, ou il peut s'agir d'un problème "
  #~ "de réseau. Cliquer sur Démarrer pour télécharger à nouveau."
  
@@ -66,7 +66,7 @@ index 6e1e8b5..3c3afc6 100644
  #~ msgid ""
  #~ "This option is only available when using a system wide Tor installation."
  #~ msgstr ""
-@@ -295,8 +290,5 @@ msgstr "Enregistrer et quitter"
+@@ -302,8 +297,5 @@ msgstr "Enregistrer et quitter"
  #~ msgid "This option requires the python-txsocksx package."
  #~ msgstr "Cette option nécessite le paquet python-txsocksx"
  
@@ -162,7 +162,7 @@ index 80acd82..7d173d0 100644
  #~ msgid "This option requires python-pygame to be installed"
  #~ msgstr "Cette option requiert le paquet python-pygame"
 diff --git a/share/metainfo/torbrowser.appdata.xml b/share/metainfo/torbrowser.appdata.xml
-index 5577868..ba10fd6 100644
+index 95c4943..85f0778 100644
 --- a/share/metainfo/torbrowser.appdata.xml
 +++ b/share/metainfo/torbrowser.appdata.xml
 @@ -16,7 +16,6 @@
