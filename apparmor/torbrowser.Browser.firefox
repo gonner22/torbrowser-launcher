@@ -118,7 +118,12 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny @{HOME}/.cache/fontconfig/** rw,
   deny @{HOME}/.config/gtk-2.0/ rw,
   deny @{HOME}/.config/gtk-2.0/** rw,
-  deny /usr/local/lib/tor-browser/update.test/ rw,
+  deny @{PROC}/@{pid}/net/route r,
+  deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
+  deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
+  deny /run/user/[0-9]*/dconf/user rw,
+  deny /usr/bin/lsb_release x,
+  deny capability sys_admin,
 
   # Grant access to assistive technologies
   # (otherwise, Firefox crashes when Orca is enabled:
@@ -135,13 +140,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # access to it that's granted by the freedesktop.org abstraction.
   deny @{HOME}/.local/share/recently-used.xbel* rw,
 
-  # Silence denial logs about permissions we don't need
-  deny @{PROC}/@{pid}/net/route r,
-  deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
-  deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
-  deny /run/user/[0-9]*/dconf/user rw,
-  deny /usr/bin/lsb_release x,
-  deny capability sys_admin,
+  # Silence denial logs about permissions we don't need (Tails-specific)
+  deny /usr/local/lib/tor-browser/update.test/ rw,
 
   # Silence denial logs about PulseAudio
   deny /etc/pulse/client.conf r,
