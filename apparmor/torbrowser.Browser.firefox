@@ -106,10 +106,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
 
   # Deny access to DRM nodes, that's granted by the X abstraction, which is
   # sourced by the gnome abstraction, that we include.
-  deny /dev/dri/** rwklx,
+  # Makes Tor Browser take ages to start
+  # (https://gitlab.tails.boum.org/tails/tails/-/issues/17896)
+  # deny /dev/dri/** rwklx,
 
   # Silence denial logs about permissions we don't need
-  deny /dev/dri/   rwklx,
+  # Makes Tor Browser take ages to start
+  # (https://gitlab.tails.boum.org/tails/tails/-/issues/17896)
+  # deny /dev/dri/   rwklx,
   deny @{HOME}/.cache/fontconfig/ rw,
   deny @{HOME}/.cache/fontconfig/** rw,
   deny @{HOME}/.config/gtk-2.0/ rw,
@@ -132,7 +136,6 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny @{HOME}/.local/share/recently-used.xbel* rw,
 
   # Silence denial logs about permissions we don't need
-  deny /dev/dri/   rwklx,
   deny @{PROC}/@{pid}/net/route r,
   deny /sys/devices/system/cpu/cpufreq/policy[0-9]*/cpuinfo_max_freq r,
   deny /sys/devices/system/cpu/*/cache/index[0-9]*/size r,
