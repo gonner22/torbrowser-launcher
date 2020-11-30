@@ -5,10 +5,20 @@ Origin: https://github.com/micahflee/torbrowser-launcher/pull/465
 
 (cherry picked from commit 3fa7eca4136164df278cb2c131bd620677d95dbb)
 ---
+ po/zh.po    |   1 +
  po/zh_TW.po | 253 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 253 insertions(+)
+ 2 files changed, 254 insertions(+)
+ create mode 120000 po/zh.po
  create mode 100644 po/zh_TW.po
 
+diff --git a/po/zh.po b/po/zh.po
+new file mode 120000
+index 0000000..8fc9571
+--- /dev/null
++++ b/po/zh.po
+@@ -0,0 +1 @@
++zh_TW.po
+\ No newline at end of file
 diff --git a/po/zh_TW.po b/po/zh_TW.po
 new file mode 100644
 index 0000000..aae7f26
