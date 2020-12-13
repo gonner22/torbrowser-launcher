@@ -1,6 +1,7 @@
 From: Roger Shimizu <rosh@debian.org>
 Date: Wed, 9 Sep 2020 01:46:15 +0900
 Subject: Use gpg instead of gpg2
+Forwarded: https://github.com/micahflee/torbrowser-launcher/issues/529
 
 Closes: #969901
 ---

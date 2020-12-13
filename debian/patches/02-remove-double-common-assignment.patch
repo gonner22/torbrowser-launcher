@@ -3,6 +3,7 @@ Date: Wed, 28 Mar 2018 03:52:42 -0400
 Subject: remove double 'common' assignment
 Origin: https://github.com/troubadoour/torbrowser-launcher/commit/63646cb69521d40bf25484831d58bcf691f71cca
 
+Added since [419e5f7] to fix the extra dialog issue
 ---
  torbrowser_launcher/__init__.py | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)

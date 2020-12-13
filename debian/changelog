@@ -1,3 +1,15 @@
+torbrowser-launcher (0.3.3-3) unstable; urgency=medium
+
+  * debian/patches:
+    - Move all po patches to po/ folder, and refresh patches.
+    - Cherry-pick from upstream to add Czech translation.
+  * debian/watch:
+    - Bump up version to 4.
+  * debian/copyright:
+    - Add share/metainfo/torbrowser.appdata.xml license as CC0-1.0
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 13 Dec 2020 16:37:58 +0900
+
 torbrowser-launcher (0.3.3-2) unstable; urgency=medium
 
   * debian/control:
