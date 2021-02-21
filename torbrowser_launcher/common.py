@@ -64,6 +64,7 @@ class Common(object):
         self.load_mirrors()
         self.load_settings()
         self.build_paths()
+        self.load_settings()
         self.mkdir(self.paths["download_dir"])
         self.mkdir(self.paths["tbb"]["dir"])
         self.init_gnupg()
@@ -371,7 +372,10 @@ class Common(object):
             resave = False
 
             # detect installed
-            settings["installed"] = os.path.isfile(self.paths["tbb"]["start"])
+            installed = os.path.isfile(self.paths["tbb"]["start"])
+            if settings["installed"] != installed:
+                settings["installed"] = installed
+                resave = True
 
             # make sure settings file is up-to-date
             for setting in default_settings:
