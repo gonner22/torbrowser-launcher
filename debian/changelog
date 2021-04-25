@@ -1,3 +1,17 @@
+torbrowser-launcher (0.3.3-4) UNRELEASED; urgency=medium
+
+  * debian/control:
+    - Update homepage.
+  * debian/patches:
+    - Update patch 03 to adapt python >= 3.8
+    - Add patch 08 to update apparmor profile (Closes: #980155).
+    - Add patch 09 to fix failure in detect installed torbrowser.
+      (Closes: #983198)
+    - Add patch 10 to enable keyboard input to communicate with ibus.
+      (Closes: #976084)
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 25 Apr 2021 23:11:37 +0900
+
 torbrowser-launcher (0.3.3-3) unstable; urgency=medium
 
   * debian/patches:

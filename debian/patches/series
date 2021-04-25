@@ -12,8 +12,11 @@ po/11-Add-Chinese-Traditional-translation.patch
 po/12-Add-Czech-translation-to-desktop-files.patch
 01-show-gui-only-if-tbb-not-installed.patch
 02-remove-double-common-assignment.patch
-03-Update-setup.py.patch
+03-Remove-use-of-deprecated-platform.dist-fixes-446.patch
 04-Set-language-from-LC_MESSAGES-not-LC_CTYPE.patch
 05-Fix-use-case-that-enforce-install-of-EN-version-on-n.patch
 06-Fix-language-fallback-for-Chinese-Hong-Kong.patch
 07-Use-gpg-instead-of-gpg2.patch
+08-Update-apparmor-profile.patch
+09-fix-failure-in-detect-installed-torbrowser.patch
+10-keyboard-input-need-this-patch-to-communicate-with-ibu.patch

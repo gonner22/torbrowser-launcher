@@ -1,0 +1,22 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Mon, 26 Apr 2021 00:27:32 +0900
+Subject: keyboard input need this patch to communicate with ibus.
+
+Closes: #976084
+---
+ apparmor/torbrowser.Browser.firefox | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 095b110..f1368db 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -150,5 +150,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   # Yubikey NEO also needs this:
+   /sys/devices/**/hidraw/hidraw*/uevent r,
+ 
++  # ibus
++  owner @{HOME}/.config/ibus/bus/* r,
++
+   #include <local/torbrowser.Browser.firefox>
+ }
