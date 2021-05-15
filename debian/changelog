@@ -1,4 +1,4 @@
-torbrowser-launcher (0.3.3-4) UNRELEASED; urgency=medium
+torbrowser-launcher (0.3.3-4) unstable; urgency=medium
 
   * debian/control:
     - Update homepage.
@@ -10,7 +10,7 @@ torbrowser-launcher (0.3.3-4) UNRELEASED; urgency=medium
     - Add patch 10 to enable keyboard input to communicate with ibus.
       (Closes: #976084)
 
- -- Roger Shimizu <rosh@debian.org>  Sun, 25 Apr 2021 23:11:37 +0900
+ -- Roger Shimizu <rosh@debian.org>  Sat, 15 May 2021 23:32:12 +0900
 
 torbrowser-launcher (0.3.3-3) unstable; urgency=medium
 
