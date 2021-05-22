@@ -1,0 +1,40 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Sun, 16 May 2021 14:00:51 +0000
+Subject: AppArmor: allow usage of cgroups
+
+Firefox uses cgroups to determine how many CPUs are available,
+and gather other information it needs about the CPUs.
+
+I did not investigate what are the consequences of Firefox
+lacking this information. I suspect performance, and thus UX,
+may be impacted.
+
+closes #547
+
+(cherry picked from commit 12477d3d5cb4438651d922f5feb7a5070b76b6d9)
+
+Closes: #980155
+---
+ apparmor/torbrowser.Browser.firefox | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 57c0359..c00d4bb 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -36,6 +36,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   /dev/ r,
+   /dev/shm/ r,
+ 
++  owner @{PROC}/@{pid}/cgroup r,
+   owner @{PROC}/@{pid}/environ r,
+   owner @{PROC}/@{pid}/fd/ r,
+   owner @{PROC}/@{pid}/mountinfo r,
+@@ -99,6 +100,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   /sys/devices/system/cpu/present r,
+   /sys/devices/system/node/ r,
+   /sys/devices/system/node/node[0-9]*/meminfo r,
++  /sys/fs/cgroup/cpu,cpuacct/user.slice/cpu.cfs_quota_us r,
+   deny /sys/devices/virtual/block/*/uevent r,
+ 
+   # Should use abstractions/gstreamer instead once merged upstream

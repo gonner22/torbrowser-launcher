@@ -1,3 +1,11 @@
+torbrowser-launcher (0.3.3-5) UNRELEASED; urgency=medium
+
+  * debian/patches:
+    - Update patch 08 and 10 with upstreamed version.
+    - Add patch 11 to have local apparmor update.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 23 May 2021 01:46:04 +0900
+
 torbrowser-launcher (0.3.3-4) unstable; urgency=medium
 
   * debian/control:
