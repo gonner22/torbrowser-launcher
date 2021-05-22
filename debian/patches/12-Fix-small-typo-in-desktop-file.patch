@@ -1,0 +1,22 @@
+From: AsciiWolf <mail@asciiwolf.com>
+Date: Thu, 8 Oct 2020 14:12:19 +0200
+Subject: Fix small typo in desktop file
+
+(cherry picked from commit 56e8084b1d2a8029e7f43f34e42fcb5a979181a5)
+---
+ share/applications/torbrowser.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/share/applications/torbrowser.desktop b/share/applications/torbrowser.desktop
+index a80d4a4..ce64b83 100644
+--- a/share/applications/torbrowser.desktop
++++ b/share/applications/torbrowser.desktop
+@@ -5,7 +5,7 @@ Name[cs]=Tor Browser
+ Name[hu]=Tor-böngésző
+ Name[pt_BR]=Navegador Tor
+ Name[be]=Tor Browser
+-GenericName=Tor browser
++GenericName=Tor Browser
+ GenericName[da]=Tor Browser
+ GenericName[hu]=Tor böngésző indító
+ GenericName[be]=Tor Browser

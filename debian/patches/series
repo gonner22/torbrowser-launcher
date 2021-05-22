@@ -21,3 +21,6 @@ po/12-Add-Czech-translation-to-desktop-files.patch
 09-fix-failure-in-detect-installed-torbrowser.patch
 10-AppArmor-allow-usage-of-the-IBus-input-framework.patch
 11-Update-apparmor-profile.patch
+12-Fix-small-typo-in-desktop-file.patch
+13-AppArmor-include-vulkan-abstraction-if-it-s-available.patch
+14-AppArmor-allow-access-needed-for-Firefox-sandboxing-vi.patch

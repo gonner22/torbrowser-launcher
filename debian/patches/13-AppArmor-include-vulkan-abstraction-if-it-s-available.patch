@@ -1,0 +1,27 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Sun, 16 May 2021 13:47:54 +0000
+Subject: AppArmor: include vulkan abstraction if it's available
+
+Since the vulkan abstraction is not available on older AppArmor versions, this
+relies on the "conditional includes" AppArmor parser feature, which is available
+in AppArmor v2.10.4, v2.11.2, v2.12.1, and v2.13.
+
+closes #554
+
+(cherry picked from commit 4e216fe221f09e4d1e8b3cf8870284a6f730641f)
+---
+ apparmor/torbrowser.Browser.firefox | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index 38a0df0..96f88e3 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -7,6 +7,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   #include <abstractions/audio>
+   #include <abstractions/gnome>
+   #include <abstractions/ibus>
++  #include if exists <abstractions/vulkan>
+ 
+   # Uncomment the following lines if you want to give the Tor Browser read-write
+   # access to most of your personal files.
