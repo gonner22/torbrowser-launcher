@@ -1,0 +1,25 @@
+From: intrigeri <intrigeri@boum.org>
+Date: Sun, 16 May 2021 13:52:28 +0000
+Subject: AppArmor: allow usage of the IBus input framework
+
+closes #540
+
+(cherry picked from commit 6d32fe1200d74d3cdc306429690823c3498c35d2)
+
+Closes: #976084
+---
+ apparmor/torbrowser.Browser.firefox | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index c00d4bb..a95d6e7 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -6,6 +6,7 @@
+ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   #include <abstractions/audio>
+   #include <abstractions/gnome>
++  #include <abstractions/ibus>
+ 
+   # Uncomment the following lines if you want to give the Tor Browser read-write
+   # access to most of your personal files.

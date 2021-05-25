@@ -1,0 +1,23 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Wed, 9 Sep 2020 01:46:15 +0900
+Subject: Use gpg instead of gpg2
+Forwarded: https://github.com/micahflee/torbrowser-launcher/issues/529
+
+Closes: #969901
+---
+ torbrowser_launcher/common.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
+index f16bdee..e8e8d39 100644
+--- a/torbrowser_launcher/common.py
++++ b/torbrowser_launcher/common.py
+@@ -265,7 +265,7 @@ class Common(object):
+         # Fetch key from wkd, as per https://support.torproject.org/tbb/how-to-verify-signature/
+         p = subprocess.Popen(
+             [
+-                "gpg2",
++                "gpg",
+                 "--status-fd",
+                 "2",
+                 "--homedir",

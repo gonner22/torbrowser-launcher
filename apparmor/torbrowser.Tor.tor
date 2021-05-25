@@ -38,6 +38,7 @@ profile torbrowser_tor @{torbrowser_tor_executable} {
 
   @{PROC}/sys/kernel/random/uuid r,
   /sys/devices/system/cpu/ r,
+  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
 
   # OnionShare compatibility
   /tmp/onionshare/** rw,

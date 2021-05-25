@@ -1,187 +1,195 @@
-From: Baumgartner <ned84@protonmail.com>
-Date: Sun, 15 Dec 2019 21:40:58 +0100
-Subject: Added de.po
-Origin: https://github.com/micahflee/torbrowser-launcher/pull/449
+From: Koala Yeung <koalay@gmail.com>
+Date: Wed, 22 Apr 2020 23:34:45 +0800
+Subject: Add Chinese (Traditional) translation
+Origin: https://github.com/micahflee/torbrowser-launcher/pull/465
 
-(cherry picked from commit 12481e0635b491fa359d39831b5e176fe6a21599)
+(cherry picked from commit 3fa7eca4136164df278cb2c131bd620677d95dbb)
 ---
- po/de.po                      | 255 ++++++++++++++++++++++++++++++++++++++++++
- torbrowser_launcher/common.py |   2 +-
- 2 files changed, 256 insertions(+), 1 deletion(-)
- create mode 100644 po/de.po
+ po/zh.po    |   1 +
+ po/zh_TW.po | 253 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 254 insertions(+)
+ create mode 120000 po/zh.po
+ create mode 100644 po/zh_TW.po
 
-diff --git a/po/de.po b/po/de.po
-new file mode 100644
-index 0000000..81317cd
+diff --git a/po/zh.po b/po/zh.po
+new file mode 120000
+index 0000000..8fc9571
 --- /dev/null
-+++ b/po/de.po
-@@ -0,0 +1,255 @@
++++ b/po/zh.po
+@@ -0,0 +1 @@
++zh_TW.po
+\ No newline at end of file
+diff --git a/po/zh_TW.po b/po/zh_TW.po
+new file mode 100644
+index 0000000..aae7f26
+--- /dev/null
++++ b/po/zh_TW.po
+@@ -0,0 +1,253 @@
++# Chinese translations for PACKAGE package
++# PACKAGE 套件的正體中文翻譯.
++# Copyright (C) 2020 THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# Koala Yeung <koalay@gmail.com>, 2020.
++#
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: \n"
 +"Report-Msgid-Bugs-To: \n"
 +"POT-Creation-Date: 2018-03-23 15:47-0700\n"
-+"PO-Revision-Date: 2019-12-15 21:28+0100\n"
-+"Last-Translator: René Mario Baumgartner <ned84@protonmail.com>\n"
-+"Language-Team: \n"
-+"Language: de\n"
++"PO-Revision-Date: 2020-04-22 23:31+0800\n"
++"Last-Translator: Koala Yeung <koalay@gmail.com>\n"
++"Language-Team: Chinese (traditional)\n"
++"Language: zh_TW\n"
 +"MIME-Version: 1.0\n"
 +"Content-Type: text/plain; charset=UTF-8\n"
 +"Content-Transfer-Encoding: 8bit\n"
-+"X-Generator: Poedit 2.2.4\n"
-+"X-Poedit-Basepath: .\n"
-+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++"X-Generator: Poedit 2.3\n"
 +
 +#: __init__.py:65 launcher.py:470
 +msgid "Tor Browser Launcher"
-+msgstr "Tor Browser Launcher"
++msgstr "Tor 瀏覽器啟動程式"
 +
 +#: __init__.py:66
 +msgid "By Micah Lee, licensed under MIT"
-+msgstr "Von Micah Lee, lizensiert unter MIT"
++msgstr "由 Micah Lee 編寫，以 MIT 特許授權發佈"
 +
 +#: __init__.py:67
 +#, python-brace-format
 +msgid "version {0}"
-+msgstr "Version {0}"
++msgstr "{0} 版"
 +
 +#: common.py:100
 +#, python-brace-format
 +msgid "Error creating {0}"
-+msgstr "Fehler erzeugt {0}"
++msgstr "生成 {0} 時發生問題"
 +
 +#: common.py:102 common.py:180
 +#, python-brace-format
 +msgid "{0} is not writable"
-+msgstr "{0} ist nicht schreibbar"
++msgstr "無法寫入 {0}"
 +
 +#: common.py:177
 +#, python-brace-format
 +msgid "Cannot create directory {0}"
-+msgstr "Kann Verzeichnis {0} nicht erzeugen"
++msgstr "無法生成 {0} 目錄"
 +
 +#: common.py:187
 +msgid "Creating GnuPG homedir"
-+msgstr "Erzeuge GnuPG Verzeichnis"
++msgstr "生成 GnuPG 目錄"
 +
 +#: common.py:254
 +#, python-format
 +msgid "Could not import key with fingerprint: %s."
-+msgstr "Konnte Schlüssel mit folgendem Fingerabdruck nicht importieren: %s."
++msgstr "無法以指紋匯入加密金鑰︰%s."
 +
 +#: common.py:259
 +msgid "Not all keys were imported successfully!"
-+msgstr "Nicht alle Schlüssel konnten erfolgreich importiert werden!"
++msgstr "只有部份加密金鑰加入成功！"
 +
 +#: launcher.py:83
 +msgid "Downloading Tor Browser for the first time."
-+msgstr "Lade Tor Browser das erste mal herunter."
++msgstr "第一次下載 Tor 瀏覽器。"
 +
 +#: launcher.py:85
 +msgid ""
 +"Your version of Tor Browser is out-of-date. Downloading the newest version."
-+msgstr ""
-+"Ihre Version des Tor Browsers ist nicht mehr aktuell. Lade die neueste "
-+"Version herunter."
++msgstr "你目前的 Tor 瀏覽器不是最新的，正下載最新版本。"
 +
 +#: launcher.py:100
 +msgid "Downloading over Tor"
-+msgstr "Lade über Tor herunter"
++msgstr "透過 Tor 網絡下載"
 +
 +#: launcher.py:111
 +msgid "Tor Browser"
-+msgstr "Tor Browser"
++msgstr "Tor 瀏覽器"
 +
 +#: launcher.py:128
 +msgid "Start"
-+msgstr "Start"
++msgstr "開始"
 +
 +#: launcher.py:174
 +msgid "Yes"
-+msgstr "Ja"
++msgstr "是"
 +
 +#: launcher.py:178
 +msgid "Exit"
-+msgstr "Exit"
++msgstr "離開"
 +
 +#: launcher.py:192 settings.py:136
 +msgid "Cancel"
-+msgstr "Abbruch"
++msgstr "取消"
 +
 +#: launcher.py:231 launcher.py:245 launcher.py:249 launcher.py:279
 +#: launcher.py:281
 +msgid "Downloading"
-+msgstr "Herunterladen"
++msgstr "下載中"
 +
 +#: launcher.py:238
 +msgid "Latest version: {}"
-+msgstr "Aktuelle Version: {}"
++msgstr "最新版本︰{}"
 +
 +#: launcher.py:241
 +msgid "Error detecting Tor Browser version."
-+msgstr "Fehler bei dem Versuch die Tor Browser Version zu finden."
++msgstr "偵測 Tor 瀏覽器版本時發生錯誤。"
 +
 +#: launcher.py:256 launcher.py:357
 +msgid "Verifying Signature"
-+msgstr "Prüfe Signatur"
++msgstr "正在檢查數位簽章"
 +
 +#: launcher.py:260
 +msgid "Extracting"
-+msgstr "Extrahieren"
++msgstr "正在解開"
 +
 +#: launcher.py:264
 +msgid "Running"
-+msgstr "Läuft"
++msgstr "執行中"
 +
 +#: launcher.py:268
 +msgid "Starting download over again"
-+msgstr "Starte download nochmals"
++msgstr "從新開始下載"
 +
 +#: launcher.py:279 launcher.py:295
 +msgid "(over Tor)"
-+msgstr "(über Tor)"
++msgstr "(透過 Tor 網絡)"
 +
 +#: launcher.py:293
 +msgid "Downloaded"
-+msgstr "Heruntergeladen"
++msgstr "已下載"
 +
 +#: launcher.py:393
 +msgid "Installing"
-+msgstr "Installiere"
++msgstr "正在安裝"
 +
 +#: launcher.py:401
 +#, python-brace-format
 +msgid "Tor Browser Launcher doesn't understand the file format of {0}"
-+msgstr "Tor Browser versteht folgendes Datei Format nicht: {0}"
++msgstr "Tor 瀏覽器啟動程式不了解 {0} 的檔案格式"
 +
 +#: launcher.py:427
 +msgid ""
 +"The version of Tor Browser you have installed is earlier than it should be, "
 +"which could be a sign of an attack!"
-+msgstr ""
-+"Die Version ihres Tor Browsers ist neuer als sie sein sollte, was auf eine "
-+"Attacke schließen lassen könnte!"
++msgstr "你已安裝的 Tor 瀏覽器版本比預期的版本早期，這表示你的電腦可能被入侵！"
 +
 +#: launcher.py:446
 +msgid "Downloading Tor Browser over again."
-+msgstr "Lade Tor Browser nochmals herunter."
++msgstr "重新下載 Tor 瀏覽器。"
 +
 +#: launcher.py:516 launcher.py:525 launcher.py:533
 +msgid "Download Error:"
-+msgstr "Fehler beim herunterladen:"
++msgstr "下載錯誤:"
 +
 +#: launcher.py:517
 +msgid "You are currently using a non-default mirror"
-+msgstr "Sie verwenden zur Zeit einen nicht voreingestellten Mirror."
++msgstr "你目前正在使用非預設的鏡像"
 +
 +#: launcher.py:518
 +msgid "Would you like to switch back to the default?"
-+msgstr "Wollen sie zur Voreinstellung wechseln?"
++msgstr "你想改為使用預設的嗎？"
 +
 +#: launcher.py:527
 +msgid "Would you like to try the English version of Tor Browser instead?"
-+msgstr ""
-+"Wollen sie die englische Version des Tor Browsers stattdessen versuchen?"
++msgstr "你要試試改為下載英文版 Tor 瀏覽器嗎？"
 +
 +#: launcher.py:548
 +#, python-brace-format
@@ -191,14 +199,14 @@ index 0000000..81317cd
 +"\n"
 +"You may be under attack."
 +msgstr ""
-+"Ungültiges SSL Zertifikat für:\n"
++"以下網址的 SSL 證書不正確︰\n"
 +"{0}\n"
 +"\n"
-+"Möglicherweise werden sie angegriffen."
++"你可能正被入侵。"
 +
 +#: launcher.py:550
 +msgid "Try the download again using Tor?"
-+msgstr "Wollen sie das herunterladen nochmals über Tor versuchen?"
++msgstr "要試試改用 Tor 網絡重新下載嗎？"
 +
 +#: launcher.py:559
 +#, python-brace-format
@@ -210,12 +218,11 @@ index 0000000..81317cd
 +"Trying to download over Tor. Are you sure Tor is configured correctly and "
 +"running?"
 +msgstr ""
-+"Fehler beim starten des Downloads:\n"
++"無法開始下載︰\n"
 +"\n"
 +"{0}\n"
 +"\n"
-+"Versuche über Tor herunterzuladen. Sind sie sicher das Tor richtig "
-+"konfiguriert und aktiv ist?"
++"請試試經由 Tor 網絡下載。你肯定你的 Tor 有正確被下載和執行嗎？"
 +
 +#: launcher.py:563
 +#, python-brace-format
@@ -226,61 +233,48 @@ index 0000000..81317cd
 +"\n"
 +"Are you connected to the internet?"
 +msgstr ""
-+"Fehler beim starten des Downloads:\n"
++"無法開始下載︰\n"
 +"\n"
 +"{0}\n"
 +"\n"
-+"Sind sie mit dem Internet verbunden?"
++"請問你是否有連上互聯網？"
 +
 +#: settings.py:46
 +msgid "Tor Browser Launcher Settings"
-+msgstr "Tor Browser Launcher Einstellungen"
++msgstr "Tor 瀏覽器啟動程式設定"
 +
 +#: settings.py:50
 +msgid "Download over system Tor"
-+msgstr "Herunterladen über system Tor"
++msgstr "透過系統的 Tor 網絡下載"
 +
 +#: settings.py:57
 +msgid "Force downloading English version of Tor Browser"
-+msgstr "Herunterladen der englischen Version des Tor Browsers erzwingen"
++msgstr "強制下載英文版本的 Tor 瀏覽器"
 +
 +#: settings.py:66
 +msgid "Tor server"
-+msgstr "Tor server"
++msgstr "Tor 伺服器"
 +
 +#: settings.py:82
 +msgid "Status: Installed"
-+msgstr "Status: Installiert"
++msgstr "狀態︰已安裝"
 +
 +#: settings.py:84
 +msgid "Status: Not Installed"
-+msgstr "Status: Nicht installiert"
++msgstr "狀態︰未安裝"
 +
 +#: settings.py:87
 +msgid "Install Tor Browser"
-+msgstr "Tor Browser installieren"
++msgstr "安裝 Tor 瀏覽器"
 +
 +#: settings.py:92
 +msgid "Reinstall Tor Browser"
-+msgstr "Tor Browser nochmals installieren"
++msgstr "重新安裝 Tor 瀏覽器"
 +
 +#: settings.py:115
 +msgid "Mirror"
-+msgstr "Mirror"
++msgstr "鏡像"
 +
 +#: settings.py:131
 +msgid "Save && Exit"
-+msgstr "Speichern && Exit"
-diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
-index b141894..9cff5dc 100644
---- a/torbrowser_launcher/common.py
-+++ b/torbrowser_launcher/common.py
-@@ -109,7 +109,7 @@ class Common(object):
-                 except:
-                     self.set_gui('error', _("Error creating {0}").format(homedir), [], False)
-         if not os.access(homedir, os.W_OK):
--            self.set_gui('error', _("{0} is not writable").format(homedir), [], False)
-+            self.set_gui('error', _("{0} is not writeable").format(homedir), [], False)
- 
-         tbb_config = '{0}/.config/torbrowser'.format(homedir)
-         tbb_cache = '{0}/.cache/torbrowser'.format(homedir)
++msgstr "儲存及離開"

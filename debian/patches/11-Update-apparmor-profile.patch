@@ -1,0 +1,41 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Sun, 25 Apr 2021 22:51:12 +0900
+Subject: Update apparmor profile
+
+---
+ apparmor/torbrowser.Browser.firefox | 2 ++
+ apparmor/torbrowser.Tor.tor         | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/apparmor/torbrowser.Browser.firefox b/apparmor/torbrowser.Browser.firefox
+index a95d6e7..38a0df0 100644
+--- a/apparmor/torbrowser.Browser.firefox
++++ b/apparmor/torbrowser.Browser.firefox
+@@ -92,6 +92,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   /usr/share/gnome/applications/ r,
+   /usr/share/gnome/applications/kde4/ r,
+   /usr/share/poppler/cMap/ r,
++  /etc/xdg/mimeapps.list r,
+ 
+   # Distribution homepage
+   /usr/share/homepage/ r,
+@@ -101,6 +102,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
+   /sys/devices/system/cpu/present r,
+   /sys/devices/system/node/ r,
+   /sys/devices/system/node/node[0-9]*/meminfo r,
++  /sys/fs/cgroup/cpu,cpuacct/cpu.cfs_quota_us r,
+   /sys/fs/cgroup/cpu,cpuacct/user.slice/cpu.cfs_quota_us r,
+   deny /sys/devices/virtual/block/*/uevent r,
+ 
+diff --git a/apparmor/torbrowser.Tor.tor b/apparmor/torbrowser.Tor.tor
+index f5b8177..e455ce9 100644
+--- a/apparmor/torbrowser.Tor.tor
++++ b/apparmor/torbrowser.Tor.tor
+@@ -38,6 +38,7 @@ profile torbrowser_tor @{torbrowser_tor_executable} {
+ 
+   @{PROC}/sys/kernel/random/uuid r,
+   /sys/devices/system/cpu/ r,
++  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+ 
+   # OnionShare compatibility
+   /tmp/onionshare/** rw,

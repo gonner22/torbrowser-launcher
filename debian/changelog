@@ -1,3 +1,60 @@
+torbrowser-launcher (0.3.3-5) unstable; urgency=medium
+
+  * debian/patches:
+    - Update patch 08 and 10 with upstreamed version.
+    - Add patch 11 to have local apparmor update.
+    - Cherry-pick 3 patches from upstream.
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 23 May 2021 03:12:52 +0900
+
+torbrowser-launcher (0.3.3-4) unstable; urgency=medium
+
+  * debian/control:
+    - Update homepage.
+  * debian/patches:
+    - Update patch 03 to adapt python >= 3.8
+    - Add patch 08 to update apparmor profile (Closes: #980155).
+    - Add patch 09 to fix failure in detect installed torbrowser.
+      (Closes: #983198)
+    - Add patch 10 to enable keyboard input to communicate with ibus.
+      (Closes: #976084)
+
+ -- Roger Shimizu <rosh@debian.org>  Sat, 15 May 2021 23:32:12 +0900
+
+torbrowser-launcher (0.3.3-3) unstable; urgency=medium
+
+  * debian/patches:
+    - Move all po patches to po/ folder, and refresh patches.
+    - Cherry-pick from upstream to add Czech translation.
+  * debian/watch:
+    - Bump up version to 4.
+  * debian/copyright:
+    - Add share/metainfo/torbrowser.appdata.xml license as CC0-1.0
+
+ -- Roger Shimizu <rosh@debian.org>  Sun, 13 Dec 2020 16:37:58 +0900
+
+torbrowser-launcher (0.3.3-2) unstable; urgency=medium
+
+  * debian/control:
+    - Add to Depends: python3-packaging.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 07 Oct 2020 23:42:46 +0900
+
+torbrowser-launcher (0.3.3-1) unstable; urgency=medium
+
+  * New upstream release 0.3.3
+    - Switch to Web Key Directory to refresh signing key from
+      torproject.org, because everything is broken.
+    - Use proper version comparison now that Tor Browser 10.0 is out.
+    - Fix DNS leak when downloading over Tor.
+    - Various bug fixes, as well as AppData and AppArmor fixes.
+  * debian/patches:
+    - Refresh patches.
+  * debian/control:
+    - Add to B-D: python3-packaging.
+
+ -- Roger Shimizu <rosh@debian.org>  Wed, 07 Oct 2020 21:37:53 +0900
+
 torbrowser-launcher (0.3.2-14) unstable; urgency=high
 
   * Upload to unstable.

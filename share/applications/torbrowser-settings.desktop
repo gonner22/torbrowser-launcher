@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Tor Browser Launcher Settings
 Name[da]=Indstillinger for Tor Browser-opstarter
+Name[cs]=Tor Browser Launcher nastavení
 Name[fr]=Tor Browser Launcher configurations
 Name[hu]=Tor-böngésző indító beállításai
 Name[nl]=Tor Browser Launcher Instellingen
@@ -13,6 +14,7 @@ GenericName[hu]=Tor-böngésző indító beállításai
 GenericName[be]=Налады запускальніка Tor Browser
 Comment=Tor Browser Launcher Settings
 Comment[da]=Indstillinger for Tor Browser-opstarter
+Comment[cs]=Tor Browser Launcher nastavení
 Comment[fr]=Tor Browser Launcher configurations
 Comment[hu]=Tor-böngésző indító beállításai
 Comment[nl]=Tor Browser Launcher Instellingen

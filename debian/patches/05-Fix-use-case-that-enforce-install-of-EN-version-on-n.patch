@@ -1,0 +1,72 @@
+From: Roger Shimizu <rosh@debian.org>
+Date: Sun, 26 Apr 2020 18:25:52 +0900
+Subject: Fix use case that enforce install of EN version on non-EN user
+ session
+
+build_paths() is called before load_settings(), so it won't recognize
+"force_en-US" setting.
+
+Here we add build_paths() again after load_settings() to do the trick.
+
+Closes: #842021
+---
+ torbrowser_launcher/common.py | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/torbrowser_launcher/common.py b/torbrowser_launcher/common.py
+index 94ae39c..13cb538 100644
+--- a/torbrowser_launcher/common.py
++++ b/torbrowser_launcher/common.py
+@@ -63,6 +63,7 @@ class Common(object):
+             self.mkdir(self.paths["dirs"][d])
+         self.load_mirrors()
+         self.load_settings()
++        self.build_paths()
+         self.mkdir(self.paths["download_dir"])
+         self.mkdir(self.paths["tbb"]["dir"])
+         self.init_gnupg()
+@@ -144,6 +145,10 @@ class Common(object):
+         tbb_local = '{0}/torbrowser'.format(self.get_env('XDG_DATA_HOME', '{0}/.local/share'.format(homedir)))
+         old_tbb_data = '{0}/.torbrowser'.format(homedir)
+ 
++        if hasattr(self, 'settings') and self.settings['force_en-US']:
++            language = 'en-US'
++        else:
++            language = self.language
+         if tbb_version:
+             # tarball filename
+             if self.architecture == "x86_64":
+@@ -151,10 +156,6 @@ class Common(object):
+             else:
+                 arch = "linux32"
+ 
+-            if hasattr(self, "settings") and self.settings["force_en-US"]:
+-                language = "en-US"
+-            else:
+-                language = self.language
+             tarball_filename = (
+                 "tor-browser-" + arch + "-" + tbb_version + "_" + language + ".tar.xz"
+             )
+@@ -203,19 +204,19 @@ class Common(object):
+                     + "/tbb/"
+                     + self.architecture
+                     + "/tor-browser_"
+-                    + self.language
++                    + language
+                     + "/Browser/TorBrowser/Docs/ChangeLog.txt",
+                     "dir": tbb_local + "/tbb/" + self.architecture,
+                     "dir_tbb": tbb_local
+                     + "/tbb/"
+                     + self.architecture
+                     + "/tor-browser_"
+-                    + self.language,
++                    + language,
+                     "start": tbb_local
+                     + "/tbb/"
+                     + self.architecture
+                     + "/tor-browser_"
+-                    + self.language
++                    + language
+                     + "/start-tor-browser.desktop",
+                 },
+             }
