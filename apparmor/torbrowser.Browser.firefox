@@ -154,8 +154,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/doc/tails/website/** r,
 
   # Grant access to assistive technologies
-  # (otherwise, Firefox crashes when Orca is enabled:
-  # https://labs.riseup.net/code/issues/9261)
+  # (otherwise, Firefox crashes when Orca is enabled: tails/tails#9261)
   owner @{HOME}/.cache/at-spi2-*/ rw,
   owner @{HOME}/.cache/at-spi2-*/socket rw,
 
