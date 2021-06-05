@@ -49,30 +49,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
 
   @{torbrowser_home_dir}/ r,
   @{torbrowser_home_dir}/** mr,
-
-  owner "@{HOME}/Tor Browser/" rw,
-  owner "@{HOME}/Tor Browser/**" rwk,
-  owner "@{HOME}/Persistent/Tor Browser/" rw,
-  owner "@{HOME}/Persistent/Tor Browser/**" rwk,
-  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/" rw,
-  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/**" rwk,
-  owner @{HOME}/.mozilla/firefox/bookmarks/ rwk,
-  owner @{HOME}/.mozilla/firefox/bookmarks/** rwk,
-  owner /live/persistence/TailsData_unlocked/bookmarks/ rwk,
-  owner /live/persistence/TailsData_unlocked/bookmarks/** rwk,
   owner @{HOME}/.tor-browser/profile.default/{,**} rwk,
-
-  /etc/xul-ext/ r,
-  /etc/xul-ext/** r,
-  /usr/local/share/tor-browser-extensions/ r,
-  /usr/local/share/tor-browser-extensions/** rk,
-  /usr/share/{xul-,web}ext/ r,
-  /usr/share/{xul-,web}ext/** r,
-  /usr/share/{chromium,mozilla}/extensions/ r,
-  /usr/share/{chromium,mozilla}/extensions/** r,
-
-  /usr/share/doc/tails/website/ r,
-  /usr/share/doc/tails/website/** r,
 
   # parent Firefox process when restarting after upgrade, Web Content processes
   @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
@@ -122,24 +99,6 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny /run/user/[0-9]*/dconf/user rw,
   deny /usr/bin/lsb_release x,
 
-  # Grant access to assistive technologies
-  # (otherwise, Firefox crashes when Orca is enabled:
-  # https://labs.riseup.net/code/issues/9261)
-  owner @{HOME}/.cache/at-spi2-*/ rw,
-  owner @{HOME}/.cache/at-spi2-*/socket rw,
-
-  # Spell checking (the "enchant" abstraction includes these rules
-  # too, but it allows way more stuff than what we need)
-  /usr/share/hunspell/                             r,
-  /usr/share/hunspell/*                            r,
-
-  # Deny access to the list of recently used files. This overrides the
-  # access to it that's granted by the freedesktop.org abstraction.
-  deny @{HOME}/.local/share/recently-used.xbel* rw,
-
-  # Silence denial logs about permissions we don't need (Tails-specific)
-  deny /usr/local/lib/tor-browser/update.test/ rw,
-
   # Silence denial logs about PulseAudio
   deny /etc/pulse/client.conf r,
   deny /usr/bin/pulseaudio x,
@@ -160,6 +119,58 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # Yubikey NEO also needs this:
   /sys/devices/**/hidraw/hidraw*/uevent r,
 
+  # Needed for Firefox sandboxing via unprivileged user namespaces
+  capability sys_admin,
+  capability sys_chroot,
+  owner @{PROC}/@{pid}/{gid,uid}_map w,
+  owner @{PROC}/@{pid}/setgroups w,
+
+  # Grant read-write access to the download directories
+  owner "@{HOME}/Tor Browser/" rw,
+  owner "@{HOME}/Tor Browser/**" rwk,
+  owner "@{HOME}/Persistent/Tor Browser/" rw,
+  owner "@{HOME}/Persistent/Tor Browser/**" rwk,
+  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/" rw,
+  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/**" rwk,
+
+  # Grant read-write access to bookmarks
+  owner @{HOME}/.mozilla/firefox/bookmarks/ rwk,
+  owner @{HOME}/.mozilla/firefox/bookmarks/** rwk,
+  owner /live/persistence/TailsData_unlocked/bookmarks/ rwk,
+  owner /live/persistence/TailsData_unlocked/bookmarks/** rwk,
+
+  # Allow system-wide add-ons
+  /etc/xul-ext/ r,
+  /etc/xul-ext/** r,
+  /usr/local/share/tor-browser-extensions/ r,
+  /usr/local/share/tor-browser-extensions/** rk,
+  /usr/share/{xul-,web}ext/ r,
+  /usr/share/{xul-,web}ext/** r,
+  /usr/share/{chromium,mozilla}/extensions/ r,
+  /usr/share/{chromium,mozilla}/extensions/** r,
+
+  # Grant read access to the included Tails documentation
+  /usr/share/doc/tails/website/ r,
+  /usr/share/doc/tails/website/** r,
+
+  # Grant access to assistive technologies
+  # (otherwise, Firefox crashes when Orca is enabled:
+  # https://labs.riseup.net/code/issues/9261)
+  owner @{HOME}/.cache/at-spi2-*/ rw,
+  owner @{HOME}/.cache/at-spi2-*/socket rw,
+
+  # Spell checking (the "enchant" abstraction includes these rules
+  # too, but it allows way more stuff than what we need)
+  /usr/share/hunspell/                             r,
+  /usr/share/hunspell/*                            r,
+
+  # Deny access to the list of recently used files. This overrides the
+  # access to it that's granted by the freedesktop.org abstraction.
+  deny @{HOME}/.local/share/recently-used.xbel* rw,
+
+  # Silence denial logs about permissions we don't need (Tails-specific)
+  deny /usr/local/lib/tor-browser/update.test/ rw,
+
   # Deny access to global tmp directories, that's granted by the user-tmp
   # abstraction, which is sourced by the gnome abstraction, that we include.
   deny owner /var/tmp/**     rwklx,
@@ -173,10 +184,4 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # Workaround bug in abstractions/gnome
   # XXX:Bullseye: remove
   /etc/xdg/mimeapps.list r,
-
-  # Needed for Firefox sandboxing via unprivileged user namespaces
-  capability sys_admin,
-  capability sys_chroot,
-  owner @{PROC}/@{pid}/{gid,uid}_map w,
-  owner @{PROC}/@{pid}/setgroups w,
 }
