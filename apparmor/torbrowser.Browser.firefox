@@ -1,7 +1,7 @@
 #include <tunables/global>
 #include <tunables/torbrowser>
 
-@{torbrowser_firefox_executable} = /home/*/.local/share/torbrowser/tbb/{i686,x86_64}/tor-browser_*/Browser/firefox.real
+@{torbrowser_firefox_executable} = /usr/local/lib/tor-browser/firefox.real
 
 profile torbrowser_firefox @{torbrowser_firefox_executable} {
   #include <abstractions/audio>
@@ -47,40 +47,35 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   owner @{PROC}/@{pid}/task/*/stat r,
   @{PROC}/sys/kernel/random/uuid r,
 
-  owner @{torbrowser_installation_dir}/ r,
-  owner @{torbrowser_installation_dir}/* r,
-  owner @{torbrowser_installation_dir}/.** rwk,
-  owner @{torbrowser_installation_dir}/update.test/ rwk,
-  owner @{torbrowser_home_dir}/.** rwk,
-  owner @{torbrowser_home_dir}/ rw,
-  owner @{torbrowser_home_dir}/** rwk,
-  owner @{torbrowser_home_dir}.bak/ rwk,
-  owner @{torbrowser_home_dir}.bak/** rwk,
-  owner @{torbrowser_home_dir}/*.so mr,
-  owner @{torbrowser_home_dir}/.cache/fontconfig/ rwk,
-  owner @{torbrowser_home_dir}/.cache/fontconfig/** rwkl,
-  owner @{torbrowser_home_dir}/browser/** r,
-  owner @{torbrowser_home_dir}/{,browser/}components/*.so mr,
-  owner @{torbrowser_home_dir}/Downloads/ rwk,
-  owner @{torbrowser_home_dir}/Downloads/** rwk,
-  owner @{torbrowser_home_dir}/firefox rix,
-  owner @{torbrowser_home_dir}/{,TorBrowser/UpdateInfo/}updates/[0-9]*/* rw,
-  owner @{torbrowser_home_dir}/{,TorBrowser/UpdateInfo/}updates/[0-9]*/{,MozUpdater/bgupdate/}updater ix,
-  owner @{torbrowser_home_dir}/updater ix,
-  owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/.parentwritetest rw,
-  owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profiles.ini r,
-  owner @{torbrowser_home_dir}/TorBrowser/Data/Browser/profile.default/{,**} rwk,
-  owner @{torbrowser_home_dir}/TorBrowser/Data/fontconfig/fonts.conf r,
-  owner @{torbrowser_home_dir}/fonts/* l,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/tor px,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/ r,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so mr,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/*.so.* mr,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/libstdc++/*.so mr,
-  owner @{torbrowser_home_dir}/TorBrowser/Tor/libstdc++/*.so.* mr,
+  @{torbrowser_home_dir}/ r,
+  @{torbrowser_home_dir}/** mr,
+
+  owner "@{HOME}/Tor Browser/" rw,
+  owner "@{HOME}/Tor Browser/**" rwk,
+  owner "@{HOME}/Persistent/Tor Browser/" rw,
+  owner "@{HOME}/Persistent/Tor Browser/**" rwk,
+  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/" rw,
+  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/**" rwk,
+  owner @{HOME}/.mozilla/firefox/bookmarks/ rwk,
+  owner @{HOME}/.mozilla/firefox/bookmarks/** rwk,
+  owner /live/persistence/TailsData_unlocked/bookmarks/ rwk,
+  owner /live/persistence/TailsData_unlocked/bookmarks/** rwk,
+  owner @{HOME}/.tor-browser/profile.default/{,**} rwk,
+
+  /etc/xul-ext/ r,
+  /etc/xul-ext/** r,
+  /usr/local/share/tor-browser-extensions/ r,
+  /usr/local/share/tor-browser-extensions/** rk,
+  /usr/share/{xul-,web}ext/ r,
+  /usr/share/{xul-,web}ext/** r,
+  /usr/share/{chromium,mozilla}/extensions/ r,
+  /usr/share/{chromium,mozilla}/extensions/** r,
+
+  /usr/share/doc/tails/website/ r,
+  /usr/share/doc/tails/website/** r,
 
   # parent Firefox process when restarting after upgrade, Web Content processes
-  owner @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
+  @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
 
   /etc/mailcap r,
   /etc/mime.types r,
@@ -105,11 +100,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /sys/fs/cgroup/cpu,cpuacct/{,user.slice/}cpu.cfs_quota_us r,
   deny /sys/devices/virtual/block/*/uevent r,
 
-  # Should use abstractions/gstreamer instead once merged upstream
-  /etc/udev/udev.conf r,
-  /run/udev/data/+pci:* r,
-  /sys/devices/pci[0-9]*/**/uevent r,
-  owner /{dev,run}/shm/shmfd-* rw,
+  #include <abstractions/gstreamer>
 
   # Required for multiprocess Firefox (aka Electrolysis, i.e. e10s)
   owner /{dev,run}/shm/org.chromium.* rw,
@@ -131,6 +122,24 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny /run/user/[0-9]*/dconf/user rw,
   deny /usr/bin/lsb_release x,
 
+  # Grant access to assistive technologies
+  # (otherwise, Firefox crashes when Orca is enabled:
+  # https://labs.riseup.net/code/issues/9261)
+  owner @{HOME}/.cache/at-spi2-*/ rw,
+  owner @{HOME}/.cache/at-spi2-*/socket rw,
+
+  # Spell checking (the "enchant" abstraction includes these rules
+  # too, but it allows way more stuff than what we need)
+  /usr/share/hunspell/                             r,
+  /usr/share/hunspell/*                            r,
+
+  # Deny access to the list of recently used files. This overrides the
+  # access to it that's granted by the freedesktop.org abstraction.
+  deny @{HOME}/.local/share/recently-used.xbel* rw,
+
+  # Silence denial logs about permissions we don't need (Tails-specific)
+  deny /usr/local/lib/tor-browser/update.test/ rw,
+
   # Silence denial logs about PulseAudio
   deny /etc/pulse/client.conf r,
   deny /usr/bin/pulseaudio x,
@@ -151,11 +160,23 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # Yubikey NEO also needs this:
   /sys/devices/**/hidraw/hidraw*/uevent r,
 
+  # Deny access to global tmp directories, that's granted by the user-tmp
+  # abstraction, which is sourced by the gnome abstraction, that we include.
+  deny owner /var/tmp/**     rwklx,
+  deny /var/tmp/             rwklx,
+  deny owner /tmp/**         rwklx,
+  deny /tmp/                 rwklx,
+
+  # Deny access to GVFS
+  deny @{HOME}/.local/share/gvfs-metadata/home r,
+
+  # Workaround bug in abstractions/gnome
+  # XXX:Bullseye: remove
+  /etc/xdg/mimeapps.list r,
+
   # Needed for Firefox sandboxing via unprivileged user namespaces
   capability sys_admin,
   capability sys_chroot,
   owner @{PROC}/@{pid}/{gid,uid}_map w,
   owner @{PROC}/@{pid}/setgroups w,
-
-  #include <local/torbrowser.Browser.firefox>
 }
