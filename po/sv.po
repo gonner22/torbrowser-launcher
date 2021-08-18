@@ -8,163 +8,163 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 15:47-0700\n"
-"PO-Revision-Date: 2021-06-20 19:42+0200\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
-"Language-Team: \n"
-"Language: cs\n"
+"PO-Revision-Date: 2018-11-10 11:36+0100\n"
+"Last-Translator: Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 2.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:65 launcher.py:470
 msgid "Tor Browser Launcher"
-msgstr "Spouštěč prohlížeče Tor"
+msgstr "Tor Browser Launcher"
 
 #: __init__.py:66
 msgid "By Micah Lee, licensed under MIT"
-msgstr "Vytvořil Micah Lee pod licencí MIT"
+msgstr "Av Mika Lee, licensierad under MIT"
 
 #: __init__.py:67
 #, python-brace-format
 msgid "version {0}"
-msgstr "verze {0}"
+msgstr "version {0}"
 
 #: common.py:100
 #, python-brace-format
 msgid "Error creating {0}"
-msgstr "Chyba při vytváření {0}"
+msgstr "Ett fel uppstod vid skapande {0}"
 
 #: common.py:102 common.py:180
 #, python-brace-format
 msgid "{0} is not writable"
-msgstr "Do {0} není možné zapisovat"
+msgstr "{0} är inte skrivbar"
 
 #: common.py:177
 #, python-brace-format
 msgid "Cannot create directory {0}"
-msgstr "Nelze vytvořit adresář {0}"
+msgstr "Kan inte att skapa katalog {0}"
 
 #: common.py:187
 msgid "Creating GnuPG homedir"
-msgstr "Vytváří se domovská složka GnuGPG"
+msgstr "Skapa GnuPG-homedir"
 
 #: common.py:254
 #, python-format
 msgid "Could not import key with fingerprint: %s."
-msgstr "Selhal import klíče s otiskem: %s."
+msgstr "Kunde inte importera nyckel med fingeravtryck: %s."
 
 #: common.py:259
 msgid "Not all keys were imported successfully!"
-msgstr "Ne všechny klíče byly importovány úspěšně!"
+msgstr "Inte alla nycklar importerades!"
 
 #: launcher.py:83
 msgid "Downloading Tor Browser for the first time."
-msgstr "Poprvé se stahuje Prohlížeč Tor."
+msgstr "Hämtar Tor Browser för första gången."
 
 #: launcher.py:85
 msgid ""
 "Your version of Tor Browser is out-of-date. Downloading the newest version."
-msgstr "Vaše verze Prohlížeče Tor je zastaralá. Stahuje se nejnovější verze."
+msgstr "Din version av Tor Browser är föråldrad. Hämta den senaste versionen."
 
 #: launcher.py:100
 msgid "Downloading over Tor"
-msgstr "Stahování přes Tor"
+msgstr "Hämtar över Tor"
 
 #: launcher.py:111
 msgid "Tor Browser"
-msgstr "Prohlížeč Tor"
+msgstr "Tor Browser"
 
 #: launcher.py:128
 msgid "Start"
-msgstr "Spustit"
+msgstr "Börja"
 
 #: launcher.py:174
 msgid "Yes"
-msgstr "Ano"
+msgstr "Ja"
 
 #: launcher.py:178
 msgid "Exit"
-msgstr "Ukončit"
+msgstr "Avsluta"
 
 #: launcher.py:192 settings.py:136
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Avbryt"
 
 #: launcher.py:231 launcher.py:245 launcher.py:249 launcher.py:279
 #: launcher.py:281
 msgid "Downloading"
-msgstr "Stahuje se"
+msgstr "Hämtar"
 
 #: launcher.py:238
 msgid "Latest version: {}"
-msgstr "Nejnovější verze: {}"
+msgstr "Senaste versionen: {}"
 
 #: launcher.py:241
 msgid "Error detecting Tor Browser version."
-msgstr "Chyba při zjišťování verze Prohlížeče Tor."
+msgstr "Fel vid detektering av Tor Browser-versionen."
 
 #: launcher.py:256 launcher.py:357
 msgid "Verifying Signature"
-msgstr "Ověřuje se podpis"
+msgstr "Verifierar signaturen"
 
 #: launcher.py:260
 msgid "Extracting"
-msgstr "Extrahuje se"
+msgstr "Packar upp"
 
 #: launcher.py:264
 msgid "Running"
-msgstr "Běží"
+msgstr "Körs"
 
 #: launcher.py:268
 msgid "Starting download over again"
-msgstr "Stahování se spouští znovu"
+msgstr "Börja hämtningen igen"
 
 #: launcher.py:279 launcher.py:295
 msgid "(over Tor)"
-msgstr "(přes Tor)"
+msgstr "(över Tor)"
 
 #: launcher.py:293
 msgid "Downloaded"
-msgstr "Staženo"
+msgstr "Hämtad"
 
 #: launcher.py:393
 msgid "Installing"
-msgstr "Instaluje se"
+msgstr "Installerar"
 
 #: launcher.py:401
 #, python-brace-format
 msgid "Tor Browser Launcher doesn't understand the file format of {0}"
-msgstr "Spouštěč prohlížeče Tor nerozumí formátu souboru {0}"
+msgstr "Tor Browser Launcher förstår inte filformatet {0}"
 
 #: launcher.py:427
 msgid ""
 "The version of Tor Browser you have installed is earlier than it should be, "
 "which could be a sign of an attack!"
 msgstr ""
-"Verze prohlížeče Tor, kterou máte nainstalovanou, je ranější, než by měla "
-"být, což může značit útok!"
+"Den version av Tor Browser du har installerat är tidigare än den borde vara, "
+"vilket kan vara ett tecken på en attack!"
 
 #: launcher.py:446
 msgid "Downloading Tor Browser over again."
-msgstr "Znovu se stahuje Prohlížeč Tor."
+msgstr "Hämtar Tor Browser igen."
 
 #: launcher.py:516 launcher.py:525 launcher.py:533
 msgid "Download Error:"
-msgstr "Chyba stahování:"
+msgstr "Hämtningsfel:"
 
 #: launcher.py:517
 msgid "You are currently using a non-default mirror"
-msgstr "Používáte právě nevýchozí zrcadlo"
+msgstr "Du använder för närvarande en icke-standardspegel"
 
 #: launcher.py:518
 msgid "Would you like to switch back to the default?"
-msgstr "Přejete si přepnout zpět na výchozí?"
+msgstr "Vill du byta tillbaka till standard?"
 
 #: launcher.py:527
 msgid "Would you like to try the English version of Tor Browser instead?"
-msgstr "Přejete si místo toho zkusit anglickou verzi Prohlížeče Tor?"
+msgstr "Vill du prova den engelska versionen av Tor Browser istället?"
 
 #: launcher.py:548
 #, python-brace-format
@@ -174,14 +174,14 @@ msgid ""
 "\n"
 "You may be under attack."
 msgstr ""
-"Neplatný SSL certifikát pro:\n"
+"Ogiltigt SSL-certifikat för:\n"
 "{0}\n"
 "\n"
-"Můžete být pod útokem."
+"Du kan vara under attack."
 
 #: launcher.py:550
 msgid "Try the download again using Tor?"
-msgstr "Zkusit stahování znovu pomocí Toru?"
+msgstr "Försök att hämta igen med Tor?"
 
 #: launcher.py:559
 #, python-brace-format
@@ -193,12 +193,12 @@ msgid ""
 "Trying to download over Tor. Are you sure Tor is configured correctly and "
 "running?"
 msgstr ""
-"Chyba při spouštění stahování:\n"
+"Fel vid start av hämtning:\n"
 "\n"
 "{0}\n"
 "\n"
-"Zkouší se stahování přes Tor. Jste si jistí, že Tor běží a je správně "
-"nastaven?"
+"Försöker att hämta över Tor. Är du säker på att Tor är korrekt konfigurerad "
+"och körs?"
 
 #: launcher.py:563
 #, python-brace-format
@@ -209,68 +209,70 @@ msgid ""
 "\n"
 "Are you connected to the internet?"
 msgstr ""
-"Chyba při spouštění stahování:\n"
+"Fel vid start av hämtning:\n"
 "\n"
 "{0}\n"
 "\n"
-"Jste připojeni k internetu?"
+"Är du ansluten till internet?"
 
 #: settings.py:46
 msgid "Tor Browser Launcher Settings"
-msgstr "Nastavení Spouštěče prohlížeče Tor"
+msgstr "Inställningar för Tor Browser Launcher"
 
 #: settings.py:50
 msgid "Download over system Tor"
-msgstr "Stáhnout přes systémový Tor"
+msgstr "Hämta över Tor-system"
 
 #: settings.py:57
 msgid "Force downloading English version of Tor Browser"
-msgstr "Vynutit stažení anglické verze Prohlížeče Tor"
+msgstr "Tvinga att hämta engelsk version av Tor Browser"
 
 #: settings.py:66
 msgid "Tor server"
-msgstr "Server Toru"
+msgstr "Tor-server"
 
 #: settings.py:82
 msgid "Status: Installed"
-msgstr "Stav: Nainstalováno"
+msgstr "Tillstånd: Installerad"
 
 #: settings.py:84
 msgid "Status: Not Installed"
-msgstr "Stav: Nenainstalováno"
+msgstr "Tillstånd: Inte installerad"
 
 #: settings.py:87
 msgid "Install Tor Browser"
-msgstr "Nainstalovat Prohlížeč Tor"
+msgstr "Installera Tor Browser"
 
 #: settings.py:92
 msgid "Reinstall Tor Browser"
-msgstr "Přeinstalovat Prohlížeč Tor"
+msgstr "Installera om Tor Browser"
 
 #: settings.py:115
 msgid "Mirror"
-msgstr "Zrcadlo"
+msgstr "Spegel"
 
 #: settings.py:131
 msgid "Save && Exit"
-msgstr "Uložit a ukončit"
+msgstr "Spara && avsluta"
 
 #~ msgid ""
 #~ "The python-txsocksx package is missing, downloads will not happen over tor"
-#~ msgstr "Chybí balíček python-txsocksx, stahování se neuskuteční přes tor"
+#~ msgstr ""
+#~ ""
+#~ "Python-txsocksx-paketet saknas, hämtningar kommer inte att hända över Tor."
 
 #~ msgid "DNS Lookup Error"
-#~ msgstr "Chyba při vyhledávání DNS"
+#~ msgstr "DNS-uppsökningsfel"
 
 #~ msgid ""
 #~ "The SSL certificate served by https://www.torproject.org is invalid! You "
 #~ "may be under attack."
 #~ msgstr ""
-#~ "Certifikát SSL získaný od https://www.torproject.org je neplatný! Možná "
-#~ "je na vás veden útok."
+#~ "SSL-certifikatet som betjänas av https://www.torproject.org är ogiltig!"
+#~ "Du kan vara under attack."
 
 #~ msgid "Error connecting to Tor at {0}"
-#~ msgstr "Chyba při připojování k Toru na {0}"
+#~ msgstr "Fel vid anslutning till Tor på {0}"
 
 #~ msgid ""
 #~ "SIGNATURE VERIFICATION FAILED!\n"
@@ -278,25 +280,27 @@ msgstr "Uložit a ukončit"
 #~ "You might be under attack, or there might just be a networking problem. "
 #~ "Click Start try the download again."
 #~ msgstr ""
-#~ "SELHALO OVĚŘENÍ PODPISU!\n"
+#~ "SIGNATUR MISSLYCKADES!\n"
 #~ "\n"
-#~ "Možná je na vás veden útok, anebo může jít pouze o síťovou závadu. Pro "
-#~ "nové stažení klikněte na Spustit."
+#~ "Du kan vara under attack, eller det kan bara vara ett nätverksproblem. "
+#~ "Klicka på Start för försöka hämta igen."
 
 #~ msgid ""
 #~ "The python-pygame package is missing, the modem sound is unavailable."
-#~ msgstr "Chybí balíček python-pygame, zvuk modemu není dostupný."
+#~ msgstr ""
+#~ "Python-pygame-paketet saknas, modemljudet är otillgängligt."
 
 #~ msgid ""
 #~ "This option is only available when using a system wide Tor installation."
 #~ msgstr ""
-#~ "Tato možnost je dostupná, pouze pokud se používá systémová instalace Toru."
+#~ "Det här alternativet är endast tillgängligt när du använder en "
+#~ "systembredd Tor-installation."
 
 #~ msgid "This option requires the python-txsocksx package."
-#~ msgstr "Tato možnost vyžaduje balíček python-txsocksx."
+#~ msgstr "Det här alternativet kräver python-txsocksx-paketet."
 
 #~ msgid "Play modem sound, because Tor is slow :]"
-#~ msgstr "Přehrávat zvuk modemu, jelikož je Tor pomalý :]"
+#~ msgstr "Spela modemljud, eftersom Tor är långsamt :]"
 
 #~ msgid "This option requires python-pygame to be installed"
-#~ msgstr "Tato možnost vyžaduje nainstalovaný python-pygame"
+#~ msgstr "Det här alternativet kräver att python-pygame installeras"

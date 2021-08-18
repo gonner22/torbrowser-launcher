@@ -2,7 +2,7 @@
 Tor Browser Launcher
 https://github.com/micahflee/torbrowser-launcher/
 
-Copyright (c) 2013-2017 Micah Lee <micah@micahflee.com>
+Copyright (c) 2013-2021 Micah Lee <micah@micahflee.com>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -36,6 +36,7 @@ import json
 import re
 import gettext
 import gpg
+import requests
 
 SHARE = os.getenv("TBL_SHARE", sys.prefix + "/share") + "/torbrowser-launcher"
 
@@ -63,6 +64,8 @@ class Common(object):
             self.mkdir(self.paths["dirs"][d])
         self.load_mirrors()
         self.load_settings()
+        # some settings require a path rebuild, like force_en-US
+        self.build_paths()
         self.mkdir(self.paths["download_dir"])
         self.mkdir(self.paths["tbb"]["dir"])
         self.init_gnupg()
@@ -76,35 +79,55 @@ class Common(object):
         available_languages = [
             "ar",
             "ca",
+            "cs",
             "da",
             "de",
+            "el",
             "en-US",
+            "es-AR",
             "es-ES",
             "fa",
             "fr",
             "ga-IE",
             "he",
+            "hu",
             "id",
             "is",
             "it",
             "ja",
+            "ka",
             "ko",
+            "lt",
+            "mk",
+            "ms",
+            "my",
             "nb-NO",
             "nl",
             "pl",
             "pt-BR",
+            "ro",
             "ru",
             "sv-SE",
+            "th",
             "tr",
             "vi",
             "zh-CN",
             "zh-TW",
         ]
-        default_locale = locale.getlocale()[0]
+
+        # a list of manually configured language fallback overriding
+        language_overrides = {
+            "zh-HK": "zh-TW",
+        }
+
+        locale.setlocale(locale.LC_MESSAGES, "")
+        default_locale = locale.getlocale(locale.LC_MESSAGES)[0]
         if default_locale is None:
             self.language = "en-US"
         else:
             self.language = default_locale.replace("_", "-")
+            if self.language in language_overrides:
+                self.language = language_overrides[self.language]
             if self.language not in available_languages:
                 self.language = self.language.split("-")[0]
                 if self.language not in available_languages:
@@ -135,13 +158,22 @@ class Common(object):
                     self.set_gui(
                         "error", _("Error creating {0}").format(homedir), [], False
                     )
-        if not os.access(homedir, os.W_OK):
-            self.set_gui("error", _("{0} is not writable").format(homedir), [], False)
 
-        tbb_config = '{0}/torbrowser'.format(self.get_env('XDG_CONFIG_HOME', '{0}/.config'.format(homedir)))
-        tbb_cache = '{0}/torbrowser'.format(self.get_env('XDG_CACHE_HOME', '{0}/.cache'.format(homedir)))
-        tbb_local = '{0}/torbrowser'.format(self.get_env('XDG_DATA_HOME', '{0}/.local/share'.format(homedir)))
-        old_tbb_data = '{0}/.torbrowser'.format(homedir)
+        tbb_config = "{0}/torbrowser".format(
+            self.get_env("XDG_CONFIG_HOME", "{0}/.config".format(homedir))
+        )
+        tbb_cache = "{0}/torbrowser".format(
+            self.get_env("XDG_CACHE_HOME", "{0}/.cache".format(homedir))
+        )
+        tbb_local = "{0}/torbrowser".format(
+            self.get_env("XDG_DATA_HOME", "{0}/.local/share".format(homedir))
+        )
+        old_tbb_data = "{0}/.torbrowser".format(homedir)
+
+        if hasattr(self, "settings") and self.settings["force_en-US"]:
+            language = "en-US"
+        else:
+            language = self.language
 
         if tbb_version:
             # tarball filename
@@ -150,10 +182,6 @@ class Common(object):
             else:
                 arch = "linux32"
 
-            if hasattr(self, "settings") and self.settings["force_en-US"]:
-                language = "en-US"
-            else:
-                language = self.language
             tarball_filename = (
                 "tor-browser-" + arch + "-" + tbb_version + "_" + language + ".tar.xz"
             )
@@ -175,7 +203,11 @@ class Common(object):
             self.paths["sig_filename"] = tarball_filename + ".asc"
         else:
             self.paths = {
-                "dirs": {"config": tbb_config, "cache": tbb_cache, "local": tbb_local,},
+                "dirs": {
+                    "config": tbb_config,
+                    "cache": tbb_cache,
+                    "local": tbb_local,
+                },
                 "old_data_dir": old_tbb_data,
                 "tbl_bin": sys.argv[0],
                 "icon_file": os.path.join(
@@ -185,7 +217,8 @@ class Common(object):
                 "signing_keys": {
                     "tor_browser_developers": os.path.join(
                         SHARE, "tor-browser-developers.asc"
-                    )
+                    ),
+                    "wkd_tmp": os.path.join(tbb_cache, "torbrowser.gpg")
                 },
                 "mirrors_txt": [
                     os.path.join(SHARE, "mirrors.txt"),
@@ -202,26 +235,28 @@ class Common(object):
                     + "/tbb/"
                     + self.architecture
                     + "/tor-browser_"
-                    + self.language
+                    + language
                     + "/Browser/TorBrowser/Docs/ChangeLog.txt",
                     "dir": tbb_local + "/tbb/" + self.architecture,
                     "dir_tbb": tbb_local
                     + "/tbb/"
                     + self.architecture
                     + "/tor-browser_"
-                    + self.language,
+                    + language,
                     "start": tbb_local
                     + "/tbb/"
                     + self.architecture
                     + "/tor-browser_"
-                    + self.language
+                    + language
                     + "/start-tor-browser.desktop",
                 },
             }
 
         # Add the expected fingerprint for imported keys:
+        tor_browser_developers_fingerprint = "EF6E286DDA85EA2A4BA7DE684E2C6E8793298290"
         self.fingerprints = {
-            "tor_browser_developers": "EF6E286DDA85EA2A4BA7DE684E2C6E8793298290"
+            "tor_browser_developers": tor_browser_developers_fingerprint,
+            "wkd_tmp": tor_browser_developers_fingerprint,
         }
 
     # create a directory
@@ -246,41 +281,50 @@ class Common(object):
             self.mkdir(self.paths["gnupg_homedir"])
         self.import_keys()
 
-    def refresh_keyring(self, fingerprint=None):
-        if fingerprint is not None:
-            print("Refreshing local keyring... Missing key: " + fingerprint)
+    def proxies(self):
+        # Use tor socks5 proxy, if enabled
+        if self.settings["download_over_tor"]:
+            socks5_address = "socks5h://{}".format(self.settings["tor_socks_address"])
+            return {"https": socks5_address, "http": socks5_address}
         else:
-            print("Refreshing local keyring...")
+            return None
+
+    def refresh_keyring(self):
+        print("Downloading latest Tor Browser signing key...")
 
         # Fetch key from wkd, as per https://support.torproject.org/tbb/how-to-verify-signature/
-        p = subprocess.Popen(
-            [
-                "gpg2",
-                "--status-fd",
-                "2",
-                "--homedir",
-                self.paths["gnupg_homedir"],
-                "--auto-key-locate",
-                "nodefault,wkd",
-                "--locate-keys",
-                "torbrowser@torproject.org",
-            ],
-            stderr=subprocess.PIPE,
-        )
-        p.wait()
+        # Sometimes GPG throws errors, so comment this out and download it directly
+        # p = subprocess.Popen(
+        #     [
+        #         "gpg",
+        #         "--status-fd",
+        #         "2",
+        #         "--homedir",
+        #         self.paths["gnupg_homedir"],
+        #         "--auto-key-locate",
+        #         "nodefault,wkd",
+        #         "--locate-keys",
+        #         "torbrowser@torproject.org",
+        #     ],
+        #     stderr=subprocess.PIPE,
+        # )
+        # p.wait()
 
-        for output in p.stderr.readlines():
-            match = gnupg_import_ok_pattern.match(output)
-            if match and match.group(2) == "IMPORT_OK":
-                fingerprint = str(match.group(4))
-                if match.group(3) == "0":
-                    print("Keyring refreshed successfully...")
-                    print("  No key updates for key: " + fingerprint)
-                elif match.group(3) == "4":
-                    print("Keyring refreshed successfully...")
-                    print("  New signatures for key: " + fingerprint)
-                else:
-                    print("Keyring refreshed successfully...")
+        # Download the key from WKD directly
+        r = requests.get(
+            "https://torproject.org/.well-known/openpgpkey/hu/kounek7zrdx745qydx6p59t9mqjpuhdf?l=torbrowser",
+            proxies=self.proxies(),
+        )
+        if r.status_code != 200:
+            print(f"Error fetching key, status code = {r.status_code}")
+        else:
+            with open(self.paths["signing_keys"]["wkd_tmp"], "wb") as f:
+                f.write(r.content)
+
+            if self.import_key_and_check_status("wkd_tmp"):
+                print("Key imported successfully")
+            else:
+                print("Key failed to import")
 
     def import_key_and_check_status(self, key):
         """Import a GnuPG key and check that the operation was successful.
