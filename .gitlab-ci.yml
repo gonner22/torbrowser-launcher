@@ -1,0 +1,22 @@
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: '$CI_COMMIT_BRANCH == "devel"'
+
+variables:
+  UPSTREAM_REMOTE_URL: "https://github.com/micahflee/torbrowser-launcher"
+  UPSTREAM_BRANCH: "develop"
+
+image: debian:bullseye
+
+before_script:
+  - export DEBIAN_FRONTEND=noninteractive
+  - apt-get update -qq
+
+is-up-to-date-wrt-upstream:
+  script:
+    - apt-get -qy install git ca-certificates
+    - git remote set-url upstream-repo "$UPSTREAM_REMOTE_URL" || git remote add upstream-repo "$UPSTREAM_REMOTE_URL"
+    - git fetch --verbose upstream-repo "refs/heads/$UPSTREAM_BRANCH"
+    - test "$(git log --oneline ..upstream-repo/$UPSTREAM_BRANCH -- apparmor/ | wc -l)" -eq 0
