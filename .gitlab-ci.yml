@@ -7,6 +7,7 @@ workflow:
 variables:
   UPSTREAM_REMOTE_URL: "https://github.com/micahflee/torbrowser-launcher"
   UPSTREAM_BRANCH: "develop"
+  DOC_URL: "https://tails.boum.org/contribute/release_process/tor-browser/AppArmor_policy/"
 
 image: debian:bullseye
 
@@ -19,4 +20,4 @@ is-up-to-date-wrt-upstream:
     - apt-get -qy install git ca-certificates
     - git remote set-url upstream-repo "$UPSTREAM_REMOTE_URL" || git remote add upstream-repo "$UPSTREAM_REMOTE_URL"
     - git fetch --verbose upstream-repo "refs/heads/$UPSTREAM_BRANCH"
-    - test "$(git log --oneline ..upstream-repo/$UPSTREAM_BRANCH -- apparmor/ | wc -l)" -eq 0
+    - 'if test "$(git log --oneline ..upstream-repo/$UPSTREAM_BRANCH -- apparmor/ | wc -l)" -gt 0 ; then echo "We need to merge upstream changes: $DOC_URL" ; exit 1 ; fi'
