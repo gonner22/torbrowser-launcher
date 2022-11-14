@@ -139,6 +139,8 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/glvnd/egl_vendor.d/{,*.json} r,
 
   # Grant read-write access to the download directories
+  owner @{HOME}/{Documents,Downloads,Music,Pictures,Videos}/ rw,
+  owner @{HOME}/{Documents,Downloads,Music,Pictures,Videos}/** rwk,
   owner "@{HOME}/Tor Browser/" rw,
   owner "@{HOME}/Tor Browser/**" rwk,
   owner "@{HOME}/Persistent/Tor Browser/" rw,
