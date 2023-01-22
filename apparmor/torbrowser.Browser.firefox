@@ -58,6 +58,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   deny @{torbrowser_home_dir}/fonts/.uuid.* w,
   deny @{torbrowser_home_dir}/TorBrowser/Data/Browser/.mozilla/ w,
   owner @{HOME}/.tor-browser/profile.default/{,**} rwk,
+  owner /run/user/[0-9]*/doc/** rw,
 
   # parent Firefox process when restarting after upgrade, Web Content processes
   @{torbrowser_firefox_executable} pxmr -> torbrowser_firefox,
