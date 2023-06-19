@@ -17,6 +17,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # #include <abstractions/user-download>
   # @{HOME}/ r,
 
+  # Allow access required in flatpak
+  owner /run/user/[0-9]*/doc/** rw,
+  owner /home/amnesia/.var/app/org.boum.tails.TorBrowser/** rwkl,
+  /.flatpak-info r,
+  /run/host/** r,
+  /run/user/[0-9]*/pulse/config r,
+
+
   # Audio support
   /{,usr/}bin/pulseaudio Pixr,
 
