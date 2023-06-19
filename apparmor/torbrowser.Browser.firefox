@@ -22,7 +22,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   owner /home/amnesia/.var/app/org.boum.tails.TorBrowser/** rwkl,
   /.flatpak-info r,
   /run/host/** r,
-  /run/user/1000/pulse/config r,
+  /run/user/[0-9]*/pulse/config r,
 
 
   # Audio support
