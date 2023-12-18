@@ -6,7 +6,7 @@ workflow:
 
 variables:
   UPSTREAM_REMOTE_URL: "https://github.com/micahflee/torbrowser-launcher"
-  UPSTREAM_BRANCH: "develop"
+  UPSTREAM_BRANCH: "main"
   DOC_URL: "https://tails.boum.org/contribute/release_process/tor-browser/AppArmor_policy/"
 
 image: debian:bullseye

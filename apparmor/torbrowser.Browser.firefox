@@ -12,10 +12,20 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   #include <abstractions/opencl>
   #include if exists <abstractions/vulkan>
 
+  deny capability sys_ptrace,
+
   # Uncomment the following lines if you want to give the Tor Browser read-write
   # access to most of your personal files.
   # #include <abstractions/user-download>
   # @{HOME}/ r,
+
+  # Allow access required in flatpak
+  owner /run/user/[0-9]*/doc/** rw,
+  owner /home/amnesia/.var/app/org.boum.tails.TorBrowser/** rwkl,
+  /.flatpak-info r,
+  /run/host/** r,
+  /run/user/[0-9]*/pulse/config r,
+
 
   # Audio support
   /{,usr/}bin/pulseaudio Pixr,
@@ -46,15 +56,19 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   owner @{PROC}/@{pid}/environ r,
   owner @{PROC}/@{pid}/fd/ r,
   owner @{PROC}/@{pid}/mountinfo r,
+  owner @{PROC}/@{pid}/oom_score_adj rw,
   owner @{PROC}/@{pid}/smaps r,
   owner @{PROC}/@{pid}/stat r,
   owner @{PROC}/@{pid}/statm r,
   owner @{PROC}/@{pid}/status r,
+  owner @{PROC}/@{pid}/task/ r,
+  owner @{PROC}/@{pid}/task/*/comm r,
   owner @{PROC}/@{pid}/task/*/stat r,
   @{PROC}/sys/kernel/random/uuid r,
 
   @{torbrowser_home_dir}/ r,
   @{torbrowser_home_dir}/** mr,
+  @{torbrowser_home_dir}/glxtest ix,
   deny @{torbrowser_home_dir}/fonts/.uuid.* w,
   deny @{torbrowser_home_dir}/TorBrowser/Data/Browser/.mozilla/ w,
   owner @{HOME}/.tor-browser/profile.default/{,**} rwk,
@@ -85,6 +99,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /sys/devices/system/node/ r,
   /sys/devices/system/node/node[0-9]*/meminfo r,
   /sys/fs/cgroup/cpu,cpuacct/{,user.slice/}cpu.cfs_quota_us r,
+  deny /sys/class/input/ r,
   deny /sys/devices/virtual/block/*/uevent r,
 
   #include <abstractions/gstreamer>
