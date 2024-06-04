@@ -200,13 +200,6 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # Silence denial logs about permissions we don't need (Tails-specific)
   deny /usr/local/lib/tor-browser/update.test/ rw,
 
-  # Deny access to global tmp directories, that's granted by the user-tmp
-  # abstraction, which is sourced by the gnome abstraction, that we include.
-  deny owner /var/tmp/**     rwklx,
-  deny /var/tmp/             rwklx,
-  deny owner /tmp/**         rwklx,
-  deny /tmp/                 rwklx,
-
   # Deny access to GVFS
   deny @{HOME}/.local/share/gvfs-metadata/home r,
 
