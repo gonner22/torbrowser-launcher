@@ -9,7 +9,7 @@ variables:
   UPSTREAM_BRANCH: "main"
   DOC_URL: "https://tails.boum.org/contribute/release_process/tor-browser/AppArmor_policy/"
 
-image: debian:bullseye
+image: registry.gitlab.tails.boum.org/sysadmin-team/container-images/debian:bookworm
 
 before_script:
   - export DEBIAN_FRONTEND=noninteractive
