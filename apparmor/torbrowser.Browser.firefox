@@ -21,7 +21,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
 
   # Allow access required in flatpak
   owner /run/user/[0-9]*/doc/** rw,
-  owner /home/amnesia/.var/app/org.boum.tails.TorBrowser/** rwkl,
+  owner /home/amnesia/.var/app/org.boum.telestai-cb.TorBrowser/** rwkl,
   /.flatpak-info r,
   /run/host/** r,
   /run/user/[0-9]*/pulse/config r,
@@ -160,14 +160,14 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   owner "@{HOME}/Tor Browser/**" rwk,
   owner "@{HOME}/Persistent/Tor Browser/" rw,
   owner "@{HOME}/Persistent/Tor Browser/**" rwk,
-  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/" rw,
-  owner "/live/persistence/TailsData_unlocked/Persistent/Tor Browser/**" rwk,
+  owner "/live/persistence/Telestai-CBData_unlocked/Persistent/Tor Browser/" rw,
+  owner "/live/persistence/Telestai-CBData_unlocked/Persistent/Tor Browser/**" rwk,
 
   # Grant read-write access to bookmarks
   owner @{HOME}/.mozilla/firefox/bookmarks/ rwk,
   owner @{HOME}/.mozilla/firefox/bookmarks/** rwk,
-  owner /live/persistence/TailsData_unlocked/bookmarks/ rwk,
-  owner /live/persistence/TailsData_unlocked/bookmarks/** rwk,
+  owner /live/persistence/Telestai-CBData_unlocked/bookmarks/ rwk,
+  owner /live/persistence/Telestai-CBData_unlocked/bookmarks/** rwk,
 
   # Allow system-wide add-ons
   /etc/xul-ext/ r,
@@ -179,12 +179,12 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   /usr/share/{chromium,mozilla}/extensions/ r,
   /usr/share/{chromium,mozilla}/extensions/** r,
 
-  # Grant read access to the included Tails documentation
-  /usr/share/doc/tails/website/ r,
-  /usr/share/doc/tails/website/** r,
+  # Grant read access to the included Telestai-CB documentation
+  /usr/share/doc/telestai-cb/website/ r,
+  /usr/share/doc/telestai-cb/website/** r,
 
   # Grant access to assistive technologies
-  # (otherwise, Firefox crashes when Orca is enabled: tails/tails#9261)
+  # (otherwise, Firefox crashes when Orca is enabled: telestai-cb/telestai-cb#9261)
   owner @{HOME}/.cache/at-spi2-*/ rw,
   owner @{HOME}/.cache/at-spi2-*/socket rw,
 
@@ -197,7 +197,7 @@ profile torbrowser_firefox @{torbrowser_firefox_executable} {
   # access to it that's granted by the freedesktop.org abstraction.
   deny @{HOME}/.local/share/recently-used.xbel* rw,
 
-  # Silence denial logs about permissions we don't need (Tails-specific)
+  # Silence denial logs about permissions we don't need (Telestai-CB-specific)
   deny /usr/local/lib/tor-browser/update.test/ rw,
 
   # Deny access to global tmp directories, that's granted by the user-tmp
